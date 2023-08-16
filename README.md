@@ -1,5 +1,4 @@
-# CSAPP
-笔者自学CSAPP所留下的笔记或者习题解答(错了希望大佬能够指正)
+# CS_Learning
+笔者自学CS所留下的code或者习题解答
 
-* # [第一章 计算机系统漫游](https://github.com/Stromxun/CSAPP/tree/main/Note/Chapter%201)
   
