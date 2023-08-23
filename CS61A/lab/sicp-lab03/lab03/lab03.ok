@@ -1,0 +1,27 @@
+{
+    "name": "Lab 3",
+    "endpoint": "cal/cs61a/fa21/lab03",
+    "src": [
+        "lab03.py"
+    ],
+    "tests": {
+        "lab*.py": "doctest",
+        "tests/*.py": "ok_test"
+    },
+    "default_tests": [
+        "unique_digits",
+        "ordered_digits",
+        "get_k_run_starter",
+        "make_repeater",
+        "apply_twice",
+        "protected_secret"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
