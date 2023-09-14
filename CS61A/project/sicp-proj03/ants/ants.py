@@ -499,6 +499,10 @@ class Bee(Insect):
     # OVERRIDE CLASS ATTRIBUTES HERE
     is_watersafe = True
     
+    def __init__(self, health, place = None):
+        self.scared_once = False
+        self.is_scared = False
+        super().__init__(health, place)
     def sting(self, ant):
         """Attack an ANT, reducing its health by 1."""
         ant.reduce_health(self.damage)
@@ -521,11 +525,15 @@ class Bee(Insect):
 
         gamestate -- The GameState, used to access game state information.
         """
-        destination = self.place.exit
         # Extra credit: Special handling for bee direction
         # BEGIN Problem Optional 2
         "*** YOUR CODE HERE ***"
-        
+        if not self.is_scared:
+            destination = self.place.exit
+        elif self.place.entrance.is_hive():
+            destination = self.place
+        else:
+            destination = self.place.entrance
         # END Problem Optional 2
         if self.blocked():
             self.sting(self.place.ant)
@@ -545,6 +553,10 @@ class Bee(Insect):
         the previous .action on even-numbered turns."""
         # BEGIN Problem Optional 2
         "*** YOUR CODE HERE ***"
+        def status(gamestate, previous_action):
+            if gamestate.time % 2 == 0:
+                previous_action(gamestate)
+        self.apply_status(status, self.action, length) 
         # END Problem Optional 2
 
     def scare(self, length):
@@ -553,6 +565,13 @@ class Bee(Insect):
 
         # BEGIN Problem Optional 2
         "*** YOUR CODE HERE ***"
+        if not self.scared_once:
+            self.scared_once = True
+            def status(gamestate, previous_action):
+                self.is_scared = True
+                previous_action(gamestate)
+                self.is_scared = False
+            self.apply_status(status, self.action, length)
         # END Problem Optional 2
 
     def apply_status(self, status, previous_action, length):
@@ -561,6 +580,15 @@ class Bee(Insect):
 
         # BEGIN Problem Optional 2
         "*** YOUR CODE HERE ***"
+        status_count = 1
+        def new_action(gamestate):
+            nonlocal status_count
+            if status_count <= length:
+                status(gamestate, previous_action)
+                status_count += 1
+            else:
+                previous_action(gamestate)
+        self.action = new_action
         # END Problem Optional 2
 
 
