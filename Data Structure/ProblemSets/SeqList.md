@@ -2,7 +2,7 @@
 
 ##### 01
 ```cpp
-  int delete_min_value(int nums[], int& length){
+int delete_min_value(int nums[], int& length){
     if(length == 0) return -1;
     int minm = nums[0], k = 0;
     for(int i = 1; i < length; i++){
