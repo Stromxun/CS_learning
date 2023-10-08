@@ -29,3 +29,18 @@ void reverse_List(int nums[], int& length){
 }
 
 ```
+
+##### 03
+```cpp
+void delete_value_is_x(int nums[], int x,int& length){
+    if(length == 0) return;
+    int cnt = 0;
+    for(int i = 0; i < length; i++){
+        if(x != nums[i]){
+            nums[cnt++] = nums[i];
+        }
+    }
+    length = cnt;
+}
+
+```
