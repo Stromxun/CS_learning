@@ -15,3 +15,17 @@
     return minm;
 }
 ```
+
+##### 02
+```cpp
+void reverse_List(int nums[], int& length){
+    if(length == 0) return;
+    int temp;
+    for(int i = 0; i < length / 2; i++){
+        temp = nums[i];
+        nums[i] = nums[length - i - 1];
+        nums[length - i - 1] = temp;
+    }
+}
+
+```
