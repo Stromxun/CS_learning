@@ -71,16 +71,30 @@ $: vim hello_world
 ##### Part 02
 1、What differentiates Linux/OSX from operating systems like Windows?
 
+
+* Linux is an open source operating system so user can change source code as per requirement whereas Windows OS is a commercial operating system so user doesn’t have access to source code.
+* Linux is very well secure as it is easy to detect bugs and fix whereas Windows has a huge user base, so it becomes a target of hackers to attack windows system.
+* Comparing Windows file system vs Linux file system, Linux runs faster even with older hardware whereas Windows are slower compared to Linux.
+* Linux peripherals like hard drives, CD-ROMs, printers are considered files whereas Windows, hard drives, CD-ROMs, printers are considered as devices
+* Linux files are ordered in a tree structure starting with the root directory whereas in Windows, files are stored in folders on different data drives like C: D: E:
+* In Linux you can have 2 files with the same name in the same directory while in Windows, you cannot have 2 files with the same name in the same folder.
+* In Linux you would find the system and program files in different directories whereas in Windows, system and program files are usually saved in C: drive.
+
+
 2、What are some differences between the command line and normal (graphical) usage of an OS?
+
+`command line is more convient for programmer, gui reversed`
 
 3、What is the root directory in Linux filesystems? Answer conceptually, as in depth as you would like,
 
+[root directory](https://linuxsimply.com/what-is-root-directory-in-linux/)
+
 4、`ls` has a lot of cool arguments. Try using them to get extra information such as file permissions, owner name, owner group, file size, and late date edited. In addition, I want to be able to see the size and have the files ordered by last date edited, with the oldest files on top. How would I do this?
 
-(ls)[https://www.runoob.com/linux/linux-comm-ls.html]
+[ls](https://www.runoob.com/linux/linux-comm-ls.html)
 
 ```sh
-
+$:ls -l -t -r 
 ```
 
 5、Instead of showing the first 10 lines of the file `big_data.txt`, I want to use the `head` command to show the first 4. How would I do that?
