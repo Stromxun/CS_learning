@@ -58,3 +58,12 @@ $: cat big_data.txt | grep -B2 https
 hl)V:}mntUS4;iC':uH|G(;y6Ir;4uNLLRC?GDfRP%o+g]s$NCL9zM'SK[IV.e<i&_3&7L7NBL41N#f
 ;=:P0viNjebvs<+^Ae.SZYG'F}\> https://xkcd.com/705 e[a3]vF;Ny,*rpyC?3OA$Nm<.iH8M
 ```
+
+6、Which one does a_script need? Change the file permissions so that you can run the script. How did you do it?
+```sh
+$: chmod +x a.script
+```
+7、Finally, there’s an empty file called `hello_world` in the directory. Write your name in it! How did you do it?
+```sh
+$: vim hello_world
+```
