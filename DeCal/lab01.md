@@ -68,7 +68,7 @@ $: chmod +x a.script
 $: vim hello_world
 ```
 
-##### Part 02
+##### Part 02 General Questions
 1、What differentiates Linux/OSX from operating systems like Windows?
 
 
@@ -144,3 +144,8 @@ acced third party contributions to the code then the restrictions will apply.
 9、Give an example of (a) open-source software and (b) free, but closed-source software that you use.
 
 <b>firefox Vim</b>
+
+##### Part 03 Obtaining your VM
+
+only students of UCB can use their cloude virtual machine
+Other university can use VM or WLS for windows
