@@ -1,6 +1,6 @@
 ### Lab 1 - Unix, the Shell, OSS
 
-##### Part 01
+##### Part 01 Shell spelunking
 
 
 ```sh
