@@ -50,4 +50,11 @@ $: rm -rf nonsense
 $: ls -a
 .secret  a_script  big_data.txt  hello_world
 ```
-
+5、Two lines above the only URL in the file is a secret solution. What is that solution?
+Hints: What makes up a URL (https…)? What is Context Line Control? 
+```sh
+$: cat big_data.txt | grep -B2 https
+=================== THE SOLUTION IS MORE COFFEE ===============================
+hl)V:}mntUS4;iC':uH|G(;y6Ir;4uNLLRC?GDfRP%o+g]s$NCL9zM'SK[IV.e<i&_3&7L7NBL41N#f
+;=:P0viNjebvs<+^Ae.SZYG'F}\> https://xkcd.com/705 e[a3]vF;Ny,*rpyC?3OA$Nm<.iH8M
+```
