@@ -1,7 +1,7 @@
 # CS_Learning
 笔者自学CS所留下的code,lab,hw and project
 
-自学Web:
+自学Website:
 <br>
 [CS自学指南](https://csdiy.wiki/) PS:课程页面源自该网页
 <br>
