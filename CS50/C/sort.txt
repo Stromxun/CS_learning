@@ -1,0 +1,11 @@
+sort1 uses: Bubble sort
+
+How do you know?: When execute sort sorted file, bubble sort's speed more quick than selection bubble sort, so we can compare the three programme
+
+sort2 uses: merge sort
+
+How do you know?: the programme is the most quick, so it's must be merge sort
+
+sort3 uses: selection sort
+
+How do you know?: The sort programme is so laze
