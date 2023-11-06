@@ -8,3 +8,7 @@
 [国外公开课](https://hackway.org/docs/cs/intro)
 <br>
 [awesome-course](https://github.com/Stromxun/awesome-courses)
+<br>
+[Stanford-coures](https://docs.google.com/spreadsheets/d/1zfw8nPvJeewxcFUBpKUKmAVE8PjnJI7H0CKimdQXxr0/htmlview)
+<br>
+[MIT-OPENING-COURSE](https://ocw.mit.edu/search/?d=Electrical%20Engineering%20and%20Computer%20Science)
