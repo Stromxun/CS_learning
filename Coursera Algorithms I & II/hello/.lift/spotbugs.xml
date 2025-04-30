@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter
+    xmlns="https://github.com/spotbugs/filter/3.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
+
+    <!-- Bug descriptions:   http://spotbugs.readthedocs.io/en/latest/bugDescriptions.html  -->
+    <!-- Filter file format: http://spotbugs.readthedocs.io/en/latest/filter.html    -->
+
+    <!-- Match all violations. -->
+    <!-- But ignore these:
+           * comparator should be serializable
+           * something else dealing with serialization
+           * format string should use %n instead of /n
+           * inner class should be static (awkard, but possible with generics)
+           * using entrySet() is more efficient than keySet(), but it is awkward
+           * uses non-localized toLowerCase() or toUpperCase()
+           * switch statement with no default; seems OK when used for cases with (int) (4 * Math.random())
+           * class  naming convention (defer to Checkstyle)
+           * method naming convention (defer to Checkstyle)
+           * unused field (defer to PMD/IntelliJ since it highlight entire class)
+           * constructor throws an exception, so vulnerable to Finalizer attack
+           * class defines compareTo() and inherits equals()
+      -->
+    <Match>
+        <BugPattern name="SE_COMPARATOR_SHOULD_BE_SERIALIZABLE,
+                          SE_BAD_FIELD,
+                          VA_FORMAT_STRING_USES_NEWLINE,
+                          SIC_INNER_SHOULD_BE_STATIC,
+                          WMI_WRONG_MAP_ITERATOR,
+                          DM_CONVERT_CASE,
+                          SF_SWITCH_NO_DEFAULT,
+                          NM_METHOD_NAMING_CONVENTION,
+                          NM_CLASS_NAMING_CONVENTION,
+                          NM_FIELD_NAMING_CONVENTION,
+                          CT_CONSTRUCTOR_THROW,
+                          EQ_COMPARETO_USE_OBJECT_EQUALS" />
+    </Match>
+
+    <!-- from fb-contrib-7.4.3.jar plugin -->
+    <!-- FCBL_FIELD_COULD_BE_LOCAL redundant with PMD -->  
+    <!-- PME_POOR_MANS_ENUM  we disallow enum and seems to have false positives -->
+    <!-- OCP_OVERLY_CONCRETE_PARAMETER wants Picture to be defines as java.awt.event.ActionListener -->
+    <!-- NAB_NEEDLESS_BOXING_VALUEOF wants stack.push(Integer.valueOf(s)) instead of stack.push(Integer.parseInt(s)) -->
+    <!-- CBX_CUSTOM_BUILT_XML flags StdOut.println("> " + (r1.size() == 0)); -->
+
+    <!-- TODO: Java 7 - replace CHARSET_NAME with java.nio.charset.StandardCharsets.UTF_8 and eliminate
+                        CSI_CHAR_SET_ISSUES_USE_STANDARD_CHARSET,
+                        CSI_CHAR_SET_ISSUES_USE_STANDARD_CHARSET_NAME,
+    -->
+
+    <!-- TODO: use java.nio.file.Files.newInputStream and java.nio.file.Files.newOutputStream
+               to eliminate IOI_USE_OF_FILE_STREAM_CONSTRUCTORS 
+    -->
+
+    <Match>
+        <BugPattern name="AI_ANNOTATION_ISSUES_NEEDS_NULLABLE,
+                          BL_BURYING_LOGIC,
+                          CBX_CUSTOM_BUILT_XML,
+                          CC_CYCLOMATIC_COMPLEXITY,
+                          CE_CLASS_ENVY,
+                          CLI_CONSTANT_LIST_INDEX,
+                          CSI_CHAR_SET_ISSUES_USE_STANDARD_CHARSET,
+                          CSI_CHAR_SET_ISSUES_USE_STANDARD_CHARSET_NAME,
+                          EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS,
+                          FCBL_FIELD_COULD_BE_LOCAL,
+                          CNC_COLLECTION_NAMING_CONFUSION,
+                          IMC_IMMATURE_CLASS_NO_EQUALS,
+                          IMC_IMMATURE_CLASS_NO_PACKAGE,
+                          IMC_IMMATURE_CLASS_NO_TOSTRING,
+                          IMC_IMMATURE_CLASS_NO_HASHCODE,
+                          IMC_IMMATURE_CLASS_WRONG_FIELD_ORDER,
+                          IOI_USE_OF_FILE_STREAM_CONSTRUCTORS,
+                          ISB_EMPTY_STRING_APPENDING,
+                          ISB_INEFFICIENT_STRING_BUFFERING,
+                          ISB_TOSTRING_APPENDING,
+                          LSC_LITERAL_STRING_COMPARISON,
+                          MAC_MANUAL_ARRAY_COPY,
+                          MDM_RANDOM_SEED,
+                          MUI_CONTAINSKEY_BEFORE_GET,
+                          NAB_NEEDLESS_BOXING_VALUEOF,
+                          OPM_OVERLY_PERMISSIVE_METHOD,
+                          OCP_OVERLY_CONCRETE_PARAMETER,
+                          PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS,
+                          PCAIL_POSSIBLE_CONSTANT_ALLOCATION_IN_LOOP,
+                          PL_PARALLEL_LISTS,
+                          PME_POOR_MANS_ENUM,
+                          PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS,
+                          PSC_PRESIZE_COLLECTIONS,
+                          S508C_NON_TRANSLATABLE_STRING,
+                          SACM_STATIC_ARRAY_CREATED_IN_METHOD,
+                          SCR_SLOPPY_CLASS_REFLECTION,
+                          SEO_SUBOPTIMAL_EXPRESSION_ORDER,
+                          SPP_TEMPORARY_TRIM,
+                          STT_STRING_PARSING_A_FIELD,
+                          UCPM_USE_CHARACTER_PARAMETERIZED_METHOD,
+                          USBR_UNNECESSARY_STORE_BEFORE_RETURN,
+                          UVA_USE_VAR_ARGS,
+                          URF_UNREAD_FIELD,
+                          UUF_UNUSED_FIELD,
+                          WEM_WEAK_EXCEPTION_MESSAGING" />
+    </Match>
+
+    
+
+    <!-- Ignore DLS_DEAD_LOCAL_STORE for low-confidence warnings (3)
+         Otherwise it will flag code like the following:
+             for (String x : set)
+                 count++;
+    -->
+    <Match>
+        <BugPattern name="DLS_DEAD_LOCAL_STORE, UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR" />
+        <Confidence value="3" />
+    </Match>
+
+    <!-- Ignore SCRV_SUSPICIOUS_COMPARATOR_RETURN_VALUES for low-confidence warnings (3)
+         to avoid false positives in compare() -->
+    <Match>
+        <BugPattern name="SCRV_SUSPICIOUS_COMPARATOR_RETURN_VALUES" />
+        <Confidence value="3" />
+    </Match>
+
+    <!--  ***********************************************************************  -->
+    <!--  STDLIB.JAR EXCEPTIONS                                                    -->
+    <!--  ***********************************************************************  -->
+
+    <Match>
+        <Class name = "~.*(Std)?Draw" />
+        <BugPattern name="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD, DE_MIGHT_IGNORE" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*StdAudio" />
+        <BugPattern name="DM_EXIT" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*In" />
+        <BugPattern name="DMI_HARDCODED_ABSOLUTE_FILENAME" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*(In|StdIn)" />
+        <BugPattern name="LEST_LOST_EXCEPTION_STACK_TRACE" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*(BinaryIn|BinaryOut|BinaryStdIn|BinaryStdOut)" />
+        <BugPattern name="FCCD_FIND_CLASS_CIRCULAR_DEPENDENCY" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*(BinaryOut|BinaryStdOut|Draw|Out|Picture|StdAudio|StdDraw)" />
+        <BugPattern name="IMC_IMMATURE_CLASS_PRINTSTACKTRACE" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*(Draw|StdDraw)" />
+        <BugPattern name="MDM_THREAD_YIELD" />
+    </Match>
+
+    <!-- false positive -->
+    <Match>
+        <Class name = "~.*(StdRandom)" />
+        <Method name="poisson" params="double" returns="int" />
+        <BugPattern name="MRC_METHOD_RETURNS_CONSTANT" />
+    </Match>
+
+
+    <!--  ***********************************************************************  -->
+    <!--  INTRO TO PROGRAMMING IN JAVA EXCEPTIONS                                  -->
+    <!--  ***********************************************************************  -->
+
+    <Match>
+        <Class name = "~.*Bug.*" />
+    </Match>
+
+    <Match>
+        <Class name = "Confusion" />
+        <BugPattern name="SA_LOCAL_SELF_ASSIGNMENT, DLS_OVERWRITTEN_INCREMENT" />
+    </Match>
+
+    <!-- Double.valueOf() not introduced, so better to use Double.parseDouble()  -->
+    <Match>
+        <Class name = "Evaluate" />
+        <BugPattern name="NAB_NEEDLESS_BOXING_VALUEOF" />
+    </Match>
+
+    <Match>
+        <Class name = "PassByValue" />
+        <BugPattern name="IP_PARAMETER_IS_DEAD_BUT_OVERWRITTEN" />
+    </Match>
+
+    <Match>
+        <Class name = "ArrayExamples" />
+        <BugPattern name="DMI_INVOKING_TOSTRING_ON_ARRAY" />
+    </Match>
+
+    <Match>
+        <Class name = "PhoneNumber" />
+        <BugPattern name="SA_LOCAL_SELF_COMPARISON" />
+    </Match>
+
+    <Match>
+        <Class name = "HashCode" />
+        <BugPattern name="ES_COMPARING_STRINGS_WITH_EQ,DM_STRING_CTOR" />
+    </Match>
+
+    <Match>
+        <Class name = "~NoBaseCase|NoConvergence" />
+        <BugPattern name="IL_INFINITE_RECURSIVE_LOOP" />
+    </Match>
+
+    <!-- Exclude Gaussian.Phi() test for floating-point equality. -->
+    <Match>
+        <Class name = "Gaussian" />
+        <BugPattern name="FE_FLOATING_POINT_EQUALITY" />
+    </Match>
+
+    <!-- generating random integers before StdRandom.uniform() is introduced -->
+    <Match>
+        <Class name = "~Coupon|CouponCollector|TwentyQuestions|Craps|Functions|
+                              |Mozart|Birthday|Birthdays|RollDie|SumOfTwoDice|
+                              |RandomStudent|Sicherman|Chaos|DiscreteDistribution|
+                              |MonteHall|MostLikelyRoll" />
+        <BugPattern name="DM_NEXTINT_VIA_NEXTDOUBLE" />
+    </Match>
+
+
+    <!-- string concatenation before StringBuffer is introduced -->
+    <Match>
+        <Class name = "~RulerN|DigitReverser|Loops|LongestCommonSubsequence|
+                              |ThueMorse|Ordinal|DeBruijn|Soundex|Repeat|
+                              |Quote|CircularQuote" />
+        <BugPattern name="SBSC_USE_STRINGBUFFER_CONCATENATION" />
+    </Match>
+
+    <!-- we are measuring side effect of elapsed time -->
+    <Match>
+        <Class name = "DoublingTest" />
+        <BugPattern name="DLS_DEAD_LOCAL_STORE" />
+    </Match>
+
+
+    <!--  ***********************************************************************  -->
+    <!--  ALGS4.JAR EXCEPTIONS                                                     -->
+    <!--  ***********************************************************************  -->
+
+    <!-- techincally, need (edu\.princeton\.cs\.algs4\.)? instead of .* for package version -->
+    <Match>
+        <Class name = "~.*(BellmanFordSP|DijkstraSP|DynamicProgrammingSP|UniqueMincut|
+                                        |Hungarian|DijkstraUndirectedSP)" />
+        <BugPattern name="FE_FLOATING_POINT_EQUALITY" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*Doubling.*" />
+        <BugPattern name="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT,UC_USELESS_OBJECT" />
+    </Match>
+
+    <Match>
+        <Class name = "~(Autoboxing|DualPivotQuicksort)" />
+    </Match>
+
+    <Match>
+        <Class name = "~Mutable(String|Integer)" />
+        <BugPattern name="DP_DO_INSIDE_DO_PRIVILEGED" />
+    </Match>
+
+    <Match>
+        <Class name = "~AntiQuicksorter.*" />
+        <BugPattern name="HE_EQUALS_USE_HASHCODE, HE_EQUALS_NO_HASHCODE" />
+    </Match>
+
+    <Match>
+        <Class name = "BrokenShuffle" />
+        <BugPattern name="DM_NEXTINT_VIA_NEXTDOUBLE" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*RabinKarp" />
+        <BugPattern name="UPM_UNCALLED_PRIVATE_METHOD" />
+    </Match>
+
+    <Match>
+        <Class name = "CovariantPhoneNumber" />
+        <BugPattern name="EQ_SELF_USE_OBJECT" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*MemoryOf.*" />
+        <BugPattern name="DM_NUMBER_CTOR" />
+    </Match>
+
+    <Match>
+        <Class name = "Concatenate" />
+        <BugPattern name="SBSC_USE_STRINGBUFFER_CONCATENATION" />
+    </Match>
+
+    <Match>
+        <Class name = "~(edu.princeton.cs.algs4.)?Student" />
+        <BugPattern name="SA_LOCAL_SELF_COMPARISON, EC_UNRELATED_TYPES" />
+    </Match>
+
+    <Match>
+        <Class name = "~(edu.princeton.cs.algs4.)?Person" />
+        <BugPattern name="SA_LOCAL_SELF_COMPARISON" />
+    </Match>
+
+    <!-- These properly handle NaN and -0.0 -->
+    <Match>
+        <Class name = "~(edu.princeton.cs.algs4.)?(Transaction|Interval1D|Point2D).*" />
+        <BugPattern name="FE_FLOATING_POINT_EQUALITY,CO_COMPARETO_INCORRECT_FLOATING" />
+    </Match>
+
+    <Match>
+        <Class name = "~(edu.princeton.cs.algs4.)?(GaussJordanElimination|GaussianElimination)" />
+        <BugPattern name="PZLA_PREFER_ZERO_LENGTH_ARRAYS" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*(SET)" />
+        <BugPattern name="ITU_INAPPROPRIATE_TOSTRING_USE,OCP_OVERLY_CONCRETE_PARAMETER" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*((Index)?(Binomial|Fibonacci)(Min|Max)PQ)" />
+        <BugPattern name="CFS_CONFUSING_FUNCTION_SEMANTICS" />
+    </Match>
+
+
+    <!--  ***********************************************************************  -->
+    <!--  COS 126 PROGRAMMING ASSIGNMENT EXCEPTIONS                                -->
+    <!--  ***********************************************************************  -->
+
+    <!-- n will always be non-negative -->
+    <Match>
+        <Class name = "~(Checkerboard)(126)?" />
+        <BugPattern name="IM_BAD_CHECK_FOR_ODD" />
+    </Match>
+
+    <!-- generating random integers before StdRandom.uniform() is introduced -->
+    <Match>
+	<Class name = "~(RollDice|TenDice|RandomWalker|RandomWalkers|Art|MusicalDiceGame|PerfectShuffle)(126)?" />
+        <BugPattern name="DM_NEXTINT_VIA_NEXTDOUBLE" />
+    </Match>
+
+    <!-- ok to return null in copy() if argument is null -->
+    <Match>
+        <Class name = "~(Transform2D)(126)?" />
+        <Method name="copy" params="double[]" returns="double[]" />
+        <BugPattern name="PZLA_PREFER_ZERO_LENGTH_ARRAYS" />
+    </Match>
+
+    <!-- GUI is side effect -->
+    <Match>
+        <Class name = "Keyboard" />
+        <BugPattern name="DLS_DEAD_LOCAL_STORE" />
+    </Match>
+
+    <!-- need to read m, width, and height for training images, but don't need to store -->
+    <Match>
+        <Class name = "ImageClassifier" />
+        <BugPattern name="DLS_DEAD_LOCAL_STORE" />
+    </Match>
+
+    <!-- false positive in LFSR with String instance variable -->
+    <Match>
+        <Class name = "~(LFSR)" />
+        <BugPattern name="STT_TOSTRING_STORED_IN_FIELD" />
+    </Match>
+
+    <!-- string concatenation before StringBuffer is introduced -->
+    <Match>
+        <Class name = "~(LFSR|MarkovModel|Perceptron|MultiPerceptron)(126)?" />
+        <BugPattern name="SBSC_USE_STRINGBUFFER_CONCATENATION" />
+    </Match>
+
+    <Match>
+        <Class name = "~(RingBuffer)(126)?" />
+        <Method name="toString" params="" returns="java.lang.String" />
+        <BugPattern name="SBSC_USE_STRINGBUFFER_CONCATENATION" />
+    </Match>
+
+<!--
+    <Match>
+        <Class name = "~(MarkovModel)(126)?" />
+        <Method name="main" />
+        <BugPattern name="SBSC_USE_STRINGBUFFER_CONCATENATION" />
+    </Match>
+-->
+
+    <!--  ***********************************************************************  -->
+    <!--  COS 126 PROGRAMMING EXAM EXCEPTIONS                                      -->
+    <!--  ***********************************************************************  -->
+
+    <!-- string concatenation before StringBuffer is introduced -->
+    <Match>
+        <Class name = "~PokerHand|PokerHandWild|Language" />
+        <BugPattern name="SBSC_USE_STRINGBUFFER_CONCATENATION" />
+    </Match>
+
+    <!-- arithmetic overflow on AppleSharing or AppleSharingGame -->
+    <Match>
+	<Class name = "~(AppleSharing|AppleSharingGame)" />
+        <BugPattern name="IM_AVERAGE_COMPUTATION_COULD_OVERFLOW" />
+    </Match>
+
+    <!--  ***********************************************************************  -->
+    <!--  COURSERA PROGRAMMING WITH A PURPOSE EXCEPTIONS                            -->
+    <!--  ***********************************************************************  -->
+
+    <!-- generating random integers before StdRandom.uniform() is introduced -->
+    <Match>
+        <Class name = "~(RandomWalk|RandomWalkers|DiscreteDistribution|Minesweeper|Birthday)(126)?" />
+        <BugPattern name="DM_NEXTINT_VIA_NEXTDOUBLE" />
+    </Match>
+
+    <!--  ***********************************************************************  -->
+    <!--  COS 226 / COURSERA PROGRAMMING ASSIGNMENT EXCEPTIONS                     -->
+    <!--  ***********************************************************************  -->
+
+    <!-- Exclude compare() by slope order in Point.java on collinear assignment -->
+    <!-- It produces a warning even though it properly handles NaN              -->
+    <Match>
+        <Class name = "~Point.*(226)?" />
+        <BugPattern name="CO_COMPARETO_INCORRECT_FLOATING" />
+    </Match>
+
+    <!-- Exclude compare() by slope order in Point.java on collinear assignment -->
+    <!-- It produces a warning even though it properly handles NaN              -->
+    <Match>
+        <Class name = "~(LineSegment)(226)?" />
+        <BugPattern name="HE_HASHCODE_USE_OBJECT_EQUALS" />
+    </Match>
+
+    <!-- ok to call x.compareTo(x) when unit testing Term -->
+    <Match>
+        <Class name = "~(Term)(226)?" />
+        <Method name="main" />
+        <BugPattern name="SA_LOCAL_SELF_COMPARISON" />
+    </Match>
+
+    <!-- n will always be non-negative -->
+    <Match>
+        <Class name = "~(Board|KdTreeST|KdTree)(226)?" />
+        <BugPattern name="IM_BAD_CHECK_FOR_ODD" />
+    </Match>
+
+    <!-- ok to call board.equals(null), board.equals(string), or board.equals(board) when unit testing Board -->
+    <Match>
+        <Class name = "~(Board)(226)?" />
+        <Method name="main" />
+        <BugPattern name="EC_NULL_ARG,EC_UNRELATED_TYPES,SA_LOCAL_SELF_COMPARISON" />
+    </Match>
+
+    <!-- slider puzzle, before we've introduced hashCode() -->
+    <Match>
+        <Class name = "~(Board)(226)?" />
+        <BugPattern name="HE_EQUALS_USE_HASHCODE, HE_EQUALS_NO_HASHCODE" />
+    </Match>
+
+    <!-- BST style code for insert() -->
+    <Match>
+        <Class name = "~(KdTree|KdTreeST)(226)?" />
+        <BugPattern name="CFS_CONFUSING_FUNCTION_SEMANTICS" />
+    </Match>
+
+    <!-- SCUtility not very well designed, but it's our class -->
+    <Match>
+        <Class name = "~(SCUtility)" />
+        <BugPattern name="FCCD_FIND_CLASS_CIRCULAR_DEPENDENCY" />
+    </Match>
+
+    <!-- some false positives -->
+    <Match>
+        <Class name = "~(SeamCarver)" />
+        <BugPattern name="SLS_SUSPICIOUS_LOOP_SEARCH" />
+    </Match>
+
+    <!-- BoggleBoard doesn't implement hashCode() or equals() and does safe test for floating-point equality -->
+    <Match>
+        <Class name = "~(BoggleBoard)(226)?" />
+        <BugPattern name="FE_FLOATING_POINT_EQUALITY,HE_HASHCODE_USE_OBJECT_EQUALS" />
+    </Match>
+
+    <!-- DataSet currently use public static instance variables -->
+    <Match>
+        <Class name = "~(DataSet)(226)?" />
+        <BugPattern name="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" />
+    </Match>
+
+    <!--  ***********************************************************************  -->
+    <!--  AUTOGRADER                                                               -->
+    <!--  ***********************************************************************  -->
+
+    <!-- allow methods in *API to return null or false without complaints          -->
+    <Match>
+        <Class name = "~.*API" />
+        <BugPattern name="PZLA_PREFER_ZERO_LENGTH_ARRAYS,
+                          NP_TOSTRING_COULD_RETURN_NULL,
+                          UP_UNUSED_PARAMETER,
+                          MRC_METHOD_RETURNS_CONSTANT,
+                          EQ_ALWAYS_FALSE" />
+    </Match>
+
+    <!-- allow methods to write to static instance variables ending in "count"     -->
+    <!-- allow methods to store operation counts that are not currently used       -->
+    <Match>
+        <Field name = "~.*[Cc]ount" />
+        <BugPattern name="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD,
+                          URF_UNREAD_FIELD" />
+    </Match>
+
+    <Match>
+        <Class name = "~.*TimingData" />
+        <BugPattern name="FCBL_FIELD_COULD_BE_LOCAL" />
+    </Match>
+
+    <!-- allow methods to store values in variables named "ignore.*"  -->
+    <Match>
+        <Local name = "~.*[Ii]gnore.*" />
+        <BugPattern name="DLS_DEAD_LOCAL_STORE" />
+    </Match>
+
+    <Match>
+        <Class name = "~ScreenPrimitiveContainer.*" />
+        <BugPattern name="HE_EQUALS_USE_HASHCODE, HE_EQUALS_NO_HASHCODE" />
+    </Match>
+
+    <Match>
+        <Class name = "LineSegment" />
+        <BugPattern name="HE_EQUALS_USE_HASHCODE, HE_EQUALS_NO_HASHCODE" />
+    </Match>
+
+
+    <Match>
+        <Class name = "~Test.*" />
+        <Method name = "~extract.*" />
+        <BugPattern name="PZLA_PREFER_ZERO_LENGTH_ARRAYS" />
+    </Match>
+
+    <Match>
+        <Class name = "~(Test|Time).*" />
+        <BugPattern name="EXS_EXCEPTION_SOFTENING_RETURN_FALSE,
+                          RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
+    </Match>
+
+    <!--  ***********************************************************************  -->
+    <!--  JAVA MATRIX PACKAGE                                                      -->
+    <!--  ***********************************************************************  -->
+    <Match>
+        <Class name = "~Jama\..*" />
+    </Match>
+
+
+</FindBugsFilter>

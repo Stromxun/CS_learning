@@ -1,0 +1,1 @@
+ant bear cat dog emu fox goat horse
