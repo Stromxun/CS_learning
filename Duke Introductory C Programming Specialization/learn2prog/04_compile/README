@@ -1,0 +1,16 @@
+For this assignment, you will be practicing writing, compiling, and
+running code.  You should write a C file, called hello.c, with a main
+function that uses the printf function to print the message
+
+Hello World
+
+[be sure to include a newline!]
+
+Your program should return EXIT_SUCCESS to indicate that it was successful
+(the return value of main indicates success [0] or failure [anything else]).
+
+Don't forget to include stdio.h (for printf) and stdlib.h (for
+EXIT_SUCCESS).
+
+When you are done, compile your code and run it.
+The submit it for grading.

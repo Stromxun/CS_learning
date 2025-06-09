@@ -1,0 +1,45 @@
+Grading at Sat 07 Jun 2025 02:55:57 AM UTC
+Attempting to compile:
+rm -f  outname.o  counts.o  main.o  kv.o count_values *~
+gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
+gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 counts.c
+gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 main.c
+gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 kv.c
+gcc -Wall -Werror -std=gnu99 -pedantic -ggdb3 -o count_values  outname.o  counts.o  main.o  kv.o
+#################################################
+testcase1:
+testcase1 passed, your program successfully indicated a failure
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase2:
+Your file matched the expected output
+Comparing file list1a.txt.counts with answer
+Your output is correct
+Comparing file list1b.txt.counts with answer
+Your file matched the expected output
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase3:
+Your file matched the expected output
+Comparing file list2a.txt.counts with answer
+Your output is correct
+Comparing file list2b.txt.counts with answer
+Your file matched the expected output
+Your output is correct
+Comparing file list2c.txt.counts with answer
+Your file matched the expected output
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase4:
+Your file matched the expected output
+Comparing file list3a.txt.counts with answer
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+
+Overall Grade: A

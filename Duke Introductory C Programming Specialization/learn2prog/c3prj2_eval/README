@@ -1,0 +1,332 @@
+Hand Evaluation
+---------------
+The other part of the project that you will do in this
+course is write some of the code to evaluate and compare hands.
+Remember that in Course 2 you already wrote test cases
+for this code.   That means you have already thought
+about various corner cases that might come up
+and will have a nice suite of tests ready to go
+when you finish your code.
+
+Your ultimate goal in this step is to write a function,
+which when passed two hands of cards, determines
+which one won (or if they tied).   We'll use the
+deck_t type that you worked with in the previous
+part to represent a hand of cards as well (a hand
+of cards is just a much smaller deck of cards---they
+are both just sets of cards).
+
+There are three major steps to determining who won:
+  (1) Figuring out what ranking each hand has (straight, flush, etc)
+      If you look in cards.h, you will see enum hand_ranking_t,
+      which you worked with in Course 2.
+  (2) Figuring out which 5 cards make up the hand (picking out
+      the 5 cards that made the flush, or the two pairs and tiebreaker)
+  (3) Comparing the rankings, and if they are the same, breaking
+      ties by comparing the values in the hands.
+
+At this point, you might be thinking that there is going to
+be a lot of code to write with all the different possible
+arrangements of cards and different possible hand rankings.
+However, there are a few important things that will make
+this managable:
+
+(1) You will start by sorting the  cards into descending order
+    by value.  This makes it much easier to find straights (cards
+    in order), and you will have "N of a kind"s grouped together.
+(2) The code to find "N of a kind" is basically the same
+    for 4, 3, and 2 (so we can abstract it out into a function...)
+(3) Full house and two pair are just three of a kind and a pair
+    (so we already have that code...) with another pair
+    (so we can just write a function to find a secondary pair)
+(4) We are going to make two simplifying assumptions:
+       - if there is a flush, it will occur in at most one suit.
+         (i.e., you won't have As Ah Kh Qs 8s 7h 4s 3s 3h 2h,
+	  which has two different flushes).
+       - if there is an ace-high straight, there is not also
+         an ace-low straight. 
+     (These both hold for all major poker variants)
+
+If you open up eval.c, you will find the following functions
+that you will need to write:
+
+ - int card_ptr_comp(const void * vp1, const void * vp2) 
+    You want to sort the hand by value, so you need
+    a comparison function to pass to quicksort.
+    Quicksort sorts into ascending order, but you
+    want descending order, so you will want to
+    return
+       something < 0  if card1 > card2
+       0              if card1 == card2
+       something > 0  if card1 < card2
+    If two cards have the same value, compare them by
+    suit in the same order as the enum suit_t:
+       club < diamond < heart < spade
+    Note that vp1 and vp2 are passed as const void *
+    because that is the type that qsort demands.
+    They will should each be assigned to variables
+    of type
+     const card_t * const * cp1
+    before using them (this is much like sorting
+    an array of strings from your readings).
+    To learn more about using the C library function qsort,
+    we suggest reviewing the course reading
+    "Sorting Functions" in the "Function Pointers"
+    lesson and consulting "man qsort"
+    to read about the comparison function.
+
+ - suit_t flush_suit(deck_t * hand);
+   This function looks at the hand and determines
+   if a flush (at least 5 cards of one suit) exists.
+   If so, it returns the suit of the cards comprising
+   the flush.  If not, it returns NUM_SUITS.
+   For example:
+    Given Ks Qs 0s 9h 8s 7s, it would return SPADES.  
+    Given Kd Qd 0s 9h 8c 7c, it would return NUM_SUITS.
+
+ - unsigned get_largest_element(unsigned * arr, size_t n);
+   This function returns the largest element in an array
+   of unsigned integers.  This should be familiar
+   from the videos you watched.
+   
+   In course 4 (after you learn to dynamically allocate
+   memory), you will write get_match_counts,
+   which will construct an array with one element
+   per card in the hand.  That array will
+   tell you how many cards in the hand
+   have the same value as the corresponding
+   card.  You will then use get_largest_element
+   to figure out which is the best "N of a kind".
+
+
+ - size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind);
+   This function returns the index in the array (match_counts) whose
+   value is n_of_akind.  The array has n elements.  The array match_counts
+   may have multiple values equal to n_of_akind.  You should return
+   the LOWEST index whose value is n_of_akind [which also guarantees
+   it corresponds to the largest valued cards, since they will be sorted].
+   (Once you figure out the best n_of_akind above,
+    you will use this to locate that group of cards
+    in the hand).
+    Note that it is guaranteed that n_of_akind is in match_counts.
+    If not, you should abort as this is evidence of an error.
+
+
+ - ssize_t  find_secondary_pair(deck_t * hand,
+    			        unsigned * match_counts,
+			        size_t match_idx) ;
+   When you have a hand with 3 of a kind or a pair,
+   you will want to look and see if there is another
+   pair to make the hand into a full house or
+   or two pairs.  This function takes in
+   the hand, the match counts from before, and
+   the index where the original match (3 of a kind
+   or pair) was found. It should find
+   the index of a card meeting the following conditions:
+     - Its match count is > 1 [so there is at least a pair of them]
+     - The card's value is not the same as the value of the
+       card at match_idx (so it is not part of the original
+       three of a kind/pair)
+     - It is the lowest index meeting the first two conditions
+       (which will be the start of that pair, and the highest
+        value pair other than the original match).
+   If no such index can be found, this function should
+   return -1.
+
+ - int is_straight_at(deck_t * hand, size_t index, suit_t fs)
+   This function should determine if there is a straight
+   starting at index (and only starting at index) in the
+   given hand.  If fs is NUM_SUITS, then it should look
+   for any straight.  If fs is some other value, then
+   it should look for a straight flush in the specified suit.
+    This function should return:
+    -1 if an Ace-low straight was found at that index (and that index is the Ace)
+     0  if no straight was found at that index
+     1  if any other straight was found at that index
+
+   When writing this function, you can assume
+   that the hand is sorted by value: the
+   values of cards will appear in descending order.
+   (A K Q ... 4 3 2).
+   
+   There are two things that make this function
+   tricky (probably the trickiest function in
+   this assignment):
+     (1) Ace low straights. An Ace low straight
+         will appear in the hand with the Ace
+	 first, then possibly some other cards,
+	 then the 5 4 3 2.  For example, you
+	 might have
+	   As Ks Qc 5s 4c 3d 2c
+     (2) You may have multiple cards with the
+         same value, but still have a straight:
+	   As Ac Ks Kc Qh Jh 0d
+         has a straight even though A K Q
+	 do not appear next to each other in
+	 our sorted order.
+  Hint: I made this easier on myself, by writing
+  two helper functions:
+  int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) ;
+   and
+  int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs);
+
+  The second of these lets me pull out the complexities of an ace
+  low straight.  However, in doing so, I realized that there
+  would be a lot of duplication of code between the ace low straight
+  helper and the original function (for an ace low, you want to find
+  a 5, then a straight of length 4: 5, 4, 3, 2).   This realization
+  caused me to pull out much of the code into is_n_length_straight_at,
+  so that I could call it with n=4 to search for the 5,4,3,2 part
+  of an ace low straight.
+  
+
+ - hand_eval_t build_hand_from_match(deck_t * hand,
+     				     unsigned n,
+				     hand_ranking_t what,
+				     size_t idx) ;
+   Now you have written a bunch of functions that
+   will figure out which ranking a hand has. It
+   is time to construct a hand_eval_t (see eval.h) which
+   has the ranking and the 5 cards used for it.
+   This helper function will handle the
+   "n of a kind" case.
+   It should make hand_eval_t and set its
+   ranking to the passed in "what" value.
+   Then it should copy "n" cards from
+   the hand, starting at "idx" into
+   the first "n" elements of the hand_eval_t's 
+   "cards" array.  The cards field in
+   hand_eval_t is declared as:
+         card_t * cards[5]
+   This is an array of pointers, each to a card_t.
+   Draw a picture to be sure you know how to name
+   each card_t "box" before you start writing code.
+
+   Your function should then fill the remainder
+   of the "cards" array with the highest-value
+   cards from the hand which were not in
+   the "n of a kind".
+
+   For example, given this hand:
+     As Kc Kh Kd Qc 8s 5d
+   The hand has 3 kings, and the As and Qc will break ties.
+   Note that here  n = 3, what= THREE_OF_A_KIND, idx= 1.
+   So the cards array in the hand_eval_t should have
+
+     Kc Kh Kd As Qc
+
+   Note that what may also be FULL_HOUSE or TWO_PAIR,
+   since this function will get used for the first
+   part of preparing those evaluations (then other code
+   will later fix the rest of the hand with the other pair).
+
+
+ - int compare_hands(deck_t * hand1, deck_t * hand2)
+
+   This is the goal of the whole thing: given two hands,
+   figure out which wins (or if it is a tie).
+   Everything you wrote goes together to make this work!
+ 
+
+   We're providing you with
+     hand_eval_t evaluate_hand(deck_t * hand) ;
+   since it involves some things you won't learn until
+   Course 4.   It's also not super interesting:
+   it mostly make a bunch of calls to the functions
+   you wrote above, and has a lot of if-statements
+   to handle the rules of poker.
+
+   The important part of evaluate_hand is that
+   (a) assumes the cards in the passed in hand are
+   sorted and (b) it returns a hand_eval_t for the passed in hand.
+   
+   That means that to implement compare_hands, you should
+
+ (a) sort each hand using qsort on the hand's cards
+     and your card_ptr_comp [from earlier]
+ (b) Call evaluate_hand on each hand, which gives you a hand_eval_t
+     for each hand.
+ (c) Check if the rankings in the hand_eval_t are the same
+     or different.  If they are different, you can just use
+     the ranking to determine the winner.
+ (d) If they are the same, then you need to look
+     at the values in the cards array of each hand_eval_t
+     to break the tie. The way that we constructed
+     the hand_eval_t's cards array means that
+     the cards are already ordered from most significant (at index 0)
+     to least significant (at index 4).  You can just
+     do a lexicographic comparison on the values in the arrays.
+     (Its like comparing strings, but you are comparing values
+      of cards---if element 0 is the different, use that difference
+      to determine your answer.  If element 0 is the same,
+      look at element 1, and so on).
+Note that compare hands should return a positive number
+if hand 1 is better, 0 if the hands tie, and a negative number
+if hand 2 is better.
+
+You will also notice some functions at the bottom of eval.c that
+we provided.  You don't need to do anything to these---we wrote
+them for you to keep the amount of code manageable.
+
+--------------
+That sure was a lot of code!  You've been compiling and testing
+along the way, right?  We sure hope so :)
+
+However, to help you test things out even more, we've
+provided some test infrastructure for you.
+
+If you do
+
+make 
+
+You will compile the  test-eval program you are
+familiar with from Course 2. This program behaves
+exactly like it did in Course 2.  As a reminder,
+it expects input where each line looks like:
+
+hand1 ; hand2
+
+where a hand looks like something that print_hand
+would output.  So a valid input might be
+
+Kc Ac Jh 8s 9c 2s ; Ah Kh 0s 7c 7h 3c
+
+For each line in the input, the test program
+will tell you:
+ - The results of your functions that went into evaluating it
+   (if there was a straight, if there was a flush, etc).
+ - What hand_eval_t was returned by evaluate_hand for each hand
+ - Which hand won (or if it was a tie) according to compare_hands
+
+Good thing you have all those test cases from Course 2
+to use with it!
+
+Because you have an object file test-eval.o and not the source
+test-eval.c, you may need to use the debugger differently than you're
+used to. For this test program, we recommend running gdb in emacs,
+then first, specifying the command line argument (in this case, a file
+name with your tests)
+
+set args tests.txt
+
+Then you will want to set a breakpoint in the code you wrote (since
+you can't see test-eval.c, where main is, to step through it). For
+example, if you just wrote the function is_straight_at, and it doesn't
+behave the way you expect, you can do
+
+break is_straight_at
+
+and gdb will pause execution any time the program calls that
+function. Then you can use the command "run" instead of "start," since
+you don't need to pause execution at the start of main. Also recall
+the command "continue," which you can review from the debugging
+lesson.
+
+
+As usual, when you are finished, use the "grade" command.
+When you pass, this, congratulations! You are done
+with Course 3 and ready to move on to Course 4 :)
+
+
+
+

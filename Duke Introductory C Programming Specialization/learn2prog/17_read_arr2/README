@@ -1,0 +1,12 @@
+ 1. Execute the code in "test.c" by hand, and write the output
+    into a file called "answer.txt"
+
+    Hint: you may need to consult the man pages for functions
+    that you are not familiar with.
+
+ 2. Create a Makefile to compile test.c into a program called "test"
+     
+ 3. Run test and use its output to check your work.
+
+ 4. Submit your Makefile and answer.txt
+

@@ -1,0 +1,104 @@
+Now you are going to write the part of this program
+that will read the input, but before you do the actual input
+processing, you are going to need to write some code
+to handle unknown cards (those hidden from you, or
+to be dealt in the future).
+
+Handling unknown/future cards
+------------------------------
+
+Here, you are going to write some functions to handle
+the unknown cards (?0, ?1, etc).
+
+First, take a look at future.h.  You will see
+that there is one struct (which is basically an
+array of decks) and two functions.
+
+Next, watch the video in which we explain the conceptual idea
+of how we represent future cards.  Good thing you learned to draw
+pictures of the behavior of programs isn't it? :)
+
+Now you are ready to write the two functions in future.c:
+
+ - void add_future_card(future_cards_t * fc, size_t index, card_t * ptr);
+   This adds ptr into the future cards for the given index (that is,
+   which ?n it is). So if this is a future card for ?3, then index
+   will be 3.  ptr will point at an existing placeholder card
+   (it will point into a hand at a card which was added
+   with add_empty_card).
+   Note that it is entirely possible to have an input like
+     Kh Qh As 4c 2c ?3 ?4
+     Ac Qc As 4c 2c ?3 ?4
+   (which might happen if e.g., someone edited a file that
+   originally have ?0, ?1, and ?2 but replaced them when
+   they became known). Or you might see ?3 before ?2.
+   Your add_future_card should handle such
+   cases by reallocing its array to be large enough to handle
+   the specified index, and just having empty decks for
+   the indicies that have not had add_future_card called
+   on them yet.
+    
+ - void future_cards_from_deck(deck_t * deck, future_cards_t * fc);
+   This function takes a deck (which has been shuffled),
+   and a future_cards_t (which has been filled in with
+   all the pointers to placeholders) and draws cards from
+   the deck and assigns their values and suits to the
+   placeholders pointed to in fc.
+   For example if the deck is
+     As Kh 8c ....
+   and fc was created from the input
+     3c 4c ?0 ?1 ?2
+     5h 9d ?0 ?1 ?2
+   then this function will draw As for ?0,
+   and fill in the two placeholders for ?0 (which
+   you can find with the pointers in fc, as described
+   in the video).  Then it will draw Kh for ?1,
+   and so on. Think about a case where this function would need to
+   print an error message. 
+
+You should write a main to test this functionality
+in a separate .c file (e.g., test-future.c).  We will
+compile our future.c and link it with our own main
+to test it.  We leave the details of how to test this
+up to you.
+
+Reading the input
+-----------------
+
+Now, you are ready to actually read the input.
+In input.c, write the function:
+
+ - deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc);
+   This function reads the input from f.  Recall that the input
+   file has one hand per line (and that we represent a hand
+   with a deck_t).  You should allocate a deck_t for each hand
+   and place it into an array of pointers to deck_ts, which is your
+   answer.
+   This function needs to tell its caller how many hands it read.
+   We could return a struct, but we are going to do this a
+   different way: it will fill in *n_hands with the number
+   of hands.  This is a bit different, but you have seen it
+   before: this is how getline "returns" the string it
+   read and the size of the space allocated to that string.
+
+   As you read the input, if you encounter future cards
+   (?0, ?1, ...), you should use add_empty_card to
+   create a placeholder in the hand, and then add_future_card
+   to make sure you will update it correctly when you draw
+   later.  Also remember that you wrote add_card_to
+   earlier in this course, as well as card_from_letters
+   in Course 2.  These will both be handy here!
+   
+   I abstracted out the code to take one single line
+   and parse it into a hand:
+     deck_t * hand_from_string(const char * str, future_cards_t * fc)
+   and recommend you do the same.
+
+ Note that most of the rest of the code assumes that a poker hand
+ has AT LEAST 5 cards in it.  Your read_input function should enforce
+ this requirement. If there are fewer than 5 cards, print
+ a useful error message and exit.
+
+Again, we recommend you write your own testing code (e.g.,
+in test-input.c).  Once you are satisfied with
+the functionality of your code, grade this assignment.

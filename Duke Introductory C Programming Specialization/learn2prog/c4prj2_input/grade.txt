@@ -1,0 +1,28 @@
+Grading at Mon 09 Jun 2025 07:56:22 AM UTC
+Compiling cards.c -> cards.o
+Compiling deck.c -> deck.o
+Compiling input.c -> input.o
+Compiling future.c -> future.o
+Linking input.o, future.o deck.o, cards.o, and our tester
+Testing with input file with 
+ o 1 hand
+ o No unknown/future cards
+Your file matched the expected output
+Test case passed
+Testing with input file with 
+ o Many hands
+ o No unknown/future cards
+Your file matched the expected output
+Test case passed
+Testing with input file with 
+ o Many hands
+ o 1 unknown/future cards per hand
+Your file matched the expected output
+Test case passed
+Testing with input file with 
+ o Many hands
+ o Many unknown/future cards per hand
+Your file matched the expected output
+Test case passed
+
+Overall Grade: A

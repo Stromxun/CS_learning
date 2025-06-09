@@ -1,0 +1,18 @@
+test01.txt: Hand 0 = 95%,  Hand 1 = 5%
+test02.txt: Hand 0 = 14%,  Hand 1 = 86%
+test03.txt: Hand 0 = 69%,  Hand 1 = 31%
+test04.txt: Hand 0 = 63%,  Hand 1 = 36%
+test05.txt: Hand 0 = 27%,  Hand 1 = 73%
+test06.txt: Hand 0 = 20%,  Hand 1 = 80%
+test07.txt: Hand 0 = 100%, Hand 1 = 0%
+test08.txt: Hand 0 = 1%,   Hand 1 = 1%
+test09.txt: Hand 0 = 0%,   Hand 1 = 4%
+test10.txt: Hand 0 = 0%,   Hand 1 = 18%
+test11.txt: Hand 0 = 41%,  Hand 1 = 58%
+test12.txt: Hand 0 = 84%,  Hand 1 = 16%
+test13.txt: Hand 0 = 77%,  Hand 1 = 23%
+test14.txt: Hand 0 = 0%,   Hand 1 = 0%,  Hand 2 = 31%
+test15.txt: Hand 0 = 2%,   Hand 1 = 13%, Hand 2 = 84%
+test16.txt: Hand 0 = 4%,   Hand 1 = 5%,  Hand 2 = 12%,
+            Hand 3 = 8%,   Hand 4 = 58%, Hand 5 = 12%
+

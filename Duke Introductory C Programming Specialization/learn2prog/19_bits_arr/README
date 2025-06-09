@@ -1,0 +1,47 @@
+For this problem, you will be splitting numbers (a 32 bit integer)
+up into their individual bits.  I have provided a function for you
+(getNthBit) which will return a specific bit from a number.  For example,
+getNthBit(x,0) would return the first (0th) bit, getNthBit(x,1) would
+return the next bit, and so on.  
+
+While we normally use "int" for our numbers, we are using "uint32_t".
+This is just like "int" except that they are unsigned ints which are
+guaranteed to be 32 bits long (by contrast, the normal "int" type
+is signed, and there are no guarantees as to how many bits are in it).
+We are doing this to be precise and correct: you can use a uint32_t
+in much the same way as an int.
+
+1. Open the file numToBits.c
+   Find the function
+
+void numToBits(uint32_t * nums, int nNums, int * bits, int nBits) ;
+
+   This function takes in two arrays: nums (of length nNums), and
+   bits (of length nBits). This function should:
+    - Check that there is enough space in bits to hold all the bits
+      of "nums".  Note that each number in "nums" will results in 32
+      bits in "bits".  If this is not true, your function should
+      print a message with the format:
+        "Invalid call to numToBits! nBits is %d, nNums is %d\n",
+       (where the first %d is nBits, and the second %d is nNums)
+      then return without doing anything else.
+
+    - Put the individual bits of each number into the "bits" array.
+      The bits put into this array should be ordered so that the first
+      32 bits represent nums[0], the next 32 bits are nums[1], and so
+      on.  Within each number, the most significant bit (bit 31) should
+      come first, and the least significant bit (bit 0) should come last.
+      That is, bits[0] should be bit 31 of nums[0], bits[1] should
+      be bit 30 of nums[0], and so on.
+   
+
+
+ 2. Compile and test your code. 
+    We have provided a main function which will print test cases
+    and your function's answer for them. We have provided the 
+    correct output in bits_ans.txt
+
+ 3. Submit as usual
+     
+
+

@@ -1,0 +1,44 @@
+For this problem, you will write a program (by modifying the provided
+sortLines.c file) which sorts strings from input files. As we have not
+yet covered sorting, we have provided the code that does the acutal
+sorting.  You can just call this function, which will sort the data.
+
+  void sortData(char ** data, size_t count);
+
+The sortData function takes two arguments.  The first is an array of strings.
+The second is the length of that array.  It will re-order the elements of the
+array, such that they are sorted.
+
+Your task in this problem primarily centers around reading the data into
+the array from the input file(s), so that it can be sorted.  You will also
+need to print the data after it is sorted, and free all of the memory you have allocated.
+
+Specifically, this program should take 0 or more command line arguments.
+ - If no arguments (other than its own name) are provided (argc ==1), then 
+   your program should read from standard input, sort the lines of input,
+   print the results, free memory, and exit successfully.
+ - If 1 or more arguments are provided (argc > 1), then your program should
+   treat each argument as an input file name.  It should open that file,
+   read all of the lines of data in it, sort the lines, print the results,
+   free the memory, and close the file.  If any errors occur, your program
+   should print an appropriate error message and exit with EXIT_FAILURE.
+   If no errors occur, your program should indicate its success after processing
+   all of the files.
+
+Note that we now place *no* restriction on the length of any individual line of input.  
+You should therefore use the getline function to read an arbitrarily long line of 
+input, dynamically allocating space for it as needed.   See the man page for getline
+for more details. 
+
+You should make sure your program valgrinds cleanly, including no memory leaks
+before you submit it.  As always, submit your code for grading.
+
+We've provided one simple test for you to use to test your program. Run it with:
+./test.sh
+
+Hints:
+  - Don't forget to abstract code out into smaller function.  In my solution,
+    I wrote 3 functions other than main (plus the 2 that are provided).
+  - Don't forget to draw pictures!  They are even more important
+    as you use pointers more and more.
+

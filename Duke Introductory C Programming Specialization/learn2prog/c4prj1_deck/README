@@ -1,0 +1,100 @@
+Poker: Almost There!
+--------------------
+Now it is time to wrap up your poker project!
+
+You have four major things to do:
+ (1) Write a few deck/evaluation functions that need
+     malloc/realloc/free (which you were not ready for in
+     Course 3).  
+ (2) Write the code to handle unknown cards (which
+     we'll call "future cards" because they will be
+     known in the future).
+ (3) Read the input.
+ (4) Write a main function, which puts this all together
+     and does the Monte Carlo simulation loop
+     (repeatedly drawing different random cards
+     for the future cards).
+
+We're going to split this into 3 parts.  In this assignment,
+you will do (1) above.  In the next assignment, you will do (2) and (3),
+which will work together to process the input.  In the final assignment,
+you will do (4), completing this project!
+
+
+Finish deck/evaluation
+----------------------
+Add these functions to deck.c:
+ - void add_card_to(deck_t * deck, card_t c);
+   Add the particular card to the given deck (which will
+   involve reallocing the array of cards in that deck).
+ - card_t * add_empty_card(deck_t * deck);
+   Add a card whose value and suit are both 0, and return a pointer
+   to it in the deck.
+   This will add an invalid card to use as a placeholder
+   for an unknown card.
+ - deck_t * make_deck_exclude(deck_t * excluded_cards);
+   Create a deck that is full EXCEPT for all the cards
+   that appear in excluded_cards.  For example,
+   if excluded_cards has Kh and Qs, you would create
+   a deck with 50 cards---all of them except Kh and Qs.
+   You will need to use malloc to allocate this deck.
+   (You will want this for the next function).
+   Don't forget you wrote card_t card_from_num(unsigned c)
+   in Course 2 and int deck_contains(deck_t * d, card_t c)
+   in Course 3!  They might be useful here.
+ - deck_t * build_remaining_deck(deck_t ** hands, size_t n_hands) ;
+   This function takes an array of hands (remember
+   that we use deck_t to represent a hand).  It then builds
+   the deck of cards that remain after those cards have
+   been removed from a full deck.  For example, if we have
+   two hands:
+      Kh Qs ?0 ?1 ?2 ?3 ?4
+      As Ac ?0 ?1 ?2 ?3 ?4
+   then this function should build a deck with 48
+   cards (all but As Ac Kh Qs).  You can just build
+   one deck with all the cards from all the hands
+   (remember you just wrote add_card_to),
+   and then pass it to make_deck_exclude.
+ - void free_deck(deck_t * deck) ;
+   Free the memory allocated to a deck of cards.
+   For example, if you do
+     deck_t * d = make_excluded_deck(something);
+     free_deck(d);
+   it should free all the memory allocated by make_excluded_deck.
+   Once you have written it, add calls to free_deck anywhere you
+   need to to avoid memory leaks.
+
+Next, go back to eval.c, and implement:
+ - unsigned * get_match_counts(deck_t * hand) ;
+   You will find its prototype after the code you wrote
+   in Course 3, and before the functions we
+   provided for you.  Replace the prototype with
+   your implementation.
+
+   Given a hand (deck_t) of cards, this function
+   allocates an array of unsigned ints with as
+   many elements as there are cards in the hand.
+   It then fills in this array with
+   the "match counts" of the corresponding cards.
+   That is, for each card in the original hand,
+   the value in the match count array
+   is how many times a card of the same
+   value appears in the hand.  For example,
+   given
+     Ks Kh Qs Qh 0s 9d 9c 9h
+   This function would return
+     2  2  2  2  1  3  3  3
+   because there are 2 kings, 2 queens,
+   1 ten, and 3 nines.
+
+We recommend you write your own testing code in a separate
+C file (e.g., test-c4deck.c) and run your own test cases
+before you submit.  When you are satisfied with the correctness
+of your code, you should grade this assignment.
+
+As a final note, we remind you that since previously released files
+have been symlinked into other directories you may need to add the
+original versions (as this is where your changes are reflected). For
+example, in this assignment we have you modify deck.c which is symlinked
+to ../c3prj1_deck/deck.c. This means when you submit the assignment you 
+need to add and commit the actual file, not the symlink itself.

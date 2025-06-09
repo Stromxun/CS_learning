@@ -1,0 +1,51 @@
+For this assignment, you will be writing test cases for your next
+assignment.  As usual, the instructions for the next assignment are
+in next-README.
+
+For this assignment, we have created compiled binaries (in
+/usr/local/l2p/rot_matrix/  where rotateMatrix is correct,
+and the numbered ones are each broken in some way).
+
+As with 09_testing2, you will write a file called tests.txt,
+which will list the command line arguments you want to use to
+run the programs.   However, unlike 09_testing2, you will
+also want to create a wide variety of input files.  You can
+name them anything you want, as long as you save them in the
+current (26_tests_matrix_input) directory, and submit them
+along with tests.txt.
+
+As usual, we have provided run_all.sh
+
+Hint 1: think about various error cases that the programmer
+might have forgotten!
+
+Hint 2: The trickiest of these is one in which the programmer
+did not pay attention to a rather subtle, but common mistake
+pointed out in your reading titled 'Reading a File'!
+
+Hint 3:  If you find yourself needing to create an input
+file with non-typable/non-printable characters in it,
+you will want to do a few things.
+
+First, (after you have the file you want to edit open), you
+will want to force emacs to change the encoding it uses
+(so that it won't try to rewrite things in Unicode, for example):
+
+M-x revert-buffer-with-coding-system
+raw-text
+
+Once you have done this, you can do
+
+M-x hexl-mode
+
+to put emacs in hex editor mode.
+
+Then you will see hex values on the left, and their printable
+interpreations (or . for non-printable characters) on the right.
+Move the point to where you want to put a particular value, and do
+
+C-M-x
+
+then type the hex value (one byte, so two hex digits) that you want,
+and hit enter.  It will overwrite the current character with that value.
+Then you can save the file.

@@ -1,0 +1,20 @@
+r1 is (2,3) to (7,9)
+r2 is (-1,-2) to (4,5)
+r3 is (-2,-3) to (5,7)
+r4 is (-4,7) to (0,9)
+intersection(r1,r1): (2,3) to (7,9)
+intersection(r1,r2): (2,3) to (4,5)
+intersection(r1,r3): (2,3) to (5,7)
+intersection(r1,r4): <empty>
+intersection(r2,r1): (2,3) to (4,5)
+intersection(r2,r2): (-1,-2) to (4,5)
+intersection(r2,r3): (-1,-2) to (4,5)
+intersection(r2,r4): <empty>
+intersection(r3,r1): (2,3) to (5,7)
+intersection(r3,r2): (-1,-2) to (4,5)
+intersection(r3,r3): (-2,-3) to (5,7)
+intersection(r3,r4): (-2,7) to (0,7)
+intersection(r4,r1): <empty>
+intersection(r4,r2): <empty>
+intersection(r4,r3): (-2,7) to (0,7)
+intersection(r4,r4): (-4,7) to (0,9)

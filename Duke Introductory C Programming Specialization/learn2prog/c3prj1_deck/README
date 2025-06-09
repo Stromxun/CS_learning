@@ -1,0 +1,176 @@
+Decks (sets of cards)
+---------------------
+
+Note: if you have not completed the course 2 poker projects,
+please use the fast-forward command to complete them first!
+
+Now that you have learned about arrays, you are ready
+to start working with decks and hands of cards (represented
+as arrays of cards).  You will be using the card.c
+file from your Course 2 project, as this project builds
+on the same card_t type.  If you look in deck.h,
+you will find the type declaration for a deck of cards:
+
+struct deck_tag {
+  card_t ** cards;
+  size_t n_cards;
+};
+typedef struct deck_tag deck_t;
+
+We'll use the same type for a deck of cards or a hand
+of cards, since both are just a set of cards.
+
+We'll note that we could have chosen to make an array
+of cards (card_t * cards) but instead decided to make
+an array of card pointers (card_t ** cards).  You may
+wonder why we selected this design.   With this design,
+when you shuffle an array, you will move the pointers
+around, but they will point to card_ts that stay in the
+same place.  This means that if you have OTHER pointers
+(as you will have in Course 4 to handle unknown cards),
+they will still point to the right place.
+
+For example, if you have (Ah,Ks,Qc,?0):
+         
+        Ah    Ks    Qc    ?0<----to_replace
+        ^     ^     ^     ^
+        |     |     |     |	
+        |     |     |     |
+        |     |     |     |
+     +--|--+--|--+--|--+--|--+
+arr->|  |  |  |  |  |  |  |  |
+     +-----+-----+-----+-----+
+
+and you shuffle the pointers in the array
+(yielding, e.g, Ks, ?0, Ah, Qc) :
+
+         /------\
+        V        \
+        Ah    Ks |   Qc    ?0<----to_replace
+              ^  |   ^     ^
+          ____/  \   \     /
+         /     ___\___\___/
+        /     /    \   ---  
+     +--|--+--|--+--\--+--\--+
+arr->|  |  |  |  |  |  |  |  |
+     +-----+-----+-----+-----+
+
+the to_replace pointer still points at ?0
+with no other changes.  If we had an array
+of cards and shuffled them directly, it would
+be much harder to do the card replacement later.
+
+
+First, you will write four functions in deck.c:
+
+ - void print_hand(deck_t * hand); 
+   This should print out the contents of a hand.
+   It should print each card (recall that
+   you wrote print_card in Course 2), and
+   a space after each card.  Do not put
+   a newline after the hand, as this
+   function gets called to print a hand
+   in the middle of a line of output.
+   
+
+ - int deck_contains(deck_t * d, card_t c);
+   This function should check if a deck
+   contains a particular card or not.  If
+   the deck does contain the card, this
+   function should return 1.  Otherwise,
+   it should return 0.
+   (You will use this later to
+   build the deck of remaining cards
+   which are not in any player's hand).
+
+ - void shuffle(deck_t * d);
+   This function takes in a deck an shuffles
+   it, randomly permuting the order of the cards.
+   There are MANY valid ways to shuffle a deck
+   of cards---we'll leave the specifics
+   of the algorithm design up to you.  However,
+   you will want to use random() to generate
+   pseudo-random numbers.  (Pseudo-random
+   numbers are quite sufficient here,
+   since they are not used for security
+   purposes). Note that you should not need to
+   use the 'srand' function.
+
+   We will note that in trying to devise
+   this algorithm, you should not
+   try to shuffle a deck of cards "normally".
+   Instead, you should take a small number
+   of cards, and think about ways
+   to shuffle them that involve using
+   random numbers to swap their order,
+   or pick positions for them, or
+   similar principles.
+
+- void assert_full_deck(deck_t * d);
+  This function should check that
+  the passed in deck contains ever
+  valid card exactly once.  If
+  the deck has any problems, this function
+  should fail an assert.  This will
+  be used to help you test your deck
+  shuffling: we will shuffle
+  a full deck, then call assert_full_deck,
+  so that you can identfiy problems with
+  the deck.  You can print
+  any error messages you want
+  if there is a problem.
+  Hint: you already wrote deck_contains.
+
+------------
+Once you have completed these functions, you should run
+
+make test-deck
+
+This will build the test-deck program which we
+have provided which runs some test cases on your functions.
+There is no one single right output, as you may shuffle
+your deck any way that you want.  However, you should
+read through the output and see if things make sense.
+The first deck is built by using your card_from_num
+function (from Course 2) for each value in the
+range [0,52). Then the deck is shuffled
+a couple times, with the results printed.
+We call assert_full_deck on each of these.
+
+Next we make a 5 card hand, and test
+deck_contains on it, shuffle, and repeat
+the process a few times.
+
+The last thing we do is take the 5 card
+hand and shuffle it 50,000,000 (50 Million)
+times, counting how often each hand occurs.
+In an ideal case, each of the 120 possible
+5-card hands would appear equally often (0.833%
+of the time).  If your shuffle is close
+to this, then it is good.  If it is drastically
+off, that is bad.
+
+Since this can take a while, the test
+program will print a '.' ever 500,000
+shuffles to let you know it isn't stuck.
+
+When it finishes, it will print out the
+frequency (and ordering) of the most and least
+common hands.  For my shuffling algorithm,
+these were 0.836496% and  0.829262% respectively,
+which is quite good.  If you end up with
+things in the 0.823% (min) to 0.843% (max) range, that's
+great.  If its in the 0.818%(min) to 0.848% (max) range,
+that's good enough.  If you are outside of that, you
+should try to work on your shuffling algorithm
+to make sure you get good results from your poker
+simulator.
+
+We provide that hands that appear most and least
+often in case it helps you debug.
+
+Once you are satsified with the functionality
+of your code for this part, run grade.
+When you pass, you get the hand evaluation in
+the next part.
+

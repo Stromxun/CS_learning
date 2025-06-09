@@ -1,0 +1,25 @@
+Grading at Mon 09 Jun 2025 03:06:01 AM UTC
+Compiling deck.c -> deck.o
+Compiling eval.c -> eval.o
+Compiling cards.c -> cards.o
+Linking eval.o, deck.o, cards.o, and our tester
+Testing free_deck(deck_t *)
+- Test passed
+Testing add_card_to(deck_t *, card_t)
+- Test passed
+Testing add_empty_card(deck_t *)
+- Test passed
+Testing make_deck_exclude(deck_t *)
+- Test passed
+Testing build_remaining_deck(deck_t **, size_t)
+Testing with 1 hand
+Testing with 2 hands
+Testing with 3 hands
+Testing with 4 hands
+Testing with 5 hands
+Testing with 6 hands
+- Test passed
+Testing get_match_count(deck_t *)
+- Test passed
+
+Overall Grade: A

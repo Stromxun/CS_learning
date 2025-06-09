@@ -1,0 +1,582 @@
+Grading at Mon 09 Jun 2025 10:29:37 AM UTC
+Running 'make clean' to do a clean build of your project
+rm -rf *.o poker *~
+Running 'make poker OTHERFLAGS=-O3' to build your project
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o cards.o cards.c
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o deck.o deck.c
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o eval.o eval.c
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o future.o future.c
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o input.o input.c
+gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o main.o main.c
+gcc -o poker -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3 cards.o deck.o eval.o future.o input.o main.o
+ - Starting with some Texas Hold'em hands
+Running a simulation with 20000 draws for 2 hands...
+Valgrind reported errors:
+==8748== Memcheck, a memory error detector
+==8748== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8748== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==8748== Command: ./poker inp.txt 20000
+==8748== Parent PID: 8747
+==8748== 
+==8748== Invalid free() / delete / delete[] / realloc()
+==8748==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x109F50: free_deck (deck.c:98)
+==8748==    by 0x109533: main (main.c:82)
+==8748==  Address 0x4a457a0 is 0 bytes inside a block of size 8 free'd
+==8748==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x109F50: free_deck (deck.c:98)
+==8748==    by 0x1094FC: main (main.c:77)
+==8748==  Block was alloc'd at
+==8748==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x109CA4: add_card_to (deck.c:52)
+==8748==    by 0x109CA4: add_empty_card (deck.c:60)
+==8748==    by 0x10BE2C: hand_from_string (input.c:25)
+==8748==    by 0x10BECE: read_input (input.c:48)
+==8748==    by 0x109359: main (main.c:59)
+==8748== 
+==8748== Invalid read of size 8
+==8748==    at 0x109F2B: free_deck (deck.c:96)
+==8748==    by 0x109533: main (main.c:82)
+==8748==  Address 0x4a45de8 is 24 bytes inside a block of size 80 free'd
+==8748==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x109533: main (main.c:82)
+==8748==  Block was alloc'd at
+==8748==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x10BC42: add_future_card (future.c:9)
+==8748==    by 0x10BE3C: hand_from_string (input.c:25)
+==8748==    by 0x10BECE: read_input (input.c:48)
+==8748==    by 0x109359: main (main.c:59)
+==8748== 
+==8748== Invalid read of size 8
+==8748==    at 0x109F36: free_deck (deck.c:97)
+==8748==    by 0x109533: main (main.c:82)
+==8748==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8748==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x109533: main (main.c:82)
+==8748==  Block was alloc'd at
+==8748==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x10BC42: add_future_card (future.c:9)
+==8748==    by 0x10BE3C: hand_from_string (input.c:25)
+==8748==    by 0x10BECE: read_input (input.c:48)
+==8748==    by 0x109359: main (main.c:59)
+==8748== 
+==8748== Invalid read of size 8
+==8748==    at 0x109F51: free_deck (deck.c:99)
+==8748==    by 0x109533: main (main.c:82)
+==8748==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8748==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x109533: main (main.c:82)
+==8748==  Block was alloc'd at
+==8748==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x10BC42: add_future_card (future.c:9)
+==8748==    by 0x10BE3C: hand_from_string (input.c:25)
+==8748==    by 0x10BECE: read_input (input.c:48)
+==8748==    by 0x109359: main (main.c:59)
+==8748== 
+==8748== Invalid free() / delete / delete[] / realloc()
+==8748==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x109533: main (main.c:82)
+==8748==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8748==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x109533: main (main.c:82)
+==8748==  Block was alloc'd at
+==8748==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8748==    by 0x10BC42: add_future_card (future.c:9)
+==8748==    by 0x10BE3C: hand_from_string (input.c:25)
+==8748==    by 0x10BECE: read_input (input.c:48)
+==8748==    by 0x109359: main (main.c:59)
+==8748== 
+==8748== 
+==8748== HEAP SUMMARY:
+==8748==     in use at exit: 632 bytes in 10 blocks
+==8748==   total heap usage: 40,129 allocs, 40,133 frees, 1,139,572 bytes allocated
+==8748== 
+==8748== LEAK SUMMARY:
+==8748==    definitely lost: 632 bytes in 10 blocks
+==8748==    indirectly lost: 0 bytes in 0 blocks
+==8748==      possibly lost: 0 bytes in 0 blocks
+==8748==    still reachable: 0 bytes in 0 blocks
+==8748==         suppressed: 0 bytes in 0 blocks
+==8748== Rerun with --leak-check=full to see details of leaked memory
+==8748== 
+==8748== For lists of detected and suppressed errors, rerun with: -s
+==8748== ERROR SUMMARY: 30 errors from 5 contexts (suppressed: 0 from 0)
+Running a simulation with 25000 draws for 3 hands...
+Valgrind reported errors:
+==8753== Memcheck, a memory error detector
+==8753== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8753== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==8753== Command: ./poker inp.txt 25000
+==8753== Parent PID: 8752
+==8753== 
+==8753== Invalid free() / delete / delete[] / realloc()
+==8753==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x109F50: free_deck (deck.c:98)
+==8753==    by 0x109533: main (main.c:82)
+==8753==  Address 0x4a457a0 is 0 bytes inside a block of size 8 free'd
+==8753==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x109F50: free_deck (deck.c:98)
+==8753==    by 0x1094FC: main (main.c:77)
+==8753==  Block was alloc'd at
+==8753==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x109CA4: add_card_to (deck.c:52)
+==8753==    by 0x109CA4: add_empty_card (deck.c:60)
+==8753==    by 0x10BE2C: hand_from_string (input.c:25)
+==8753==    by 0x10BECE: read_input (input.c:48)
+==8753==    by 0x109359: main (main.c:59)
+==8753== 
+==8753== Invalid read of size 8
+==8753==    at 0x109F2B: free_deck (deck.c:96)
+==8753==    by 0x109533: main (main.c:82)
+==8753==  Address 0x4a45de8 is 24 bytes inside a block of size 80 free'd
+==8753==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x109533: main (main.c:82)
+==8753==  Block was alloc'd at
+==8753==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x10BC42: add_future_card (future.c:9)
+==8753==    by 0x10BE3C: hand_from_string (input.c:25)
+==8753==    by 0x10BECE: read_input (input.c:48)
+==8753==    by 0x109359: main (main.c:59)
+==8753== 
+==8753== Invalid read of size 8
+==8753==    at 0x109F36: free_deck (deck.c:97)
+==8753==    by 0x109533: main (main.c:82)
+==8753==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8753==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x109533: main (main.c:82)
+==8753==  Block was alloc'd at
+==8753==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x10BC42: add_future_card (future.c:9)
+==8753==    by 0x10BE3C: hand_from_string (input.c:25)
+==8753==    by 0x10BECE: read_input (input.c:48)
+==8753==    by 0x109359: main (main.c:59)
+==8753== 
+==8753== Invalid read of size 8
+==8753==    at 0x109F51: free_deck (deck.c:99)
+==8753==    by 0x109533: main (main.c:82)
+==8753==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8753==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x109533: main (main.c:82)
+==8753==  Block was alloc'd at
+==8753==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x10BC42: add_future_card (future.c:9)
+==8753==    by 0x10BE3C: hand_from_string (input.c:25)
+==8753==    by 0x10BECE: read_input (input.c:48)
+==8753==    by 0x109359: main (main.c:59)
+==8753== 
+==8753== Invalid free() / delete / delete[] / realloc()
+==8753==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x109533: main (main.c:82)
+==8753==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8753==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x109533: main (main.c:82)
+==8753==  Block was alloc'd at
+==8753==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8753==    by 0x10BC42: add_future_card (future.c:9)
+==8753==    by 0x10BE3C: hand_from_string (input.c:25)
+==8753==    by 0x10BECE: read_input (input.c:48)
+==8753==    by 0x109359: main (main.c:59)
+==8753== 
+==8753== 
+==8753== HEAP SUMMARY:
+==8753==     in use at exit: 736 bytes in 11 blocks
+==8753==   total heap usage: 100,168 allocs, 100,176 frees, 2,812,276 bytes allocated
+==8753== 
+==8753== LEAK SUMMARY:
+==8753==    definitely lost: 736 bytes in 11 blocks
+==8753==    indirectly lost: 0 bytes in 0 blocks
+==8753==      possibly lost: 0 bytes in 0 blocks
+==8753==    still reachable: 0 bytes in 0 blocks
+==8753==         suppressed: 0 bytes in 0 blocks
+==8753== Rerun with --leak-check=full to see details of leaked memory
+==8753== 
+==8753== For lists of detected and suppressed errors, rerun with: -s
+==8753== ERROR SUMMARY: 39 errors from 5 contexts (suppressed: 0 from 0)
+Running a simulation with 25000 draws for 3 hands...
+Valgrind reported errors:
+==8758== Memcheck, a memory error detector
+==8758== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8758== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==8758== Command: ./poker inp2.txt 25000
+==8758== Parent PID: 8757
+==8758== 
+==8758== Invalid free() / delete / delete[] / realloc()
+==8758==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x109F50: free_deck (deck.c:98)
+==8758==    by 0x109533: main (main.c:82)
+==8758==  Address 0x4a457a0 is 0 bytes inside a block of size 8 free'd
+==8758==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x109F50: free_deck (deck.c:98)
+==8758==    by 0x1094FC: main (main.c:77)
+==8758==  Block was alloc'd at
+==8758==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x109CA4: add_card_to (deck.c:52)
+==8758==    by 0x109CA4: add_empty_card (deck.c:60)
+==8758==    by 0x10BE2C: hand_from_string (input.c:25)
+==8758==    by 0x10BECE: read_input (input.c:48)
+==8758==    by 0x109359: main (main.c:59)
+==8758== 
+==8758== Invalid read of size 8
+==8758==    at 0x109F2B: free_deck (deck.c:96)
+==8758==    by 0x109533: main (main.c:82)
+==8758==  Address 0x4a45de8 is 24 bytes inside a block of size 80 free'd
+==8758==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x109533: main (main.c:82)
+==8758==  Block was alloc'd at
+==8758==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x10BC42: add_future_card (future.c:9)
+==8758==    by 0x10BE3C: hand_from_string (input.c:25)
+==8758==    by 0x10BECE: read_input (input.c:48)
+==8758==    by 0x109359: main (main.c:59)
+==8758== 
+==8758== Invalid read of size 8
+==8758==    at 0x109F36: free_deck (deck.c:97)
+==8758==    by 0x109533: main (main.c:82)
+==8758==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8758==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x109533: main (main.c:82)
+==8758==  Block was alloc'd at
+==8758==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x10BC42: add_future_card (future.c:9)
+==8758==    by 0x10BE3C: hand_from_string (input.c:25)
+==8758==    by 0x10BECE: read_input (input.c:48)
+==8758==    by 0x109359: main (main.c:59)
+==8758== 
+==8758== Invalid read of size 8
+==8758==    at 0x109F51: free_deck (deck.c:99)
+==8758==    by 0x109533: main (main.c:82)
+==8758==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8758==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x109533: main (main.c:82)
+==8758==  Block was alloc'd at
+==8758==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x10BC42: add_future_card (future.c:9)
+==8758==    by 0x10BE3C: hand_from_string (input.c:25)
+==8758==    by 0x10BECE: read_input (input.c:48)
+==8758==    by 0x109359: main (main.c:59)
+==8758== 
+==8758== Invalid free() / delete / delete[] / realloc()
+==8758==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x109533: main (main.c:82)
+==8758==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8758==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x109533: main (main.c:82)
+==8758==  Block was alloc'd at
+==8758==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8758==    by 0x10BC42: add_future_card (future.c:9)
+==8758==    by 0x10BE3C: hand_from_string (input.c:25)
+==8758==    by 0x10BECE: read_input (input.c:48)
+==8758==    by 0x109359: main (main.c:59)
+==8758== 
+==8758== 
+==8758== HEAP SUMMARY:
+==8758==     in use at exit: 736 bytes in 11 blocks
+==8758==   total heap usage: 100,146 allocs, 100,154 frees, 2,811,660 bytes allocated
+==8758== 
+==8758== LEAK SUMMARY:
+==8758==    definitely lost: 736 bytes in 11 blocks
+==8758==    indirectly lost: 0 bytes in 0 blocks
+==8758==      possibly lost: 0 bytes in 0 blocks
+==8758==    still reachable: 0 bytes in 0 blocks
+==8758==         suppressed: 0 bytes in 0 blocks
+==8758== Rerun with --leak-check=full to see details of leaked memory
+==8758== 
+==8758== For lists of detected and suppressed errors, rerun with: -s
+==8758== ERROR SUMMARY: 39 errors from 5 contexts (suppressed: 0 from 0)
+Running a simulation with 25000 draws for 2 hands...
+Valgrind reported errors:
+==8763== Memcheck, a memory error detector
+==8763== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8763== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==8763== Command: ./poker inp2.txt 25000
+==8763== Parent PID: 8762
+==8763== 
+==8763== Invalid free() / delete / delete[] / realloc()
+==8763==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x109F50: free_deck (deck.c:98)
+==8763==    by 0x109533: main (main.c:82)
+==8763==  Address 0x4a457a0 is 0 bytes inside a block of size 8 free'd
+==8763==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x109F50: free_deck (deck.c:98)
+==8763==    by 0x1094FC: main (main.c:77)
+==8763==  Block was alloc'd at
+==8763==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x109CA4: add_card_to (deck.c:52)
+==8763==    by 0x109CA4: add_empty_card (deck.c:60)
+==8763==    by 0x10BE2C: hand_from_string (input.c:25)
+==8763==    by 0x10BECE: read_input (input.c:48)
+==8763==    by 0x109359: main (main.c:59)
+==8763== 
+==8763== Invalid read of size 8
+==8763==    at 0x109F2B: free_deck (deck.c:96)
+==8763==    by 0x109533: main (main.c:82)
+==8763==  Address 0x4a45de8 is 24 bytes inside a block of size 80 free'd
+==8763==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x109533: main (main.c:82)
+==8763==  Block was alloc'd at
+==8763==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x10BC42: add_future_card (future.c:9)
+==8763==    by 0x10BE3C: hand_from_string (input.c:25)
+==8763==    by 0x10BECE: read_input (input.c:48)
+==8763==    by 0x109359: main (main.c:59)
+==8763== 
+==8763== Invalid read of size 8
+==8763==    at 0x109F36: free_deck (deck.c:97)
+==8763==    by 0x109533: main (main.c:82)
+==8763==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8763==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x109533: main (main.c:82)
+==8763==  Block was alloc'd at
+==8763==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x10BC42: add_future_card (future.c:9)
+==8763==    by 0x10BE3C: hand_from_string (input.c:25)
+==8763==    by 0x10BECE: read_input (input.c:48)
+==8763==    by 0x109359: main (main.c:59)
+==8763== 
+==8763== Invalid read of size 8
+==8763==    at 0x109F51: free_deck (deck.c:99)
+==8763==    by 0x109533: main (main.c:82)
+==8763==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8763==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x109533: main (main.c:82)
+==8763==  Block was alloc'd at
+==8763==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x10BC42: add_future_card (future.c:9)
+==8763==    by 0x10BE3C: hand_from_string (input.c:25)
+==8763==    by 0x10BECE: read_input (input.c:48)
+==8763==    by 0x109359: main (main.c:59)
+==8763== 
+==8763== Invalid free() / delete / delete[] / realloc()
+==8763==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x109533: main (main.c:82)
+==8763==  Address 0x4a45de0 is 16 bytes inside a block of size 80 free'd
+==8763==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x109533: main (main.c:82)
+==8763==  Block was alloc'd at
+==8763==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8763==    by 0x10BC42: add_future_card (future.c:9)
+==8763==    by 0x10BE3C: hand_from_string (input.c:25)
+==8763==    by 0x10BECE: read_input (input.c:48)
+==8763==    by 0x109359: main (main.c:59)
+==8763== 
+==8763== 
+==8763== HEAP SUMMARY:
+==8763==     in use at exit: 632 bytes in 10 blocks
+==8763==   total heap usage: 50,161 allocs, 50,165 frees, 1,412,788 bytes allocated
+==8763== 
+==8763== LEAK SUMMARY:
+==8763==    definitely lost: 632 bytes in 10 blocks
+==8763==    indirectly lost: 0 bytes in 0 blocks
+==8763==      possibly lost: 0 bytes in 0 blocks
+==8763==    still reachable: 0 bytes in 0 blocks
+==8763==         suppressed: 0 bytes in 0 blocks
+==8763== Rerun with --leak-check=full to see details of leaked memory
+==8763== 
+==8763== For lists of detected and suppressed errors, rerun with: -s
+==8763== ERROR SUMMARY: 30 errors from 5 contexts (suppressed: 0 from 0)
+Running a simulation with 80000 draws for 4 hands...
+Valgrind reported errors:
+==8768== Memcheck, a memory error detector
+==8768== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8768== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==8768== Command: ./poker inp3.txt 80000
+==8768== Parent PID: 8767
+==8768== 
+==8768== Invalid free() / delete / delete[] / realloc()
+==8768==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x109F50: free_deck (deck.c:98)
+==8768==    by 0x109533: main (main.c:82)
+==8768==  Address 0x4a459d0 is 0 bytes inside a block of size 8 free'd
+==8768==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x109F50: free_deck (deck.c:98)
+==8768==    by 0x1094FC: main (main.c:77)
+==8768==  Block was alloc'd at
+==8768==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x109CA4: add_card_to (deck.c:52)
+==8768==    by 0x109CA4: add_empty_card (deck.c:60)
+==8768==    by 0x10BE2C: hand_from_string (input.c:25)
+==8768==    by 0x10BECE: read_input (input.c:48)
+==8768==    by 0x109359: main (main.c:59)
+==8768== 
+==8768== Invalid read of size 8
+==8768==    at 0x109F2B: free_deck (deck.c:96)
+==8768==    by 0x109533: main (main.c:82)
+==8768==  Address 0x4a45ba8 is 24 bytes inside a block of size 32 free'd
+==8768==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x109533: main (main.c:82)
+==8768==  Block was alloc'd at
+==8768==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x10BC42: add_future_card (future.c:9)
+==8768==    by 0x10BE3C: hand_from_string (input.c:25)
+==8768==    by 0x10BECE: read_input (input.c:48)
+==8768==    by 0x109359: main (main.c:59)
+==8768== 
+==8768== Invalid read of size 8
+==8768==    at 0x109F36: free_deck (deck.c:97)
+==8768==    by 0x109533: main (main.c:82)
+==8768==  Address 0x4a45ba0 is 16 bytes inside a block of size 32 free'd
+==8768==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x109533: main (main.c:82)
+==8768==  Block was alloc'd at
+==8768==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x10BC42: add_future_card (future.c:9)
+==8768==    by 0x10BE3C: hand_from_string (input.c:25)
+==8768==    by 0x10BECE: read_input (input.c:48)
+==8768==    by 0x109359: main (main.c:59)
+==8768== 
+==8768== Invalid read of size 8
+==8768==    at 0x109F51: free_deck (deck.c:99)
+==8768==    by 0x109533: main (main.c:82)
+==8768==  Address 0x4a45ba0 is 16 bytes inside a block of size 32 free'd
+==8768==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x109533: main (main.c:82)
+==8768==  Block was alloc'd at
+==8768==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x10BC42: add_future_card (future.c:9)
+==8768==    by 0x10BE3C: hand_from_string (input.c:25)
+==8768==    by 0x10BECE: read_input (input.c:48)
+==8768==    by 0x109359: main (main.c:59)
+==8768== 
+==8768== Invalid free() / delete / delete[] / realloc()
+==8768==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x109533: main (main.c:82)
+==8768==  Address 0x4a45ba0 is 16 bytes inside a block of size 32 free'd
+==8768==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x109533: main (main.c:82)
+==8768==  Block was alloc'd at
+==8768==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8768==    by 0x10BC42: add_future_card (future.c:9)
+==8768==    by 0x10BE3C: hand_from_string (input.c:25)
+==8768==    by 0x10BECE: read_input (input.c:48)
+==8768==    by 0x109359: main (main.c:59)
+==8768== 
+==8768== 
+==8768== HEAP SUMMARY:
+==8768==     in use at exit: 744 bytes in 9 blocks
+==8768==   total heap usage: 480,192 allocs, 480,192 frees, 13,451,572 bytes allocated
+==8768== 
+==8768== LEAK SUMMARY:
+==8768==    definitely lost: 744 bytes in 9 blocks
+==8768==    indirectly lost: 0 bytes in 0 blocks
+==8768==      possibly lost: 0 bytes in 0 blocks
+==8768==    still reachable: 0 bytes in 0 blocks
+==8768==         suppressed: 0 bytes in 0 blocks
+==8768== Rerun with --leak-check=full to see details of leaked memory
+==8768== 
+==8768== For lists of detected and suppressed errors, rerun with: -s
+==8768== ERROR SUMMARY: 15 errors from 5 contexts (suppressed: 0 from 0)
+Running a simulation with 30000 draws for 2 hands...
+Valgrind reported errors:
+==8773== Memcheck, a memory error detector
+==8773== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8773== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==8773== Command: ./poker inp.txt 30000
+==8773== Parent PID: 8772
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x109F50: free_deck (deck.c:98)
+==8773==    by 0x109533: main (main.c:82)
+==8773==  Address 0x4a459d0 is 0 bytes inside a block of size 8 free'd
+==8773==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x109F50: free_deck (deck.c:98)
+==8773==    by 0x1094FC: main (main.c:77)
+==8773==  Block was alloc'd at
+==8773==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x109CA4: add_card_to (deck.c:52)
+==8773==    by 0x109CA4: add_empty_card (deck.c:60)
+==8773==    by 0x10BE2C: hand_from_string (input.c:25)
+==8773==    by 0x10BECE: read_input (input.c:48)
+==8773==    by 0x109359: main (main.c:59)
+==8773== 
+==8773== Invalid read of size 8
+==8773==    at 0x109F2B: free_deck (deck.c:96)
+==8773==    by 0x109533: main (main.c:82)
+==8773==  Address 0x4a45ba8 is 24 bytes inside a block of size 32 free'd
+==8773==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x109533: main (main.c:82)
+==8773==  Block was alloc'd at
+==8773==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x10BC42: add_future_card (future.c:9)
+==8773==    by 0x10BE3C: hand_from_string (input.c:25)
+==8773==    by 0x10BECE: read_input (input.c:48)
+==8773==    by 0x109359: main (main.c:59)
+==8773== 
+==8773== Invalid read of size 8
+==8773==    at 0x109F36: free_deck (deck.c:97)
+==8773==    by 0x109533: main (main.c:82)
+==8773==  Address 0x4a45ba0 is 16 bytes inside a block of size 32 free'd
+==8773==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x109533: main (main.c:82)
+==8773==  Block was alloc'd at
+==8773==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x10BC42: add_future_card (future.c:9)
+==8773==    by 0x10BE3C: hand_from_string (input.c:25)
+==8773==    by 0x10BECE: read_input (input.c:48)
+==8773==    by 0x109359: main (main.c:59)
+==8773== 
+==8773== Invalid read of size 8
+==8773==    at 0x109F51: free_deck (deck.c:99)
+==8773==    by 0x109533: main (main.c:82)
+==8773==  Address 0x4a45ba0 is 16 bytes inside a block of size 32 free'd
+==8773==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x109533: main (main.c:82)
+==8773==  Block was alloc'd at
+==8773==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x10BC42: add_future_card (future.c:9)
+==8773==    by 0x10BE3C: hand_from_string (input.c:25)
+==8773==    by 0x10BECE: read_input (input.c:48)
+==8773==    by 0x109359: main (main.c:59)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x109533: main (main.c:82)
+==8773==  Address 0x4a45ba0 is 16 bytes inside a block of size 32 free'd
+==8773==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x109533: main (main.c:82)
+==8773==  Block was alloc'd at
+==8773==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x10BC42: add_future_card (future.c:9)
+==8773==    by 0x10BE3C: hand_from_string (input.c:25)
+==8773==    by 0x10BECE: read_input (input.c:48)
+==8773==    by 0x109359: main (main.c:59)
+==8773== 
+==8773== 
+==8773== HEAP SUMMARY:
+==8773==     in use at exit: 584 bytes in 7 blocks
+==8773==   total heap usage: 60,154 allocs, 60,152 frees, 1,691,620 bytes allocated
+==8773== 
+==8773== LEAK SUMMARY:
+==8773==    definitely lost: 584 bytes in 7 blocks
+==8773==    indirectly lost: 0 bytes in 0 blocks
+==8773==      possibly lost: 0 bytes in 0 blocks
+==8773==    still reachable: 0 bytes in 0 blocks
+==8773==         suppressed: 0 bytes in 0 blocks
+==8773== Rerun with --leak-check=full to see details of leaked memory
+==8773== 
+==8773== For lists of detected and suppressed errors, rerun with: -s
+==8773== ERROR SUMMARY: 9 errors from 5 contexts (suppressed: 0 from 0)
+ - Next, few Seven Card Stud hands
+Running a simulation with 30000 draws for 2 hands...
+Could not find the win percent in your output
+Could not find the win percent in your output
+You dont seem to have the right total draws.
+Yours sum to 0 but I expected 30000
+Running a simulation with 40000 draws for 3 hands...
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+You dont seem to have the right total draws.
+Yours sum to 0 but I expected 40000
+ - Then one from a completely made up poker variant
+Running a simulation with 100000 draws for 6 hands...
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+Could not find the win percent in your output
+You dont seem to have the right total draws.
+Yours sum to 0 but I expected 100000
+
+Overall Grade: F

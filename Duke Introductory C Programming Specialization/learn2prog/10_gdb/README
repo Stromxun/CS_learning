@@ -1,0 +1,82 @@
+For this assignment, you will be practicing with the basics
+of gdb.  You will want to use gdb extensively during the rest
+of the semester, as it is an incredibly useful tool to gather
+information during the debugging process.  For now, we 
+are just going to get started with some basic commands.
+Be sure you have done the readings and watched
+the video on gdb. 
+
+Enclosed, you will find game.c and the compiled
+binary game, for the most boring guessing game
+ever.  In the first round, the program thinks
+of a secret number (it is the same every single time),
+and asks you to guess it.  You get exactly one try.
+Note that it thinks of this number by calling
+getSecretNumber, which is not included in the source.
+
+If you get that right, in the second round,
+it thinks of another number.  It does this by repeatedly
+calling getOtherSN (also not shown in the source) and
+passing in different numbers.  It combines these results
+together, and does some math to combine the results into
+"total".  Afterwards, it asks you for your guess,
+and again, you have one chance.
+
+Before you proceed, try to "play" the game once by running:
+
+./game
+
+
+For example, I ran it and guessed 4:
+$ ./game 
+I'm thinking of a number...
+What number do you guess?
+4
+I'm sorry, that is not right.  You lose
+
+It would be pretty boring to play this game
+until you actually guess the right number and win,
+but fortunately, that isn't the point.  The
+point is to practice with gdb.
+
+In emacs, do
+
+ESC-x gdb
+
+Emacs will prompt you for how to run gdb (the default should be fine),
+and then give you the gdb prompt.  
+Use the "start" commmand to begin execution, then use "next"
+and "print" to find the secret number for round 1.
+When the program prompts you for this number, you should be able
+to guess the right one from the information you gathered.
+
+For round 2, you do not want to step through 5000+ iterations of the
+loop, so set a breakpoint after the loop, continue execution until you
+reach it, and the print out the variable "total".  Now you should
+be able to win round 2 instantly as well!
+
+Once you have found the two secret numbers, create a file called input.txt
+and place them in that file, one per line (round 1's secret number
+on the first line, and round 2's on the second line).
+
+You should be able to run
+
+./game < input.txt
+
+and "win" automatically.  That is, you should see this output (without
+having to type anything else):
+
+$ ./game < input.txt 
+I'm thinking of a number...
+What number do you guess?
+Correct! You win round1!
+Ok, time for round 2. I have another secret number.
+Your guess:
+You win round 2 also!
+
+
+When you finish, add input.txt to git, then commit, push, and grade.
+
+
+
+

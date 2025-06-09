@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+char find_max_frequency(int a[]) {
+    int n = 26;
+    int index = 0;
+    for (int i = 0; i < n; i++) {
+        if (a[index] < a[i]) {
+            index = i;
+        }
+    }
+    return (char) (index + 'a');
+}
+
+int cal_key(char e) {
+    if (e < 'e') {
+        e += 26;
+    }
+    return e - 'e';
+}
+
+
+int findKey(FILE * f) {
+    int c;
+    int table[26];    
+    while ((c = fgetc(f)) != EOF) {        
+        if (isalpha(c)) {    
+            c = tolower(c);        
+            table[c - 'a']++;
+        }            
+    }
+    char e = find_max_frequency(table);
+    return cal_key(e);
+}
+
+int main(int argc, char ** argv) {
+    if (argc != 2) {    
+        fprintf(stderr,"Usage: encrypt inputFileName\n");    
+        return EXIT_FAILURE;  
+    }
+    FILE* f = fopen(argv[1], "r"); // read file
+    int key = findKey(f);
+    printf("%d\n", key);
+    return EXIT_SUCCESS;
+}

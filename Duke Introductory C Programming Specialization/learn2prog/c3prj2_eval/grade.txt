@@ -1,0 +1,7 @@
+Grading at Mon 09 Jun 2025 09:16:48 AM UTC
+Compiling your code
+rm -f test poker cards.o my-test-main.o *~
+cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o deck.o deck.c
+'make test-eval' failed.
+
+Overall Grade: F

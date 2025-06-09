@@ -1,0 +1,122 @@
+For the next 4 problems, you will be doing one slightly larger program, which
+we will cut up into 4 discretely testable pieces. 
+
+The big picture it that your program will read two types of input files.
+The first type of input file (which your program will read one of) will have the format:
+
+key1=value1
+key2=value2
+....
+keyN=valueN
+
+That is, it might say
+
+Jean Luc Picard=Captain
+Will Riker=Commander
+Beverly Crusher=Commander
+Data=Lt. Commander
+Geordi LaForge=Lt. Commander
+Worf=Lt. Commander
+Deanna Troi=Commander
+
+Not that the division between the key and the value is the first equals sign (the
+values could have = in them, but the keys cannot.  So a=b=c, would have a key of a, and
+a value of b=c).
+
+The second type of input file will contain a list of lines (which will typically match
+the keys from the first input file).  Your program will read one or more of this
+type of file.  For example, it might contain:
+
+Jean Luc Picard
+Will Riker
+Worf
+Deanna Troi
+Q
+
+For each such input file that your program reads, it will print out the counts
+of the values for the corresponding keys (or <unknown> for anything that did not
+match any known key from the first input file).   E.g. given the above to input files,
+it would print to the corresponding output file (which will be named the same
+as the input file, but with ".count" appended to the name).
+
+Captain: 1
+Commander: 2
+Lt. Commander: 1
+<unknown> : 1
+
+
+
+
+In thinking about our program, we might come up with the following 
+generalized high-level algorithm:
+
+ //read the key/value pairs from the file named by argv[1] (call the result kv)
+ //count from 2 to argc (call the number you count i)
+    //count the values that appear in the file named by argv[i], using kv as the key/value pair
+    //   (call this result c)
+    //compute the output file name from argv[i] (call this outName)
+    //open the file named by outName (call that f)
+    //print the counts from c into the FILE f
+    //close f
+    //free the memory for outName and c
+ //free the memory for kv
+
+This high-level algorithm suggests many functions which we can split our task into.
+We will cut them up into 4 groups to make the 4 problems of this assignment:
+
+The first step (this problem):
+  - read the key/value pairs from a file
+  - free the memory for the key/value pairs
+
+The second step (next problem):
+ - compute the output file name
+
+The third step (problem after that):
+ - print the counts to a file
+ - free the memory for the counts
+
+The fourth step (the problem after that):
+ - compute the counts of  values that appear in a particular input file
+
+Each subsequent problem will have more details about it.
+
+For this particular problem, you will need to:
+
+  - read the key/value pairs from a file
+  - free the memory for the key/value pairs
+
+To start with this problem, you are going to want to define two structs, in the
+file kv.h.  The first one (struct _kvpair_t) should define the structure for
+one key/value pair.   The second should define the structure for an 
+array of key/value pairs (hint: you will want to include the length of the
+array in this structure).
+
+Now you will want to write the four functions in kv.c.  
+
+In readKVs, you will want to open the file, read the lines of text, split them into
+key/value pairs, add the resulting pairs to an array (hint: realloc it to make it larger
+each time), close the file, and return the kvarray_t * that has your array.
+
+Remember that you will want to abstract out complex steps into functions (you should
+see at least 2 pieces to naturally pull out into their own functions).
+
+Next, you will write freeKVs, which should free all the memory allocated by readKVs.
+That is,  freeKVs(readKVs(filename)) should not leak any memory.
+
+Third, write printKVs which should take a kvarray_t *, and print out
+
+ "key = '%s' value = '%s'\n"
+for each key/value pair in the array, with the first %s being whatever the key is,
+and the second being whatever value (e.g., key = 'Jean Luc Picard' value = 'Captain').
+
+Finally, write the lookupValue function, which takes a kvarray_t * and a char * (string).
+The char * that is passed in represents a key.  This function searches the kvarray_t 
+for a matching key, and if found, returns the corresponding value.  If no match is found,
+this function returns NULL.
+
+Once you complete these functions, test them using the main in kv_test.c before
+proceeding to the next problem.
+
+
+
+ 

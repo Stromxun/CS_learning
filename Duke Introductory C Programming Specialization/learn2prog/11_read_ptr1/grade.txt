@@ -1,0 +1,8 @@
+Grading at Thu 01 May 2025 02:38:23 AM UTC
+Attempting to compile test.c
+gcc -o test test.c
+compiled
+Your file matched the expected output
+Your output matched what we expected
+
+Overall Grade: PASSED

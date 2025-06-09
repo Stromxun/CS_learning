@@ -1,0 +1,22 @@
+In a future assignment, you are going to write a program which reads
+some input, does some manipulations, and produces output in another file.
+Right now, you are going to write a function which will be useful to you
+in that assignment, which takes the input filename, and produces the output
+file name. The output file name should be the same as the input file name
+with ".counts" on the end.  So, for example, if the input filename (inputName)
+is "input.txt", your function should return "input.txt.counts".
+
+Note that your function needs to use malloc to allocate memory to hold
+the string that it will return as its answer.
+
+Your function should have the following signature:
+
+ char * computeOutputFileName(const char * inputName)
+
+and you should write it in the outname.c file.
+You can make and test with the main function found in outname_test.c.
+As always, be sure your program valgrinds cleanly.
+
+
+
+

@@ -1,0 +1,3 @@
+Execute the code in test.c by hand, and place the resulting
+output in a file called "answer.txt".
+As always, compile and run test.c to check your work, and submit.

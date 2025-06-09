@@ -1,0 +1,53 @@
+Grading at Fri 23 May 2025 12:29:55 AM UTC
+**Testing broken implementation 10 **
+-------------------------------------
+
+power(x, y) = 2, but expected_ans = 4
+**Testing broken implementation 11 **
+-------------------------------------
+
+power(x, y) = 256, but expected_ans = 100000000
+**Testing broken implementation 1 **
+-------------------------------------
+
+power(x, y) = 1, but expected_ans = 4
+**Testing broken implementation 2 **
+-------------------------------------
+
+power(x, y) = 0, but expected_ans = 1
+**Testing broken implementation 3 **
+-------------------------------------
+
+power(x, y) = 0, but expected_ans = 1
+**Testing broken implementation 4 **
+-------------------------------------
+
+power(x, y) = 57600, but expected_ans = 100000000
+**Testing broken implementation 5 **
+-------------------------------------
+
+power(x, y) = 2, but expected_ans = 4
+**Testing broken implementation 6 **
+-------------------------------------
+
+power(x, y) = 8, but expected_ans = 27
+**Testing broken implementation 7 **
+-------------------------------------
+
+power(x, y) = -818408495, but expected_ans = 0
+**Testing broken implementation 8 **
+-------------------------------------
+
+power(x, y) = 9, but expected_ans = 27
+**Testing broken implementation 9 **
+-------------------------------------
+
+power(x, y) = 0, but expected_ans = 4
+**Testing correct implementation **
+-------------------------------------
+
+
+All tests were ok.
+
+
+Overall Grade: PASSED

@@ -1,0 +1,64 @@
+For this assignment, you will continue working on your blackbox testing
+skills.  However, this time, you will test a slightly more complex program
+with more broken implementations.
+
+You can find the correct implementation of the program at
+
+/usr/local/l2p/match5/correct-match5
+
+This program determines who wins a very simple "card game".  This "game"
+is played with 5 "cards" per player and 2 players.  A "card" in this
+game is an ASCII character (so 'x' 'a' '!' '7' '$' etc are all valid cards).
+Each player has exactly 5 cards, and the player with the most matching
+cards wins.  That is, 5 of a kind beats 4 of a kind, which bests 3 of a kind,
+which beats a pair, which beats having no matching cards.  If both
+players have the same number of matching cards (e.g., both have 3 of a kind),
+the hand is a tie.  There are no tie breakers (so one player has
+3 of a kind and the other has 3 of a kind + a pair, the pair does not matter).
+The values of the cards don't matter (so three 'a's and three 'b's both tie).
+
+If you run the correct implementation, you can see the correct behavior:
+
+As some examples:
+
+$ /usr/local/l2p/match5/correct-match5 aaaaa bbbbb
+Both hands tie: each has five of a kind
+
+$ /usr/local/l2p/match5/correct-match5 aaaaa bbbbc
+Hand 1's five of a kind beats Hand 2's four of a kind
+
+$ /usr/local/l2p/match5/correct-match5 aaabb bbbbc
+Hand 1's three of a kind loses to Hand 2's four of a kind
+
+If you look in /usr/local/l2p/match5, you will see that there are 296 broken
+implementations.   Note that you do NOT need to come up with 296 test cases---you
+may have one test case which shows that several of these implementations
+are broken.
+
+Furthermore, to help make this testing managable for you, we have provided
+run_all.sh, which will read test cases from  a file you create called tests.txt,
+and run them against all broken implementations.  In particular, each line
+of tests.txt should be the command line arguments to one invocation of the
+program under test.  So if you wanted to test the program with the three
+examples shown above, you would write the following in tests.txt
+
+aaaaa bbbbb
+aaaaa bbbbc
+aaabb bbbbc
+
+and then each broken program would be run three times, and have its behavior
+compared to the correct implementation.  If ANY test case in tests.txt identifies
+a problem with a particular broken implementation, your test suite has
+succeeded for that particular implementation.  You need to develop
+your test suite so that it identifies the problems with all broken implementations.
+
+
+Lastly, I'll note that each of these broken implementations arises from
+making small changes in the correct implementation which could represent
+reasonable mistakes in programming (this is called "mutation testing" by
+the way).  None of these require finding
+an obscure "magic bullet" input---they can all be found with a reasonble,
+comprehensive test suite.
+
+You will submit tests.txt for this assignment.
+

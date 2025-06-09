@@ -1,0 +1,53 @@
+Grading at Thu 29 May 2025 01:42:04 AM UTC
+Attempting to compile rotateMatrix.c
+testcase1 passed
+#################################################
+testcase2: NonExistentFile
+ (should indicate an error)
+testcase2 passed
+#################################################
+testcase3: blank.txt
+ (should indicate an error)
+testcase3 passed
+#################################################
+testcase4: short-line.txt
+ (should indicate an error)
+testcase4 passed
+#################################################
+testcase5: short-file.txt
+ (should indicate an error)
+testcase5 passed
+#################################################
+testcase6: long-line.txt
+ (should indicate an error)
+testcase6 passed
+#################################################
+testcase7: long-file.txt
+ (should indicate an error)
+testcase7 passed
+#################################################
+testcase8: long-line-2.txt
+ (should indicate an error)
+testcase8 passed
+#################################################
+testcase9: normal1.txt normal2.txt
+ (should indicate an error)
+testcase9 passed
+#################################################
+testcase10: normal1.txt
+Your file matched the expected output
+testcase10 passed
+#################################################
+testcase10: normal2.txt
+Your file matched the expected output
+testcase10 passed
+#################################################
+testcase10: normal3.txt
+Your file matched the expected output
+testcase10 passed
+#################################################
+testcase10: eof.txt
+Your file matched the expected output
+testcase10 passed
+
+Overall Grade: A

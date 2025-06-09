@@ -1,0 +1,24 @@
+Grading at Wed 04 Jun 2025 01:24:45 AM UTC
+Attempting to compile sortLines.c
+#################################################
+testcase1:
+testcase1 passed, your program successfully indicated a failure
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase2:
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase3:
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+#################################################
+testcase4:
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+
+Overall Grade: A

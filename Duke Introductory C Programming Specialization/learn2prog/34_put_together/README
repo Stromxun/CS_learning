@@ -1,0 +1,40 @@
+We are now ready for the last piece:
+ - compute the counts of  values that appear in a particular input file
+
+And then to put all the pieces together.  Before you start, notice that
+we have placed symlinks (short for "symbolic links") to the files you worked on
+in the previous problems.  Symbolic links basically mean that when you open
+the file, it will open the file it links to (so opening counts.c will open
+../27_counts/counts.c ).  
+
+For this problem, you will start by writing the function:
+
+  counts_t * countFile(const char * filename, kvarray_t * kvPairs)
+
+in the main.c file. Note that you will find it quite helpful to use several of the functions
+you wrote in the previous problems (in fact, much of the work should already be done).
+
+Once you have written countFile, it is time to write your main function.  You 
+will also write this function in the main.c file. Note that we have already
+written the high-level algorithm for the main function as comments, so you can
+just translate this algorithm to code.  You will also need to add some error
+checking. 
+
+Once you finish writing these two functions, you should have a working program!
+Compile, test, and debug it.
+
+We have provided two test cases, and the correct output for them.
+
+The first test case:
+  ./count_values kvs1.txt list1a.txt list1b.txt
+
+should produce two output files (list1a.txt.counts and list1b.txt.counts).
+The correct contents can be found in list1a.txt.ans and list1b.txt.ans.
+
+The second test case:
+  ./count_values kvs2.txt list2a.txt list2b.txt list2c.txt
+
+should produce 3 files (named appropriately) and the answers can be found in
+similarly named .ans files.
+
+Use git add . to submit your work.

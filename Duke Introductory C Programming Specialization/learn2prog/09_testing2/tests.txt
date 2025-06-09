@@ -1,0 +1,28 @@
+aaaaa aaaaa
+aaaab aaaab
+aaabb aaabb
+aabbb aabbb
+abbbb abbbb
+aaaaa aaaab
+aaaab aaaaa
+aaaab aaabc
+aaabc aaaab
+aaabc aabcd
+aabcd aaabc
+aabcd abcde
+abcde abcde
+12345 67890
+yiyiy iyiyi
+***** *****
+哈哈哈哈哈 哈哈哈哈好
+111 1113
+_ 00000
+magic bullet
+apple banana
+-1001 10001
+10000 10000 10000 10000
+ji000
+11111 1
+11111 111110
+
+

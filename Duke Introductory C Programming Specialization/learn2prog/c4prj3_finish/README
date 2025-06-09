@@ -1,0 +1,86 @@
+Time to wrap it all up!  You are now going to write
+main, which puts it all together.  In particular,
+your program should take 1 or 2 command line arguments.
+The first is required, and is the name of the input
+file to read.  The second is optional and is the
+number of Monte Carlo trials to perform.  If it
+is not given, you should use 10,000 as a default value.
+
+ Here is the gist of what your main does:
+   - Check command line arguments/report errors
+   - Open the input file and read the hands in it
+     (you just wrote read_input!)
+   - Create a deck with the remaining cards
+     (you just wrote build_remaining_deck)
+   - Create an array to count how many times each hand
+     wins, with one more element for if there was a tie
+     (so if there are 2 hands, you should have 3 elements).
+     and initialize all its values to 0.
+   - Do each Monte Carlo trial (repeat num_trials times)
+        - Shuffle the deck of remaining cards
+	  (you wrote shuffle in Course 3)
+	- Assign unknown cards from the shuffled deck
+	  (you just wrote future_cards_from_deck)
+	- Use compare_hands (from Course 3) to
+	  figure out which hand won. Note that
+	  with potentially more than 2 hands,
+	  this is much like finding the max of
+	  an array, but using compare_hands
+	  instead of >.
+        - Increment the win count for the winning
+	  hand (or for the "ties" element of the array
+	  if there was a tie).
+   - After you do all your trials, you just need
+     to print your results, free any memory
+     you allocated, and close any open files.
+
+     You should use the following format strings to report your results.
+     For each hand, you should printf
+       "Hand %zu won %u / %u times (%.2f%%)\n"
+          where the %zu is the hand number (0,1,..)  [zu is for size_t]
+	  the first %u is the number of wins for that hand
+	  the second %u is the total number of trials
+	  the %.2f is the percentage that this win/trials ratio gives
+     Then you should printf one more line for the ties:
+       "And there were %u ties\n"
+          Where the %u is just a count of how many ties there were
+
+We're going to let you write your own Makefile for this assignment.
+This Makefile should create a program called "poker" when we run "make".
+
+Of course, you need to test this out before you submit
+it for grading.  This seems like a complicated piece
+of code, but you already have a lot of confidence in what you
+wrote in Courses 2 and 3---so thats a good start.  You
+have hopefully been testing most of the functions you
+wrote along the way.  If so, you are confident in them too.
+
+But that leaves testing your whole program, which performs
+random simulations---that can be tricky.  So how can you do it?
+To help you out, we have provided some test cases in provided-tests,
+along with the expected probabilities (in provided-tests/answers.txt)
+These probabilities are rounded to the nearest percent, and we
+don't expect your answer to be exact.  Also note that the probabiltiies
+do not always add to 100% since some hands have
+the possibility of ties. 
+
+If you have problems, you can make use of the testing
+infrastructure from eariler steps to help you sort
+out the problem.  For example, you could have your
+main print out each set of hands in a format
+that you could feed into test-eval.
+You could then see if your evaluation and our evaluation
+match up for each hand that your simuluation drew.
+(Hint: use diff, don't try to compare them by hand!)
+
+
+We'll note that we setup the Makefile to build things
+for debugging by default.  However, once your program
+works, if you want to run longer simulations faster
+you can do
+
+make clean
+make OTHERFLAGS=-O3
+
+which will build your program with optimizations,
+and it will run 2--3x faster.

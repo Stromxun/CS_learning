@@ -1,0 +1,49 @@
+ 1. Open the file "squares.c" and look at the squares function.
+    You will find that I have already done steps 1--4
+    for an algorithm which draws two (possibly overlapping)
+    squares (one of #s and one of *s). 
+
+ 2. Read the generalized steps that I have written as comments
+    in this file.  Note that whenever I indicate a range
+    (count from x to y, or between x and y), the range is 
+    inclusive of the lower bound, and exclusive of the upper bound.
+    All counting is "count up by one."  Determine if there are
+    any parts of these steps that you will want to abstract
+    out into a separate function.
+
+ 3. Implement this algorithm by translating my steps into code.
+    You may abstract any pieces you want out into separate functions.
+    We've provided two helpers with specification we think may be helpful.
+
+ 4. We have provided squares_test.o, which has a main function
+    that takes four command line arguments (size1, x_offset, y_offset, size2),
+    and calls your squares function with those arguments.
+    You can compile your code and link it with this object file
+    to make a program:
+       gcc -o squares -Wall -Werror -std=gnu99 --pedantic squares.c squares_test.o
+    Then you can run it like this:
+      ./square 4 1  2 3
+    which would call your squares function with
+      size1=4
+      x_offset=1
+      y_offset=2
+      size2=3
+
+    which should produce output that looks like this:
+####
+#  #
+#***
+#*#*
+ ***
+We have also provided 3 files which show the correct output for three inputs
+(./squares 3 5 8 2,./squares 5 2 4 6,./squares 9 2 3 4) in the files
+whose names starts with ans_ (and then has the parameter values in its name,
+separated by _s).
+
+Use "diff" like you just learned to compare your program's output
+to the correct output.
+
+ 5. Submit your modified squares.c file (git commit/git push/grade).
+
+
+

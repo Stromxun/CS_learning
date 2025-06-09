@@ -1,0 +1,24 @@
+In a previous problem, you executed a Ceaser Cipher encryption program by hand.
+That program read an input file, and wrote to standard output.  
+
+In this problem, you are going to work on a slightly modified version of that program,
+which is is included in encrypt.c.   The major difference between this version
+of the program and the previous one is that rather than printing to stdout, 
+this program appends ".enc" to the input file name, and writes its output to that
+file (for example, if your input file is called "input.txt", it will write to "input.txt.enc").
+Additionally, rather than using fgetc to read one character at a time, this version
+of the program uses getline to read an entire line at a time.
+
+This program has the basic algorithm correct, but makes a variety of errors---all of which
+valgrind will detect.  Your job for this problem is to fix the program by making it 
+valgrind cleanly. 
+
+Hint: Start from the first valgrind error.  Read and understand the error.  It will
+      tell you on what line of code valgrind detected the problem.  Understand the
+      error, and why it is occuring (drawing some pictures will likely help here).
+      Fix the error, make, and re-run.  Repeat the process until all valgrind errors are
+      gone.   Don't forget that gdb may be useful as well.
+
+
+ 
+

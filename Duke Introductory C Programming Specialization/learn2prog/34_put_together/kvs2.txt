@@ -1,0 +1,12 @@
+Jean Luc Picard=Captain
+Will Riker=Commander
+Beverly Crusher=Commander
+Data=Lt. Commander
+Geordi LaForge=Lt. Commander
+Worf=Lt. Commander
+Deanna Troi=Commander
+Tasha Yar=Lieutenant
+Wesley Crusher=Ensign
+Ro Laren=Ensign
+Reginald Barclay=Lieutenant
+Guinan=Bartender

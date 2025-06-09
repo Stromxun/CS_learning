@@ -1,0 +1,18 @@
+Write a recursive function unsigned power(unsigned x, unsigned y) which computes x
+to the y power.   Note that while 0 to the 0 is undefined in mathematics,
+we specify that 0 to the 0 shall be 1 for this function.  
+
+Save it into a file called power.c
+
+You MUST use recursion (no iteration).
+
+
+Use your test-power.c from your previous assignment to test your implementation
+of power. You can symlink the file from the previous assignment into this directory:
+
+ln -s ../22_tests_power/test-power.c ./
+
+You should then write a Makefile which will compile each C file separately
+to an object file, and like them together.
+
+
