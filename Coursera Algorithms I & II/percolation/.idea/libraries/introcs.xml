@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="introcs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/.lift/stdlib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/.lift/introcs.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="https://introcs.cs.princeton.edu/java/stdlib/javadoc" />
+      <root url="https://introcs.cs.princeton.edu/java/code/javadoc" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/.lift/stdlib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/.lift/introcs.jar!/" />
+    </SOURCES>
+  </library>
+</component>

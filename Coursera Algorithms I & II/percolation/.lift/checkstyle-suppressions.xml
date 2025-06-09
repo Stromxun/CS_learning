@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+
+    <!--  ***********************************************************************  -->
+    <!--  STDLIB.JAR EXCEPTIONS                                                    -->
+    <!--  ***********************************************************************  -->
+
+    <suppress checks="ParameterAssignmentCheck"
+              files="(Draw|StdDraw).java"/>
+
+    <suppress checks="IllegalCatch"
+              files="(In|StdDraw|Draw|StdAudio).java"/>
+
+    <suppress id="IllegalType"
+              files="(StdDraw|Draw|StdIn|In|Out|StdOut).java"/>
+
+    <suppress id="FloatType"
+              files="(StdDraw|Draw|StdIn|In|Out|StdOut|StdAudio).java"/>
+
+    <suppress id="BitwiseAnd"
+              files="(StdRandom|BinaryStdIn|BinaryStdOut|BinaryIn|BinaryOut|StdAudio|Picture|GrayscalePicture).java"/>
+
+    <suppress id="BitwiseOr"
+              files="(BinaryStdOut|BinaryStdIn|BinaryIn|BinaryOut).java"/>
+
+    <suppress id="InterfaceType"
+              files="(DrawListener).java"/>
+
+    <suppress id="Synchronized"
+              files="(StdDraw|Draw|StdAudio).java"/>
+
+    <suppress files="StdDraw3D.java" checks="[a-zA-Z0-9]*"/>
+
+    <suppress files="StdInTest.java" checks="[a-zA-Z0-9]*"/>
+
+    <suppress files="APIChecker.java" checks="[a-zA-Z0-9]*"/>
+
+    <suppress files="AutocompleteGUI.java" checks="[a-zA-Z0-9]*"/>
+
+    <suppress files="Keyboard.java" checks="IllegalImport|IllegalToken|StringLiteralCount|ModifiedControlVariable|MyIllegalType"/>
+
+    <!--  ***********************************************************************  -->
+    <!--  ALGS4.JAR EXCEPTIONS                                                     -->
+    <!--  ***********************************************************************  -->
+
+    <!-- phi() and Phi(), which are now deprecated -->
+    <suppress checks="MethodNameCheck"
+              files="(Gaussian|ErrorFunction).java"/>
+
+    <suppress checks="EmptyStatement"
+              files="(Evaluate|Quick3stringX).java"/>
+
+    <!-- median of 3 -->
+    <suppress checks="AvoidInlineConditionals"
+              files="Quick.*.java"/>
+
+    <suppress checks="ParameterAssignmentCheck"
+              files="(.*BST|UF|MinPQ|MaxPQ|Heap|Heapify|.*TST|Trie.*|StringSET).java"/>
+
+    <suppress checks="ParameterAssignmentCheck"
+              files="(SuffixArrayMerge|SuffixArrayX|Manber).java"/>
+
+    <suppress checks="ParameterNumberCheck"
+              files="TraceBentleyMcIlroyPartition.java"/>
+
+    <suppress checks="EmptyStatement"
+              files="(QuickX).java"/>
+
+    <suppress id="Wrapper"
+              files="(IndexMinPQ|IndexMaxPQ|AdjMatrixGraph|AdjMatrixDigraph).java"/>
+
+    <suppress id="Wrapper"
+              files="(Autoboxing|MutableInteger|SortCompare|.*Reflection|.*OfInts|.*OfIntegers|Memory.*).java"/>
+
+    <suppress id="Wrapper"
+              files="(KendallTau|Inversions|Distinct|SecureShuffle|PermutationInplace).java"/>
+
+    <!-- shifting and masking -->
+    <suppress id="BitwiseAnd"
+              files="(PatriciaSET|PatriciaST|LSD|MSD|HexDump|OneWay|AmericanFlag|AmericanFlagX|.*HashST).java"/>
+
+    <!-- intentionally buggy program -->
+    <suppress checks="CovariantEquals"
+              files="CovariantPhoneNumber.java"/>
+
+    <!-- has a deeply nested loop -->
+    <suppress checks="NestedForDepth"
+              files="EuclideanGraph.java"/>
+
+    <!-- more than one statement per line -->
+    <suppress checks="OneStatementPerLine"
+              files="Inversions.java"/>
+
+    <!-- long line -->
+    <suppress checks="LineLength"
+              files="Inversions.java"/>
+
+    <!-- methods named V() and E() -->
+    <suppress checks="MethodName"
+              files="(Digraph|Graph|Network|GraphX).java"/>
+
+    <!-- RM for RabinKarp -->
+    <suppress checks="MemberName"
+              files="RabinKarp.java"/>
+
+    <!-- Calls Math.random() -->
+    <suppress id="AvoidMathRandom"
+              files="Knuth.java"/>
+
+    <!-- Calls Math.pow(x, 0.5) -->
+    <suppress id="Sqrt"
+              files="Stopwatch(CPU)?.java"/>
+
+    <!-- Local variable named H -->
+    <suppress checks="LocalVariableName"
+              files="(GlobalMincut|UniqueMincut|DirectedEulerianPath|DirectedEulerianCycle|BipartiteMatchingToMaxflow).java"/>
+
+    <!-- Local variable named F -->
+    <suppress checks="LocalVariableName"
+              files="(Bipartite|BipartiteX|DirectedCycleX|EdgeWeightedDirectedCycle|TopologicalX).java"/>
+
+    <!-- parameters named V1 and V2 -->
+    <suppress checks="ParameterName"
+              files="(Digraph|Graph)Generator.java"/>
+
+    <!-- method named R(), now deprecated -->
+    <suppress checks="MethodName"
+              files="Alphabet.java"/>
+
+    <!-- method named R2() -->
+    <suppress checks="MethodName"
+              files=".*Regression.java"/>
+
+    <!-- copy constructor -->
+    <suppress checks="HiddenField"
+              files="(Digraph|Graph|Network|RabinKarp).java"/>
+
+
+    <suppress files="MultiwayMinPQ.java"          checks="[a-zA-Z0-9]*"/>
+    <suppress files="FibonacciMinPQ.java"         checks="[a-zA-Z0-9]*"/>
+    <suppress files="BinomialMinPQ.java"          checks="[a-zA-Z0-9]*"/>
+    <suppress files="FenwickTree.java"            checks="[a-zA-Z0-9]*"/>
+    <suppress files="SegmentTree.java"            checks="[a-zA-Z0-9]*"/>
+    <suppress files="TestLayoutBug.java"          checks="[a-zA-Z0-9]*"/>
+    <suppress files=".*DualPivotQuicksort.*.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="BentleyMcIlroyJava6.java"    checks="[a-zA-Z0-9]*"/>
+    <suppress files="Sort[3-6].java"              checks="[a-zA-Z0-9]*"/>
+
+
+    <!--  ***********************************************************************  -->
+    <!--  INTROCS.JAR EXCEPTIONS                                                   -->
+    <!--  ***********************************************************************  -->
+
+    <!-- intentionally misindented program -->
+    <suppress checks="Indentation" files="Factors2.java"/>
+
+    <suppress checks="ParameterNumberCheck"
+              files="PlasmaCloud.*.java"/>
+
+    <suppress checks="SuppressWarningsCheck"
+              files="(HashST|SET|Insertion|Merge).java"/>
+
+    <suppress checks="StringLiteralCount"
+              files="(PotentialGene|Merge|Insertion|Complex|HashST|StockQuote).java"/>
+
+    <suppress checks="MemberNameCheck"
+              files="(Graph).java"/>
+
+    <!-- StdRandom does some unusual things -->
+    <suppress checks="IllegalImportCheck"
+              files="StdRandom.java"/>
+    <suppress checks="IllegalTypeCheck"
+              files="StdRandom.java"/>
+    <suppress checks="InnerAssignmentCheck"
+              files="StdRandom.java"/>
+    <suppress checks="IllegalMethodCallCheck"
+              files="StdRandom.java"/>
+    <suppress id="StaticInitializer"
+              files="StdRandom.java"/>
+
+    <!-- need Double[] to pass as Comparable[] -->
+    <suppress id="Wrapper"
+              files="InsertionTest.java"/>
+
+    <!-- Calls Math.random() -->
+    <suppress id="AvoidMathRandom"
+              files="(CouponCollector|Coupon|Flip|Gambler|RandomInt|RandomSeq|RandomSurfer|Sample|SelfAvoidingWalk|TwentyQuestions).java"/>
+
+    <!-- use type parameter upper and lower bounds -->
+    <suppress id="TypeParameter"
+              files="(BST|SET|ST).java"/>
+
+    <!--  ***********************************************************************  -->
+    <!--  COS 126 PROGRAMMING ASSIGNMENT/PRECEPT EXCEPTIONS                        -->
+    <!--  ***********************************************************************  -->
+
+    <!-- Calls Math.random() -->
+    <suppress id="AvoidMathRandom"
+              files="(RandomWalker|RandomWalkers|RollDice|RollDie|RollLoadedDie|Ball|Birthday|RandomPokerHands).java"/>
+
+    <!-- throw RuntimeException is ok in RingBuffer because we've just introduced exceptions -->
+    <suppress checks="IllegalThrows"
+              files="(RingBuffer).java"/>
+    
+    <!-- students need ^ as xor operator in LFSR and PhotoMagic -->
+    <!-- students may use bit-whacking in LFSR, but limits register size -->
+    <!-- HammingEncoder, HammingDecoder, and TOY do some bit-whacking -->
+    <suppress id="BitwiseAnd"
+              files="(LFSR|HammingEncoder|HammingDecoder|TOY).java"/>
+    <suppress id="BitwiseOr"
+              files="(LFSR|HammingEncoder|HammingDecoder|TOY).java"/>
+    <suppress id="BitwiseXor"
+              files="(LFSR|PhotoMagic|HammingEncoder|HammingDecoder|TOY).java"/>
+
+    <!-- convenient to put multiple statements on one line -->
+    <suppress checks="OneStatementPerLine"
+              files="(TOY).java"/>
+
+    <!-- programming exams that uses generics (seems needed for generic types only in Checkstyle 8.14, bug?)  -->
+    <suppress id="Wrapper"
+              files="(RollingStats|NgonArt|MiniPro|MiniPro2|Election).java"/>
+
+    <!--  ***********************************************************************  -->
+    <!--  COS 226 PROGRAMMING ASSIGNMENT EXCEPTIONS                                -->
+    <!--  ***********************************************************************  -->
+
+    <!-- codePost has a limit on the length of a filename -->
+    <suppress id="LongFileName"
+              files="(InteractivePercolationVisualizer).java"/>
+
+    <!-- PercolationVisualizer uses java.awt.Font -->
+    <suppress checks="IllegalImport"
+              files="(PercolationVisualizer).java"/>
+
+    <!-- has (or might have) a quadruple nested loop -->
+    <suppress checks="NestedForDepth"
+              files="(BruteCollinearPoints|Board|SolverVisualizer|WeakLearner).java"/>
+
+    <!-- UnicodeTest has non-ASCII characters in header -->
+    <suppress id="NotASCII"
+              files="(UnicodeTest).java"/>
+
+    <!-- can't seem to combine these into one check with | -->
+    <suppress id="FloatType"
+              files="SCUtility.java"/>
+    <suppress id="FloatLiteral"
+              files="SCUtility.java"/>
+
+    <!-- x0 = x1 = StdDraw.mouseX() in RangeSearchVisualizer -->
+    <suppress checks="InnerAssignmentCheck"
+              files="(RangeSearchVisualizer).java"/>
+
+    <!-- clean implementations can use many parameters -->
+    <suppress checks="ParameterNumberCheck"
+              files="(EnhancedKdTreeST|KdTree|KdTreeST).java"/>
+
+    <!-- clean implementations can update champion variable, which is passed as an argument -->
+    <suppress checks="ParameterAssignmentCheck"
+              files="(EnhancedKdTreeST|KdTree|KdTreeST).java"/>
+
+    <!-- students might legitimately use & as bitwise and in SeamCarving, BurrowsWheeler, or MoveToFront -->
+    <!-- students might legitimately use | as bitwise or operator in SeamCarving -->
+    <suppress id="BitwiseAnd"
+              files="(SeamCarver|BurrowsWheeler|MoveToFront).java"/>
+    <suppress id="BitwiseOr"
+              files="(SeamCarver|BurrowsWheeler|MoveToFront).java"/>
+
+    <!-- students often use Integer or Double when unit testing Deque and RandomizedQueue -->
+    <suppress id="Wrapper"
+              files="(Deque|RandomizedQueue|BinarySearchDeluxe).java"/>
+
+    <!-- students need to use Integer to check for null entry in Iterable -->
+    <suppress id="Wrapper"
+              files="(ShortestCommonAncestor|SAP|DeluxeBFS).java"/>
+
+    <!-- some CircularSuffixArray solutions use an Integer[] -->
+    <suppress id="Wrapper"
+              files="(CircularSuffixArray).java"/>
+
+
+    <!--  ***********************************************************************  -->
+    <!--  IGNORE HEADER CHECKS EXCEPT ON CERTAIN FILES                             -->
+    <!--  ***********************************************************************  -->
+
+    <!-- suppress header check except on COS 126 and COS 226 required files -->
+    <!-- this formatting hack seems to enable us to split regexp over several lines  -->
+    <suppress id="Header"
+              files="^(?!.*\b(readme.txt|
+                         |HelloWorld.java|HiFour.java|SumThree.java|Ordered.java|GreatCircle.java|RGBtoCMYK.java|
+                         |Bits.java|Checkerboard.java|NoonSnooze.java|RandomWalker.java|RandomWalkers.java|RollDice.java|  
+                         |NBody.java|
+                         |Transform2D.java|Sierpinski.java|Art.java|
+                         |LFSR.java|PhotoMagic.java|
+                         |RingBuffer.java|GuitarString|GuitarHero.java|
+                         |MarkovModel.java|TextGenerator.java|
+                         |Tour.java|
+                         |Blob.java|BeadFinder.java|BeadTracker.java|Avogadro.java|
+                         |Percolation.java|PercolationStats.java|
+                         |Deque.java|RandomizedQueue.java|Permutation.java|
+                         |Autocomplete.java|BinarySearchDeluxe.java|Term.java|
+                         |Board.java|Solver.java|
+                         |PointST.java|KdTreeST.java|
+                         |WordNet.java|ShortestCommonAncestor.java|Outcast.java|
+                         |SeamCarver.java|
+                         |MoveToFront.java|BurrowsWheeler.java)$).*$"/>
+
+    <!--  ***********************************************************************  -->
+    <!--  IGNORE LINELENGTH, MAINCALLS, and COMMENT EXCEPT ON CERTAIN FILES        -->
+    <!--  ***********************************************************************  -->
+
+    <suppress checks="LineLengthCheck|MainCallsAllPublicMethods|CommentCheck"
+              files="^(?!.*(Hello|HelloWorld|HiFour|SumThree|Ordered|GreatCircle|RGBtoCMYK|
+                         |Bits|Checkerboard|NoonSnooze|RandomWalker|RandomWalkers|RollDice|
+                         |NBody|
+                         |Transform2D|Sierpinski|Art|
+                         |ImageClassifier|Perceptron|MultiPerceptron|
+                         |LFSR|PhotoMagic|
+                         |RingBuffer|GuitarString|GuitarHero|
+                         |MarkovModel|TextGenerator|
+                         |Tour|
+                         |Blob|BeadFinder|BeadTracker|Avogadro|
+                         |Percolation|PercolationStats|
+                         |Deque|RandomizedQueue|
+                         |Autocomplete|BinarySearchDeluxe|Term|
+                         |Board|Solver|
+                         |PointST|KdTreeST|
+                         |WordNet|ShortestCommonAncestor|
+                         |SeamCarver|
+                         |Clustering|WeakLearner|BoostingAlgorithm|
+                         |MoveToFront|BurrowsWheeler|CircularSuffixArray|
+                         |HelloGoodbye|RightTriangle|GreatCircle|CMYKtoRGB|
+                         |GeneralizedHarmonic|BandMatrix|RandomWalker|RandomWalkers|
+                         |DiscreteDistribution|ThueMorse|Birthday|
+                         |ShannonEntropy|Checkerboard|WorldMap|
+                         |ActivationFunction|Divisors|AudioCollage|
+                         |TrinomialBrute|TrinomialDP|RevesPuzzle|
+                         |Inversions|Ramanujan|MaximumSquareSubmatrix|
+                         |Huntingtons|KernelFilter|
+                         |ColorHSB|Clock|
+                         |BruteCollinearPoints|FastCollinearPoints|Point|
+                         |BaseballElimination|
+                         |BoggleSolver|
+                     ).java$).*$"/>
+</suppressions>
+

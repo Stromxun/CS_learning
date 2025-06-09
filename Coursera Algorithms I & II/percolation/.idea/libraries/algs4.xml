@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="algs4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/.lift/algs4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="https://algs4.cs.princeton.edu/code/javadoc" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/.lift/algs4.jar!/" />
+    </SOURCES>
+  </library>
+</component>
