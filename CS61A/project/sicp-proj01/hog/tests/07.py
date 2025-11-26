@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': 'A commentary function that prints information about the biggest point increase for the current player.',
+          'answer': '1b26ada5a58db30444f6f64d80a11c53',
           'choices': [
             r"""
             A commentary function that prints information about the
@@ -21,11 +21,11 @@ test = {
             """
           ],
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'question': 'What does announce_highest return?'
         },
         {
-          'answer': 'When the current player, given by the parameter `who`, earns their biggest point increase yet in the game.',
+          'answer': '7d886fd7ff35daff80023a8393a95a32',
           'choices': [
             r"""
             When the current player, given by the parameter `who`,
@@ -39,21 +39,21 @@ test = {
             """
           ],
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'question': r"""
           When does the commentary function returned by announce_highest
           print something out?
           """
         },
         {
-          'answer': "The current player's score before this turn.",
+          'answer': '5751efd31d23f9934e774e6a8315975e',
           'choices': [
             'The last highest gain for the current player.',
             "The current player's score before this turn.",
             "The opponent's score before this turn."
           ],
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'question': 'What does the parameter last_score represent?'
         }
       ],

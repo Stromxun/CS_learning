@@ -8,2158 +8,2203 @@ test = {
           'code': r"""
           >>> ps = ['short', 'really long', 'tiny']
           >>> s = lambda p: len(p) <= 5
-          >>> choose(ps, s, 0)
-          'short'
-          >>> choose(ps, s, 1)
-          'tiny'
-          >>> choose(ps, s, 2)
+          >>> pick(ps, s, 0) # remember to put quotes ('') around strings!
+          576aa252be1440e6b1bc6094de4ee0f0
+          # locked
+          >>> pick(ps, s, 1)
+          dfdb050cd536672094e908a6410b3d8f
+          # locked
+          >>> pick(ps, s, 2)
+          13ac7705dbd6d13abb5dd2b7a58411e2
+          # locked
+          """,
+          'hidden': False,
+          'locked': True,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['hi', 'how are you', 'fine']
+          >>> s = lambda p: len(p) <= 4
+          >>> pick(ps, s, 0)
+          'hi'
+          >>> pick(ps, s, 1)
+          'fine'
+          >>> pick(ps, s, 2)
           ''
           """,
           'hidden': False,
-          'locked': False
-        }
-      ],
-      'scored': True,
-      'setup': r"""
-      >>> from cats import choose
-      """,
-      'teardown': '',
-      'type': 'doctest'
-    },
-    {
-      'cases': [
+          'locked': False,
+          'multiline': False
+        },
         {
           'code': r"""
-          >>> ps = ['d', 'Njtv', 'Kxg', 'ym6bMNxUy', 'Lz']
-          >>> s = lambda p: p == 'Kxg' or p == 'Lz' or p == 'd'
-          >>> choose(ps, s, 0)
+          >>> ps = ['VQwSwNX']
+          >>> s = lambda p: p == 'VQwSwNX'
+          >>> pick(ps, s, 0)
+          'VQwSwNX'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['d', '6VXy', '9UtlGF3JvN', 'C']
+          >>> s = lambda p: p == '6VXy' or p == '9UtlGF3JvN' or p == 'd'
+          >>> pick(ps, s, 0)
           'd'
-          >>> choose(ps, s, 1)
-          'Kxg'
-          >>> choose(ps, s, 2)
-          'Lz'
-          >>> choose(ps, s, 3)
+          >>> pick(ps, s, 1)
+          '6VXy'
+          >>> pick(ps, s, 2)
+          '9UtlGF3JvN'
+          >>> pick(ps, s, 3)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 5)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['jlfpaqbmh', 'zYuLsul', 'exx', 'X3EGwnPjh9', '5ba8riy']
-          >>> s = lambda p: p == '5ba8riy' or p == 'exx' or p == 'jlfpaqbmh' or p == 'zYuLsul'
-          >>> choose(ps, s, 0)
-          'jlfpaqbmh'
-          >>> choose(ps, s, 1)
-          'zYuLsul'
-          >>> choose(ps, s, 2)
-          'exx'
-          >>> choose(ps, s, 3)
-          '5ba8riy'
-          >>> choose(ps, s, 4)
+          >>> ps = ['nmLjTBQ']
+          >>> s = lambda p: p == 'nmLjTBQ'
+          >>> pick(ps, s, 0)
+          'nmLjTBQ'
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 2)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['wRslOhIXF', 'VFAu80', 'NdMeQR', 'NMQH', 'fyeU', 'Ft5Fcq0', 'eAp', 'NU']
-          >>> s = lambda p: p == 'Ft5Fcq0' or p == 'NdMeQR' or p == 'eAp' or p == 'fyeU'
-          >>> choose(ps, s, 0)
-          'NdMeQR'
-          >>> choose(ps, s, 1)
-          'fyeU'
-          >>> choose(ps, s, 2)
-          'Ft5Fcq0'
-          >>> choose(ps, s, 3)
-          'eAp'
-          >>> choose(ps, s, 4)
+          >>> ps = ['LQa7i6tx', '7VNVwiz6', 'FiSMcoBy', 'CbkzHZd8Q', 'wTeIcJF', 'c5', '7qIhVzA']
+          >>> s = lambda p: p == '7qIhVzA' or p == 'CbkzHZd8Q' or p == 'c5' or p == 'wTeIcJF'
+          >>> pick(ps, s, 0)
+          'CbkzHZd8Q'
+          >>> pick(ps, s, 1)
+          'wTeIcJF'
+          >>> pick(ps, s, 2)
+          'c5'
+          >>> pick(ps, s, 3)
+          '7qIhVzA'
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 6)
           ''
-          >>> choose(ps, s, 7)
+          >>> pick(ps, s, 7)
           ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
+          >>> pick(ps, s, 8)
           ''
           """,
           'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['d4iav9tkR5', 'kv3MGuSDNo', 'ArAwcc8bZ', 'OUHDQy', '4RH7pWLu', 'vo', 'C32aa', 's0L44hL9UH']
-          >>> s = lambda p: p == '4RH7pWLu' or p == 'ArAwcc8bZ' or p == 'C32aa' or p == 'OUHDQy' or p == 'd4iav9tkR5' or p == 'kv3MGuSDNo'
-          >>> choose(ps, s, 0)
-          'd4iav9tkR5'
-          >>> choose(ps, s, 1)
-          'kv3MGuSDNo'
-          >>> choose(ps, s, 2)
-          'ArAwcc8bZ'
-          >>> choose(ps, s, 3)
-          'OUHDQy'
-          >>> choose(ps, s, 4)
-          '4RH7pWLu'
-          >>> choose(ps, s, 5)
-          'C32aa'
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['bOxiYj', 'TE335OKY', 'Q0da3vv', 'M9M4cU1EiX', '6xG', 'ZQTHGTCdY', 'pIF5']
-          >>> s = lambda p: p == '6xG' or p == 'Q0da3vv' or p == 'ZQTHGTCdY' or p == 'bOxiYj' or p == 'pIF5'
-          >>> choose(ps, s, 0)
-          'bOxiYj'
-          >>> choose(ps, s, 1)
-          'Q0da3vv'
-          >>> choose(ps, s, 2)
-          '6xG'
-          >>> choose(ps, s, 3)
-          'ZQTHGTCdY'
-          >>> choose(ps, s, 4)
-          'pIF5'
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['2qjiKNB', 'E', 'h']
-          >>> s = lambda p: p == 'E' or p == 'h'
-          >>> choose(ps, s, 0)
-          'E'
-          >>> choose(ps, s, 1)
-          'h'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['uQTp', 'z', 'ln', 'AVHSUeHicm', 'BFcf9', 'wYRfLXeLqc', 'tv8', 'fYAo3OfgQA', 'vlbs']
-          >>> s = lambda p: p == 'AVHSUeHicm' or p == 'BFcf9' or p == 'ln' or p == 'uQTp' or p == 'vlbs'
-          >>> choose(ps, s, 0)
-          'uQTp'
-          >>> choose(ps, s, 1)
-          'ln'
-          >>> choose(ps, s, 2)
-          'AVHSUeHicm'
-          >>> choose(ps, s, 3)
-          'BFcf9'
-          >>> choose(ps, s, 4)
-          'vlbs'
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          >>> choose(ps, s, 10)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['2dtxNC5oxi', 'UQAiNMeWhS', 'l', '6gt8Sf4y']
-          >>> s = lambda p: p == '2dtxNC5oxi' or p == '6gt8Sf4y' or p == 'UQAiNMeWhS'
-          >>> choose(ps, s, 0)
-          '2dtxNC5oxi'
-          >>> choose(ps, s, 1)
-          'UQAiNMeWhS'
-          >>> choose(ps, s, 2)
-          '6gt8Sf4y'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['XPfAi', 'OWTv', 'Zk']
-          >>> s = lambda p: p == 'XPfAi' or p == 'Zk'
-          >>> choose(ps, s, 0)
-          'XPfAi'
-          >>> choose(ps, s, 1)
-          'Zk'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['47w9bw0', '6X41BHDCa', 'k4DQ84msw', 'b4JlLtM3j', '4']
-          >>> s = lambda p: p == '4' or p == '47w9bw0' or p == '6X41BHDCa' or p == 'b4JlLtM3j'
-          >>> choose(ps, s, 0)
-          '47w9bw0'
-          >>> choose(ps, s, 1)
-          '6X41BHDCa'
-          >>> choose(ps, s, 2)
-          'b4JlLtM3j'
-          >>> choose(ps, s, 3)
-          '4'
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['paX7C', 'DWDX6ijaQO', 'KZqKVl2', 'R6HiKoXZ2', 'nZznCw', 'mbF5KBsDnw', 'E4lCkyjp', 'q2h', 'lrUhlCHu6']
-          >>> s = lambda p: p == 'R6HiKoXZ2' or p == 'mbF5KBsDnw'
-          >>> choose(ps, s, 0)
-          'R6HiKoXZ2'
-          >>> choose(ps, s, 1)
-          'mbF5KBsDnw'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          >>> choose(ps, s, 10)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['B', '3n', 'hs', 'TCW9GTS9e', 'mbk', '1NurBy', 'rdgRYYa9p', 'x', 'zRk5BS1']
-          >>> s = lambda p: p == '3n' or p == 'TCW9GTS9e' or p == 'hs' or p == 'x'
-          >>> choose(ps, s, 0)
-          '3n'
-          >>> choose(ps, s, 1)
-          'hs'
-          >>> choose(ps, s, 2)
-          'TCW9GTS9e'
-          >>> choose(ps, s, 3)
-          'x'
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          >>> choose(ps, s, 10)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['cd', 'mWwX', 'fnzIl', 'ka1Omns', 'JKJHE3GswY', 'u']
-          >>> s = lambda p: p == 'JKJHE3GswY' or p == 'fnzIl' or p == 'ka1Omns' or p == 'mWwX'
-          >>> choose(ps, s, 0)
-          'mWwX'
-          >>> choose(ps, s, 1)
-          'fnzIl'
-          >>> choose(ps, s, 2)
-          'ka1Omns'
-          >>> choose(ps, s, 3)
-          'JKJHE3GswY'
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['k', 'M']
-          >>> s = lambda p: False
-          >>> choose(ps, s, 0)
-          ''
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['h5MQCkq', 'TAzx2RG3e', 'w', 'fL4LP', 'NdpenT74r', 'aFj7B1A', 'Yb8hOkT', 'b5ln']
-          >>> s = lambda p: p == 'NdpenT74r' or p == 'TAzx2RG3e' or p == 'Yb8hOkT' or p == 'aFj7B1A' or p == 'b5ln' or p == 'h5MQCkq' or p == 'w'
-          >>> choose(ps, s, 0)
-          'h5MQCkq'
-          >>> choose(ps, s, 1)
-          'TAzx2RG3e'
-          >>> choose(ps, s, 2)
-          'w'
-          >>> choose(ps, s, 3)
-          'NdpenT74r'
-          >>> choose(ps, s, 4)
-          'aFj7B1A'
-          >>> choose(ps, s, 5)
-          'Yb8hOkT'
-          >>> choose(ps, s, 6)
-          'b5ln'
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['mf3aCB', 'lv2VDrTF', 'GkpePNLt', 'p4YXbFG', 'AIlYbO', 'gPIOwO', 'CJehcQGLh', 'yL8T']
-          >>> s = lambda p: p == 'AIlYbO' or p == 'CJehcQGLh' or p == 'gPIOwO' or p == 'lv2VDrTF' or p == 'mf3aCB'
-          >>> choose(ps, s, 0)
-          'mf3aCB'
-          >>> choose(ps, s, 1)
-          'lv2VDrTF'
-          >>> choose(ps, s, 2)
-          'AIlYbO'
-          >>> choose(ps, s, 3)
-          'gPIOwO'
-          >>> choose(ps, s, 4)
-          'CJehcQGLh'
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['fb7e9FePGq', '6Us0GbFkI', 'oDnaL', '7SZ', 'ILPKrO0So', 'F27VNv', 'Sq2ivsu5S', 'byR', 'PbU7Rgrm']
-          >>> s = lambda p: p == '6Us0GbFkI' or p == 'F27VNv' or p == 'PbU7Rgrm' or p == 'Sq2ivsu5S' or p == 'fb7e9FePGq'
-          >>> choose(ps, s, 0)
-          'fb7e9FePGq'
-          >>> choose(ps, s, 1)
-          '6Us0GbFkI'
-          >>> choose(ps, s, 2)
-          'F27VNv'
-          >>> choose(ps, s, 3)
-          'Sq2ivsu5S'
-          >>> choose(ps, s, 4)
-          'PbU7Rgrm'
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          >>> choose(ps, s, 10)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['w5WTwFe']
-          >>> s = lambda p: p == 'w5WTwFe'
-          >>> choose(ps, s, 0)
-          'w5WTwFe'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['fXUYciyIr', 'vVQk01', 'KeRbdjfo']
-          >>> s = lambda p: p == 'vVQk01'
-          >>> choose(ps, s, 0)
-          'vVQk01'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['Ot0', '4wI', 'HkwYSN', 'qNhjljev', 'NCrXc1']
-          >>> s = lambda p: p == '4wI' or p == 'HkwYSN' or p == 'Ot0'
-          >>> choose(ps, s, 0)
-          'Ot0'
-          >>> choose(ps, s, 1)
-          '4wI'
-          >>> choose(ps, s, 2)
-          'HkwYSN'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['ulwhIG2OvA', 'q9MM', 'P']
-          >>> s = lambda p: p == 'P' or p == 'q9MM' or p == 'ulwhIG2OvA'
-          >>> choose(ps, s, 0)
-          'ulwhIG2OvA'
-          >>> choose(ps, s, 1)
-          'q9MM'
-          >>> choose(ps, s, 2)
-          'P'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['eWW4J8IXk', 'US99P926W', 'Mu7u3', 'PfMLsgY4S', 'W1f', '6', 'W4BH', 's', 'uACjqTa']
-          >>> s = lambda p: p == '6' or p == 'Mu7u3' or p == 'PfMLsgY4S' or p == 'US99P926W' or p == 'eWW4J8IXk'
-          >>> choose(ps, s, 0)
-          'eWW4J8IXk'
-          >>> choose(ps, s, 1)
-          'US99P926W'
-          >>> choose(ps, s, 2)
-          'Mu7u3'
-          >>> choose(ps, s, 3)
-          'PfMLsgY4S'
-          >>> choose(ps, s, 4)
-          '6'
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          >>> choose(ps, s, 10)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['SaKM2', 'iFKDs', '6DNIPiOfV', 'IDsrM', 'ttcBhBNxUQ']
-          >>> s = lambda p: p == '6DNIPiOfV' or p == 'SaKM2' or p == 'iFKDs' or p == 'ttcBhBNxUQ'
-          >>> choose(ps, s, 0)
-          'SaKM2'
-          >>> choose(ps, s, 1)
-          'iFKDs'
-          >>> choose(ps, s, 2)
-          '6DNIPiOfV'
-          >>> choose(ps, s, 3)
-          'ttcBhBNxUQ'
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['Oj2OFTm', 'AzZg7TmX', 'lvf']
-          >>> s = lambda p: p == 'lvf'
-          >>> choose(ps, s, 0)
-          'lvf'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['axrr', 'K7']
-          >>> s = lambda p: p == 'axrr'
-          >>> choose(ps, s, 0)
-          'axrr'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['xSY9iCe', '9F0fbNdy3d', 'TdbwF', 'V']
-          >>> s = lambda p: p == 'V' or p == 'xSY9iCe'
-          >>> choose(ps, s, 0)
-          'xSY9iCe'
-          >>> choose(ps, s, 1)
-          'V'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['WbMtnAG', 'ITr3Z', 'z0UyvE', 'MVB4sV1m', '6']
-          >>> s = lambda p: p == '6'
-          >>> choose(ps, s, 0)
-          '6'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['iF4WLyznX', 'QHU', 'e2']
-          >>> s = lambda p: p == 'QHU' or p == 'e2' or p == 'iF4WLyznX'
-          >>> choose(ps, s, 0)
-          'iF4WLyznX'
-          >>> choose(ps, s, 1)
-          'QHU'
-          >>> choose(ps, s, 2)
-          'e2'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['fw0GdxmaZx']
-          >>> s = lambda p: False
-          >>> choose(ps, s, 0)
-          ''
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['S9IO', 'P', 'yv', 'HEE4', 'lB']
-          >>> s = lambda p: p == 'HEE4' or p == 'S9IO'
-          >>> choose(ps, s, 0)
-          'S9IO'
-          >>> choose(ps, s, 1)
-          'HEE4'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['TT0mxc', '7rUdPh', 'bXT9Jss0', 'MmqgB', 'l']
-          >>> s = lambda p: p == '7rUdPh' or p == 'MmqgB' or p == 'TT0mxc'
-          >>> choose(ps, s, 0)
-          'TT0mxc'
-          >>> choose(ps, s, 1)
-          '7rUdPh'
-          >>> choose(ps, s, 2)
-          'MmqgB'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['qIx6C8DM', 'sszrxRC']
-          >>> s = lambda p: p == 'qIx6C8DM'
-          >>> choose(ps, s, 0)
-          'qIx6C8DM'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['28yt8h', 'dLQjelrdbI', 'yQsk', 'YKK5f', 'Mnll4AD0DA', 'l', 'UEePEqt']
-          >>> s = lambda p: p == 'Mnll4AD0DA' or p == 'UEePEqt' or p == 'YKK5f' or p == 'dLQjelrdbI'
-          >>> choose(ps, s, 0)
-          'dLQjelrdbI'
-          >>> choose(ps, s, 1)
-          'YKK5f'
-          >>> choose(ps, s, 2)
-          'Mnll4AD0DA'
-          >>> choose(ps, s, 3)
-          'UEePEqt'
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['ycsj5dM9', 'o8QT', 'HnFS', 'mlwqqQM2']
-          >>> s = lambda p: False
-          >>> choose(ps, s, 0)
-          ''
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['2veJflQoDs']
-          >>> s = lambda p: p == '2veJflQoDs'
-          >>> choose(ps, s, 0)
-          '2veJflQoDs'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['HSa5Oll4', '53ESB34aP', 'Vvd', 'tjT7', 'Nf4gq9E8S', '5k', 'EGQIsv4dqA', 'HdD26', 'VstrT']
-          >>> s = lambda p: p == '53ESB34aP' or p == '5k' or p == 'HdD26'
-          >>> choose(ps, s, 0)
-          '53ESB34aP'
-          >>> choose(ps, s, 1)
-          '5k'
-          >>> choose(ps, s, 2)
-          'HdD26'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          >>> choose(ps, s, 10)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['EOH', 'L3gKaBFggw', 'Pw', '8KotZ', 'ETvnL8wUFz']
-          >>> s = lambda p: p == '8KotZ' or p == 'ETvnL8wUFz' or p == 'L3gKaBFggw'
-          >>> choose(ps, s, 0)
-          'L3gKaBFggw'
-          >>> choose(ps, s, 1)
-          '8KotZ'
-          >>> choose(ps, s, 2)
-          'ETvnL8wUFz'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['6JdQvy1', 'FiOdYmyU', 'yA', 'y0Xk', 'cZCJ']
-          >>> s = lambda p: p == 'FiOdYmyU' or p == 'cZCJ' or p == 'yA'
-          >>> choose(ps, s, 0)
-          'FiOdYmyU'
-          >>> choose(ps, s, 1)
-          'yA'
-          >>> choose(ps, s, 2)
-          'cZCJ'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['t8ecHx']
-          >>> s = lambda p: p == 't8ecHx'
-          >>> choose(ps, s, 0)
-          't8ecHx'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['PaugJ7We7l', 'EruzGoKuu', 'gfSxiiinxX', 'xT2EnjKnF4', '4dHOOOn', 'mPOFazJth', 'H2qc', 'bcHVrkfbu0', 'QV']
-          >>> s = lambda p: p == 'H2qc' or p == 'bcHVrkfbu0' or p == 'mPOFazJth'
-          >>> choose(ps, s, 0)
-          'mPOFazJth'
-          >>> choose(ps, s, 1)
-          'H2qc'
-          >>> choose(ps, s, 2)
-          'bcHVrkfbu0'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          >>> choose(ps, s, 10)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['L44YbmhY', 'Fk3t', 'GX1ji0EpoC', 'O6kwd', 'h3Xt', 'sYp6dE']
-          >>> s = lambda p: p == 'O6kwd' or p == 'h3Xt' or p == 'sYp6dE'
-          >>> choose(ps, s, 0)
-          'O6kwd'
-          >>> choose(ps, s, 1)
-          'h3Xt'
-          >>> choose(ps, s, 2)
-          'sYp6dE'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> ps = []
           >>> s = lambda p: False
-          >>> choose(ps, s, 0)
+          >>> pick(ps, s, 0)
           ''
-          >>> choose(ps, s, 1)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['CoQh', 'M5swk', '0JNxcv0b', 'RDLb7uGl', 'v8RyWA6PB7', 'R2Z']
-          >>> s = lambda p: p == 'CoQh'
-          >>> choose(ps, s, 0)
-          'CoQh'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
+          >>> pick(ps, s, 1)
           ''
           """,
           'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['X', '6qZr7B', 'UEx', 'J']
-          >>> s = lambda p: p == 'J' or p == 'UEx' or p == 'X'
-          >>> choose(ps, s, 0)
-          'X'
-          >>> choose(ps, s, 1)
-          'UEx'
-          >>> choose(ps, s, 2)
-          'J'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['XT7d', 'u', 'VQ4x', 'wzdhdJMT']
-          >>> s = lambda p: p == 'VQ4x' or p == 'XT7d' or p == 'wzdhdJMT'
-          >>> choose(ps, s, 0)
-          'XT7d'
-          >>> choose(ps, s, 1)
-          'VQ4x'
-          >>> choose(ps, s, 2)
-          'wzdhdJMT'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['F', 'Je54pb', '52ixUi']
-          >>> s = lambda p: p == 'F'
-          >>> choose(ps, s, 0)
-          'F'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['06tslD8Bq', 'iGF', 'wI7pEIcY', 'xi428Wc', 'OimbC']
-          >>> s = lambda p: p == '06tslD8Bq' or p == 'OimbC'
-          >>> choose(ps, s, 0)
-          '06tslD8Bq'
-          >>> choose(ps, s, 1)
-          'OimbC'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['hiiZqx7', 'h', 'TX3YAYRb', '70iPYPb1', 'j', 'acU', 'eJ']
-          >>> s = lambda p: p == '70iPYPb1' or p == 'TX3YAYRb' or p == 'eJ' or p == 'h'
-          >>> choose(ps, s, 0)
-          'h'
-          >>> choose(ps, s, 1)
-          'TX3YAYRb'
-          >>> choose(ps, s, 2)
-          '70iPYPb1'
-          >>> choose(ps, s, 3)
-          'eJ'
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> ps = []
           >>> s = lambda p: False
-          >>> choose(ps, s, 0)
+          >>> pick(ps, s, 0)
           ''
-          >>> choose(ps, s, 1)
+          >>> pick(ps, s, 1)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['20Ymff', 'sK', 's', 'Ag7H', 'KpCpiJO', '7eme86FfN4', 'ng', 'TL0Ek']
-          >>> s = lambda p: p == '20Ymff' or p == 'Ag7H' or p == 'TL0Ek' or p == 's'
-          >>> choose(ps, s, 0)
-          '20Ymff'
-          >>> choose(ps, s, 1)
-          's'
-          >>> choose(ps, s, 2)
-          'Ag7H'
-          >>> choose(ps, s, 3)
-          'TL0Ek'
-          >>> choose(ps, s, 4)
+          >>> ps = ['YSw2G9VmQ9', 'ER', 'r7ey5O', 'XO3sj', '2MWemTjKV1', 'ZZIaR', 'TIv0ZHG']
+          >>> s = lambda p: p == '2MWemTjKV1'
+          >>> pick(ps, s, 0)
+          '2MWemTjKV1'
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 2)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 3)
           ''
-          >>> choose(ps, s, 7)
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 8)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 9)
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['0lQzW0tyg', 'yvW708v']
+          >>> s = lambda p: p == 'yvW708v'
+          >>> pick(ps, s, 0)
+          'yvW708v'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> ps = []
           >>> s = lambda p: False
-          >>> choose(ps, s, 0)
+          >>> pick(ps, s, 0)
           ''
-          >>> choose(ps, s, 1)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['GjfqvE', 'PL6UL', 'KJBMC', 'kgzHn', 'NWyO2', 'Cf5sl', '8Exh', 'B94I', 'E3rd1T']
-          >>> s = lambda p: p == '8Exh' or p == 'B94I' or p == 'Cf5sl' or p == 'NWyO2' or p == 'PL6UL' or p == 'kgzHn'
-          >>> choose(ps, s, 0)
-          'PL6UL'
-          >>> choose(ps, s, 1)
-          'kgzHn'
-          >>> choose(ps, s, 2)
-          'NWyO2'
-          >>> choose(ps, s, 3)
-          'Cf5sl'
-          >>> choose(ps, s, 4)
-          '8Exh'
-          >>> choose(ps, s, 5)
-          'B94I'
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          >>> choose(ps, s, 10)
+          >>> pick(ps, s, 1)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['wC3GfQlB', 'JHJH', 'XqlW2U', 'mN5KwhN', 'uI1Rouka']
-          >>> s = lambda p: p == 'JHJH' or p == 'XqlW2U' or p == 'uI1Rouka' or p == 'wC3GfQlB'
-          >>> choose(ps, s, 0)
-          'wC3GfQlB'
-          >>> choose(ps, s, 1)
-          'JHJH'
-          >>> choose(ps, s, 2)
-          'XqlW2U'
-          >>> choose(ps, s, 3)
-          'uI1Rouka'
-          >>> choose(ps, s, 4)
+          >>> ps = ['auPQIQ7', 'tk7FMoy', 'vNDPPf3d', '2LtT', 'ynsLz', 'frmxE', 'L', 'NKv']
+          >>> s = lambda p: p == 'NKv' or p == 'tk7FMoy'
+          >>> pick(ps, s, 0)
+          'tk7FMoy'
+          >>> pick(ps, s, 1)
+          'NKv'
+          >>> pick(ps, s, 2)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 3)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['L79w0W', '6mj6fs6zl', 'JMAx5', 'TAxJlgomqw', 'VqC', 'v77m', 'L', 'fGNj28', 'n0FiOnb']
-          >>> s = lambda p: p == 'JMAx5' or p == 'L79w0W' or p == 'TAxJlgomqw'
-          >>> choose(ps, s, 0)
-          'L79w0W'
-          >>> choose(ps, s, 1)
-          'JMAx5'
-          >>> choose(ps, s, 2)
-          'TAxJlgomqw'
-          >>> choose(ps, s, 3)
+          >>> ps = ['Y', 'ENbBM', 'at4eksVN1', 'o8VT', 'x1a']
+          >>> s = lambda p: p == 'ENbBM'
+          >>> pick(ps, s, 0)
+          'ENbBM'
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 2)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 3)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 7)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
-          ''
-          >>> choose(ps, s, 10)
+          >>> pick(ps, s, 6)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['pxH', '4', 'rjgP3e00', 'uqM4zxd', 'bs2']
-          >>> s = lambda p: p == '4' or p == 'rjgP3e00'
-          >>> choose(ps, s, 0)
-          '4'
-          >>> choose(ps, s, 1)
-          'rjgP3e00'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['9D9L3LBH2', 'J', 'VhFH13iZk', 'DBa3RTBs', 'yW', 'k877CPSy0', 'n0P69H']
-          >>> s = lambda p: p == '9D9L3LBH2' or p == 'k877CPSy0' or p == 'n0P69H' or p == 'yW'
-          >>> choose(ps, s, 0)
-          '9D9L3LBH2'
-          >>> choose(ps, s, 1)
-          'yW'
-          >>> choose(ps, s, 2)
-          'k877CPSy0'
-          >>> choose(ps, s, 3)
-          'n0P69H'
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['paIR6', '7xwK5A3VXy', 'RlU', '1', 'HzkFCL1']
-          >>> s = lambda p: p == '1' or p == '7xwK5A3VXy' or p == 'HzkFCL1'
-          >>> choose(ps, s, 0)
-          '7xwK5A3VXy'
-          >>> choose(ps, s, 1)
-          '1'
-          >>> choose(ps, s, 2)
-          'HzkFCL1'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['wp4I4O', '35', 'ilyr69', 'IW', 'ge', 'z2YoOA']
-          >>> s = lambda p: p == '35' or p == 'ge'
-          >>> choose(ps, s, 0)
-          '35'
-          >>> choose(ps, s, 1)
-          'ge'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['x', 'ovJ0zHALaM', 'uQ8ca']
-          >>> s = lambda p: p == 'uQ8ca' or p == 'x'
-          >>> choose(ps, s, 0)
-          'x'
-          >>> choose(ps, s, 1)
-          'uQ8ca'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['Rp15aFda']
-          >>> s = lambda p: p == 'Rp15aFda'
-          >>> choose(ps, s, 0)
-          'Rp15aFda'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['kpJi5rI']
-          >>> s = lambda p: p == 'kpJi5rI'
-          >>> choose(ps, s, 0)
-          'kpJi5rI'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['IqV', '7Qb', 'fTVSZxW5']
-          >>> s = lambda p: p == '7Qb' or p == 'fTVSZxW5'
-          >>> choose(ps, s, 0)
-          '7Qb'
-          >>> choose(ps, s, 1)
-          'fTVSZxW5'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['rjZl61rKE', 'HDjOZ1']
-          >>> s = lambda p: p == 'rjZl61rKE'
-          >>> choose(ps, s, 0)
-          'rjZl61rKE'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['sGraoBYg', 'oLA4', 'yvOQGzZ', 'hLPo8k0gen']
-          >>> s = lambda p: p == 'hLPo8k0gen' or p == 'yvOQGzZ'
-          >>> choose(ps, s, 0)
-          'yvOQGzZ'
-          >>> choose(ps, s, 1)
-          'hLPo8k0gen'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['3M2X0Zv', 'F', 'k2DiIqXEK', 'gu9']
-          >>> s = lambda p: p == '3M2X0Zv' or p == 'F' or p == 'k2DiIqXEK'
-          >>> choose(ps, s, 0)
-          '3M2X0Zv'
-          >>> choose(ps, s, 1)
-          'F'
-          >>> choose(ps, s, 2)
-          'k2DiIqXEK'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['vh4DgMbOL', 'p4', 'XASk3gAAVQ', 'tielaIdpE', 'Dw']
-          >>> s = lambda p: p == 'Dw' or p == 'vh4DgMbOL'
-          >>> choose(ps, s, 0)
-          'vh4DgMbOL'
-          >>> choose(ps, s, 1)
-          'Dw'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['Z6npAvZk', 'N', 'VFAkGss', 'gG7']
+          >>> ps = ['l0sZzF']
           >>> s = lambda p: False
-          >>> choose(ps, s, 0)
+          >>> pick(ps, s, 0)
           ''
-          >>> choose(ps, s, 1)
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 2)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['kfhzjB', 'wzTJ', 'O1JE2KF3']
-          >>> s = lambda p: p == 'O1JE2KF3' or p == 'wzTJ'
-          >>> choose(ps, s, 0)
-          'wzTJ'
-          >>> choose(ps, s, 1)
-          'O1JE2KF3'
-          >>> choose(ps, s, 2)
+          >>> ps = ['RfD92AMft', '1sYnFXT7x', '4G6oqY', 'I8hl', 'I01gb', '1cfGgts', '2tmdpqV6lK', 'WSZ080', '2Zx']
+          >>> s = lambda p: p == '1cfGgts' or p == '4G6oqY' or p == 'RfD92AMft' or p == 'WSZ080'
+          >>> pick(ps, s, 0)
+          'RfD92AMft'
+          >>> pick(ps, s, 1)
+          '4G6oqY'
+          >>> pick(ps, s, 2)
+          '1cfGgts'
+          >>> pick(ps, s, 3)
+          'WSZ080'
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 3)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          >>> pick(ps, s, 10)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['KkSWCyxu', 'mStVtBi']
-          >>> s = lambda p: p == 'KkSWCyxu' or p == 'mStVtBi'
-          >>> choose(ps, s, 0)
-          'KkSWCyxu'
-          >>> choose(ps, s, 1)
-          'mStVtBi'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['RA3uXwj4HM', 'y', 'Q0l1dq', 'ycJNy4V5', 'JRwovXgf', 'WTqDQ7Qt']
-          >>> s = lambda p: p == 'JRwovXgf' or p == 'Q0l1dq' or p == 'RA3uXwj4HM'
-          >>> choose(ps, s, 0)
-          'RA3uXwj4HM'
-          >>> choose(ps, s, 1)
-          'Q0l1dq'
-          >>> choose(ps, s, 2)
-          'JRwovXgf'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['y87', '0', 'vU1uNi', 'x', 'HuY2b', 'p']
-          >>> s = lambda p: p == '0' or p == 'p' or p == 'vU1uNi'
-          >>> choose(ps, s, 0)
+          >>> ps = ['A', 'csq8G', 'YD2HwwOl6', 'N967LBA', 'eoLalNDIm8', '0', 'meY', 'oNxuI8MIY']
+          >>> s = lambda p: p == '0' or p == 'N967LBA' or p == 'YD2HwwOl6' or p == 'eoLalNDIm8' or p == 'meY'
+          >>> pick(ps, s, 0)
+          'YD2HwwOl6'
+          >>> pick(ps, s, 1)
+          'N967LBA'
+          >>> pick(ps, s, 2)
+          'eoLalNDIm8'
+          >>> pick(ps, s, 3)
           '0'
-          >>> choose(ps, s, 1)
-          'vU1uNi'
-          >>> choose(ps, s, 2)
-          'p'
-          >>> choose(ps, s, 3)
+          >>> pick(ps, s, 4)
+          'meY'
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 6)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 7)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 8)
           ''
-          >>> choose(ps, s, 7)
+          >>> pick(ps, s, 9)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['OsFHq6MHE', 'jaiB', 'O', 'Wm', 'UWsHRw', '7wQ', 'cSX22kpZ']
-          >>> s = lambda p: p == '7wQ' or p == 'O' or p == 'UWsHRw'
-          >>> choose(ps, s, 0)
-          'O'
-          >>> choose(ps, s, 1)
-          'UWsHRw'
-          >>> choose(ps, s, 2)
-          '7wQ'
-          >>> choose(ps, s, 3)
+          >>> ps = ['gPfGb2k', 'SFXa56cid5']
+          >>> s = lambda p: p == 'SFXa56cid5' or p == 'gPfGb2k'
+          >>> pick(ps, s, 0)
+          'gPfGb2k'
+          >>> pick(ps, s, 1)
+          'SFXa56cid5'
+          >>> pick(ps, s, 2)
           ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
+          >>> pick(ps, s, 3)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['UkLE', 'pAVhDv', 'qiC1bA8ah', 'S', 'O90', 'd5p', 'F2', 'LE']
-          >>> s = lambda p: p == 'LE' or p == 'O90' or p == 'S' or p == 'UkLE' or p == 'd5p'
-          >>> choose(ps, s, 0)
-          'UkLE'
-          >>> choose(ps, s, 1)
-          'S'
-          >>> choose(ps, s, 2)
-          'O90'
-          >>> choose(ps, s, 3)
-          'd5p'
-          >>> choose(ps, s, 4)
-          'LE'
-          >>> choose(ps, s, 5)
+          >>> ps = ['CD', 'h', 'E7']
+          >>> s = lambda p: p == 'CD' or p == 'E7'
+          >>> pick(ps, s, 0)
+          'CD'
+          >>> pick(ps, s, 1)
+          'E7'
+          >>> pick(ps, s, 2)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 3)
           ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
+          >>> pick(ps, s, 4)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['Ukq', 'dbMQhHK1U', '30RP1UdY', 'KdvbN', 'ljBPmC9H9', 'tU']
-          >>> s = lambda p: p == 'KdvbN' or p == 'Ukq' or p == 'ljBPmC9H9'
-          >>> choose(ps, s, 0)
-          'Ukq'
-          >>> choose(ps, s, 1)
-          'KdvbN'
-          >>> choose(ps, s, 2)
-          'ljBPmC9H9'
-          >>> choose(ps, s, 3)
+          >>> ps = ['RfLCTEoQP', 'j', 'KpOY0rO']
+          >>> s = lambda p: p == 'RfLCTEoQP'
+          >>> pick(ps, s, 0)
+          'RfLCTEoQP'
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 2)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 3)
           ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
+          >>> pick(ps, s, 4)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['ejCQLlFjJJ', 'kVEFL19YZ', 'NV6F', 'Ub7QK0', 'zgp', 'MhPk5BZw', 'NTvvrJI971', 'x7GXW1D', 'tx2CUL']
-          >>> s = lambda p: p == 'NTvvrJI971' or p == 'NV6F' or p == 'kVEFL19YZ' or p == 'x7GXW1D' or p == 'zgp'
-          >>> choose(ps, s, 0)
-          'kVEFL19YZ'
-          >>> choose(ps, s, 1)
-          'NV6F'
-          >>> choose(ps, s, 2)
-          'zgp'
-          >>> choose(ps, s, 3)
-          'NTvvrJI971'
-          >>> choose(ps, s, 4)
-          'x7GXW1D'
-          >>> choose(ps, s, 5)
+          >>> ps = ['EdTSBXJusc', 'alRMq', 'op', 'kLZC', 'IpbS9MJ', 'zJLSk8yBg', 'IoT']
+          >>> s = lambda p: p == 'IoT' or p == 'IpbS9MJ' or p == 'kLZC' or p == 'zJLSk8yBg'
+          >>> pick(ps, s, 0)
+          'kLZC'
+          >>> pick(ps, s, 1)
+          'IpbS9MJ'
+          >>> pick(ps, s, 2)
+          'zJLSk8yBg'
+          >>> pick(ps, s, 3)
+          'IoT'
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 7)
+          >>> pick(ps, s, 6)
           ''
-          >>> choose(ps, s, 8)
+          >>> pick(ps, s, 7)
           ''
-          >>> choose(ps, s, 9)
-          ''
-          >>> choose(ps, s, 10)
+          >>> pick(ps, s, 8)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['t', 'ia', 'IrGh3gZ', 'TMQ0KWEaqu', 'S', 't5', 'JkkzgRT', 'R']
-          >>> s = lambda p: p == 'IrGh3gZ' or p == 'R' or p == 'TMQ0KWEaqu' or p == 'ia'
-          >>> choose(ps, s, 0)
-          'ia'
-          >>> choose(ps, s, 1)
-          'IrGh3gZ'
-          >>> choose(ps, s, 2)
-          'TMQ0KWEaqu'
-          >>> choose(ps, s, 3)
-          'R'
-          >>> choose(ps, s, 4)
+          >>> ps = ['304lsOWM', '0kx7n']
+          >>> s = lambda p: p == '304lsOWM'
+          >>> pick(ps, s, 0)
+          '304lsOWM'
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 2)
           ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
-          ''
-          >>> choose(ps, s, 9)
+          >>> pick(ps, s, 3)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['haAQbpI9']
+          >>> ps = ['GSr', 'H', 'kdps', 'X', 'EFMVi']
+          >>> s = lambda p: p == 'EFMVi' or p == 'GSr' or p == 'H' or p == 'X' or p == 'kdps'
+          >>> pick(ps, s, 0)
+          'GSr'
+          >>> pick(ps, s, 1)
+          'H'
+          >>> pick(ps, s, 2)
+          'kdps'
+          >>> pick(ps, s, 3)
+          'X'
+          >>> pick(ps, s, 4)
+          'EFMVi'
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['93qZ2FApAL', 'lDq', 'Gf', 'JzE', 'z3ZL9ig0', '8AV7vJabk', 'YI6YCcep2B', 'h']
+          >>> s = lambda p: p == '8AV7vJabk' or p == '93qZ2FApAL' or p == 'JzE' or p == 'lDq' or p == 'z3ZL9ig0'
+          >>> pick(ps, s, 0)
+          '93qZ2FApAL'
+          >>> pick(ps, s, 1)
+          'lDq'
+          >>> pick(ps, s, 2)
+          'JzE'
+          >>> pick(ps, s, 3)
+          'z3ZL9ig0'
+          >>> pick(ps, s, 4)
+          '8AV7vJabk'
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['Hc8ZUR', 'lTYGK8fqL', 'k4s3M4qbGv', '0I2', '2x', 'H', 'd2WgDNGyM', 'tZm', 'B2KlNoOK2']
+          >>> s = lambda p: p == '2x' or p == 'd2WgDNGyM' or p == 'lTYGK8fqL'
+          >>> pick(ps, s, 0)
+          'lTYGK8fqL'
+          >>> pick(ps, s, 1)
+          '2x'
+          >>> pick(ps, s, 2)
+          'd2WgDNGyM'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          >>> pick(ps, s, 10)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['X', 'DY3sRp']
           >>> s = lambda p: False
-          >>> choose(ps, s, 0)
+          >>> pick(ps, s, 0)
           ''
-          >>> choose(ps, s, 1)
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 2)
+          >>> pick(ps, s, 2)
           ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['uRLyF', '5', '1StG72K2', '1Vopk', 'J7blr5gu', '48HObQ', 'ZeDZPCa']
-          >>> s = lambda p: p == '1StG72K2' or p == '1Vopk' or p == 'J7blr5gu' or p == 'ZeDZPCa'
-          >>> choose(ps, s, 0)
-          '1StG72K2'
-          >>> choose(ps, s, 1)
-          '1Vopk'
-          >>> choose(ps, s, 2)
-          'J7blr5gu'
-          >>> choose(ps, s, 3)
-          'ZeDZPCa'
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
+          >>> pick(ps, s, 3)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['xOP24D0', 'Zodm4', 'uwMG3', 'Mezx', 'Cnx']
-          >>> s = lambda p: p == 'Cnx' or p == 'Zodm4' or p == 'uwMG3'
-          >>> choose(ps, s, 0)
-          'Zodm4'
-          >>> choose(ps, s, 1)
-          'uwMG3'
-          >>> choose(ps, s, 2)
-          'Cnx'
-          >>> choose(ps, s, 3)
+          >>> ps = ['Ldanr2', '7eCQ', 'uRSJ41vut', 'rgLg', '1', 'HV2Zd9', 'Mb', 'wmk3kbCen']
+          >>> s = lambda p: p == 'HV2Zd9' or p == 'Ldanr2' or p == 'wmk3kbCen'
+          >>> pick(ps, s, 0)
+          'Ldanr2'
+          >>> pick(ps, s, 1)
+          'HV2Zd9'
+          >>> pick(ps, s, 2)
+          'wmk3kbCen'
+          >>> pick(ps, s, 3)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['uysO', 'xr', 'QlQVnYpC', '60cnCRSFpD', 'KJMpWnm', 'JtCa62c', 'pucq0LauM2']
-          >>> s = lambda p: p == 'JtCa62c' or p == 'KJMpWnm' or p == 'QlQVnYpC' or p == 'pucq0LauM2'
-          >>> choose(ps, s, 0)
-          'QlQVnYpC'
-          >>> choose(ps, s, 1)
-          'KJMpWnm'
-          >>> choose(ps, s, 2)
-          'JtCa62c'
-          >>> choose(ps, s, 3)
-          'pucq0LauM2'
-          >>> choose(ps, s, 4)
+          >>> ps = ['F', 'MRL', 'H59IjPk']
+          >>> s = lambda p: p == 'F'
+          >>> pick(ps, s, 0)
+          'F'
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 2)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 3)
           ''
-          >>> choose(ps, s, 7)
-          ''
-          >>> choose(ps, s, 8)
+          >>> pick(ps, s, 4)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['kYdw', 'xZprfY0a', 'jCUQeZSTYC', 'ozip', 'fG4pdENZ', 'W79']
-          >>> s = lambda p: p == 'ozip'
-          >>> choose(ps, s, 0)
-          'ozip'
-          >>> choose(ps, s, 1)
+          >>> ps = ['mQU9baph', 'ZZYcg3z', 'ywN6dz', 'J39Fd49DZV', 'js', 'MLC']
+          >>> s = lambda p: p == 'MLC' or p == 'ywN6dz'
+          >>> pick(ps, s, 0)
+          'ywN6dz'
+          >>> pick(ps, s, 1)
+          'MLC'
+          >>> pick(ps, s, 2)
           ''
-          >>> choose(ps, s, 2)
+          >>> pick(ps, s, 3)
           ''
-          >>> choose(ps, s, 3)
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 6)
           ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
+          >>> pick(ps, s, 7)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['4U', 'XX9Q', 'dP']
-          >>> s = lambda p: p == 'XX9Q'
-          >>> choose(ps, s, 0)
-          'XX9Q'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['dBn', 'FIUqoQH', 'Rd']
-          >>> s = lambda p: p == 'FIUqoQH' or p == 'Rd' or p == 'dBn'
-          >>> choose(ps, s, 0)
-          'dBn'
-          >>> choose(ps, s, 1)
-          'FIUqoQH'
-          >>> choose(ps, s, 2)
-          'Rd'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['ONaaOd86', 'ieq1a']
+          >>> ps = ['PA', 'k8DawMrmv']
           >>> s = lambda p: False
-          >>> choose(ps, s, 0)
+          >>> pick(ps, s, 0)
           ''
-          >>> choose(ps, s, 1)
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 2)
+          >>> pick(ps, s, 2)
           ''
-          >>> choose(ps, s, 3)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['418oTaUHk6']
-          >>> s = lambda p: False
-          >>> choose(ps, s, 0)
-          ''
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
+          >>> pick(ps, s, 3)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> ps = []
           >>> s = lambda p: False
-          >>> choose(ps, s, 0)
+          >>> pick(ps, s, 0)
           ''
-          >>> choose(ps, s, 1)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['S', 'OjBP', 'Tr6n34PS8D', 'o60Xa']
-          >>> s = lambda p: p == 'OjBP' or p == 'S' or p == 'o60Xa'
-          >>> choose(ps, s, 0)
-          'S'
-          >>> choose(ps, s, 1)
-          'OjBP'
-          >>> choose(ps, s, 2)
-          'o60Xa'
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 1)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['gZGj8G9', 'tJOJixv2E', 'Rzt', 'uSlA95Kop', 'uPNkjiUV9K', 'WjTvFY']
-          >>> s = lambda p: p == 'Rzt' or p == 'uPNkjiUV9K' or p == 'uSlA95Kop'
-          >>> choose(ps, s, 0)
-          'Rzt'
-          >>> choose(ps, s, 1)
-          'uSlA95Kop'
-          >>> choose(ps, s, 2)
-          'uPNkjiUV9K'
-          >>> choose(ps, s, 3)
+          >>> ps = ['z57ZNLrLs', 'VRaYb1tYo', 'AQ', 'K2ZUMUeb', '16', '0rhAwFK', 'G5WDJkhg', 'SFFRBWZOY']
+          >>> s = lambda p: p == '0rhAwFK' or p == 'K2ZUMUeb' or p == 'VRaYb1tYo' or p == 'z57ZNLrLs'
+          >>> pick(ps, s, 0)
+          'z57ZNLrLs'
+          >>> pick(ps, s, 1)
+          'VRaYb1tYo'
+          >>> pick(ps, s, 2)
+          'K2ZUMUeb'
+          >>> pick(ps, s, 3)
+          '0rhAwFK'
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 6)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 7)
           ''
-          >>> choose(ps, s, 7)
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['p', 'Qu', 'HWfS6W', 'Hle', 'AzhNgkwD', 'nbWO', 'qGf3vd9', 'nQ1VdUxn7Z']
-          >>> s = lambda p: p == 'HWfS6W' or p == 'p' or p == 'qGf3vd9'
-          >>> choose(ps, s, 0)
-          'p'
-          >>> choose(ps, s, 1)
-          'HWfS6W'
-          >>> choose(ps, s, 2)
-          'qGf3vd9'
-          >>> choose(ps, s, 3)
+          >>> ps = ['F', 'hyZN', 'ZY', 'vnp3634n', 'FLXmF7Lct6', 'ew', 'EvEi9ENwsx', 'w3YnNbSmn', 'tGsGhvAsH8']
+          >>> s = lambda p: p == 'EvEi9ENwsx' or p == 'F' or p == 'ZY' or p == 'tGsGhvAsH8'
+          >>> pick(ps, s, 0)
+          'F'
+          >>> pick(ps, s, 1)
+          'ZY'
+          >>> pick(ps, s, 2)
+          'EvEi9ENwsx'
+          >>> pick(ps, s, 3)
+          'tGsGhvAsH8'
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 6)
           ''
-          >>> choose(ps, s, 6)
+          >>> pick(ps, s, 7)
           ''
-          >>> choose(ps, s, 7)
+          >>> pick(ps, s, 8)
           ''
-          >>> choose(ps, s, 8)
+          >>> pick(ps, s, 9)
           ''
-          >>> choose(ps, s, 9)
+          >>> pick(ps, s, 10)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['TwRL6', 's8HA7NEy9', 'x']
-          >>> s = lambda p: p == 'x'
-          >>> choose(ps, s, 0)
+          >>> ps = ['uND35F', 'c25CIccuvf', 'Q2hf9', 'h', '76']
+          >>> s = lambda p: p == '76' or p == 'Q2hf9' or p == 'h' or p == 'uND35F'
+          >>> pick(ps, s, 0)
+          'uND35F'
+          >>> pick(ps, s, 1)
+          'Q2hf9'
+          >>> pick(ps, s, 2)
+          'h'
+          >>> pick(ps, s, 3)
+          '76'
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['X', 'DlPnvunj7T', 'eYRTlaACA', 'd', 'zsns3L', '7Iqa4', 'uCP1go']
+          >>> s = lambda p: p == '7Iqa4' or p == 'DlPnvunj7T' or p == 'X' or p == 'd' or p == 'eYRTlaACA'
+          >>> pick(ps, s, 0)
+          'X'
+          >>> pick(ps, s, 1)
+          'DlPnvunj7T'
+          >>> pick(ps, s, 2)
+          'eYRTlaACA'
+          >>> pick(ps, s, 3)
+          'd'
+          >>> pick(ps, s, 4)
+          '7Iqa4'
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['0pLcv1']
+          >>> s = lambda p: p == '0pLcv1'
+          >>> pick(ps, s, 0)
+          '0pLcv1'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['NILkkPinUi', 't0', 'v', 'R4U', 'u4o', 'wr9XAN', 'UxSdAGf6j']
+          >>> s = lambda p: p == 'R4U' or p == 't0'
+          >>> pick(ps, s, 0)
+          't0'
+          >>> pick(ps, s, 1)
+          'R4U'
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['Gp', 'iZg', 'IqbFcokMP', 't4RSwwh', 'Ctxpyk3', '5CGYzYN1p9', 'JKg11tt', 'D']
+          >>> s = lambda p: p == 'Gp' or p == 'IqbFcokMP' or p == 'iZg'
+          >>> pick(ps, s, 0)
+          'Gp'
+          >>> pick(ps, s, 1)
+          'iZg'
+          >>> pick(ps, s, 2)
+          'IqbFcokMP'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['5', 'gl2lj5soWr', 'e4UQ2d', 'o2T', 'tIUGQKT']
+          >>> s = lambda p: p == '5' or p == 'e4UQ2d' or p == 'o2T' or p == 'tIUGQKT'
+          >>> pick(ps, s, 0)
+          '5'
+          >>> pick(ps, s, 1)
+          'e4UQ2d'
+          >>> pick(ps, s, 2)
+          'o2T'
+          >>> pick(ps, s, 3)
+          'tIUGQKT'
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['U', 'sR3WXvxV0h', 'pjGtb4EZ1', 'MqO', 'i0R']
+          >>> s = lambda p: p == 'U' or p == 'pjGtb4EZ1' or p == 'sR3WXvxV0h'
+          >>> pick(ps, s, 0)
+          'U'
+          >>> pick(ps, s, 1)
+          'sR3WXvxV0h'
+          >>> pick(ps, s, 2)
+          'pjGtb4EZ1'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['1', '1gN1', 'm', 'wtM0', 'EXqazAV', '82Jrsbx']
+          >>> s = lambda p: p == '1' or p == 'm' or p == 'wtM0'
+          >>> pick(ps, s, 0)
+          '1'
+          >>> pick(ps, s, 1)
+          'm'
+          >>> pick(ps, s, 2)
+          'wtM0'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['L1SchAt4fb', 'PZxrWEu', 'Z']
+          >>> s = lambda p: p == 'L1SchAt4fb' or p == 'Z'
+          >>> pick(ps, s, 0)
+          'L1SchAt4fb'
+          >>> pick(ps, s, 1)
+          'Z'
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['ipYmZQQ', 'WlG', 'PGT9UN', '0k0JqROEtL', 'InWB86Ezx', 'pr']
+          >>> s = lambda p: p == '0k0JqROEtL' or p == 'pr'
+          >>> pick(ps, s, 0)
+          '0k0JqROEtL'
+          >>> pick(ps, s, 1)
+          'pr'
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['uilC', '5C', 'du2lbz', 'C0']
+          >>> s = lambda p: p == '5C' or p == 'du2lbz' or p == 'uilC'
+          >>> pick(ps, s, 0)
+          'uilC'
+          >>> pick(ps, s, 1)
+          '5C'
+          >>> pick(ps, s, 2)
+          'du2lbz'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['iQ7fUEGX', 'yYpvrxFw', 'XD', 'SZuNFuOl9G', 'Y', 'D9GOm', 'mhEzPwaQ', 'OK6V']
+          >>> s = lambda p: p == 'D9GOm' or p == 'SZuNFuOl9G' or p == 'XD' or p == 'iQ7fUEGX'
+          >>> pick(ps, s, 0)
+          'iQ7fUEGX'
+          >>> pick(ps, s, 1)
+          'XD'
+          >>> pick(ps, s, 2)
+          'SZuNFuOl9G'
+          >>> pick(ps, s, 3)
+          'D9GOm'
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['mKXoHy', 'uwN9gNbHUs', 'B', 'oiQsIfR', 'wy2', 'ydYhiQAYge', 'tsZiGcHBky']
+          >>> s = lambda p: p == 'B' or p == 'mKXoHy' or p == 'uwN9gNbHUs'
+          >>> pick(ps, s, 0)
+          'mKXoHy'
+          >>> pick(ps, s, 1)
+          'uwN9gNbHUs'
+          >>> pick(ps, s, 2)
+          'B'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['P3bKdUdm3', 'm', 'Mf0', '4']
+          >>> s = lambda p: p == 'Mf0' or p == 'P3bKdUdm3'
+          >>> pick(ps, s, 0)
+          'P3bKdUdm3'
+          >>> pick(ps, s, 1)
+          'Mf0'
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['s02mysRaP']
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['xIg', 'B8CtQlMiZ', 'es', 'DQUyran1G3', 'uV0H45P', 'zq', 'ZR3FZxesMP', 'H3YQpNd8', '6gY']
+          >>> s = lambda p: p == '6gY' or p == 'H3YQpNd8' or p == 'ZR3FZxesMP' or p == 'xIg' or p == 'zq'
+          >>> pick(ps, s, 0)
+          'xIg'
+          >>> pick(ps, s, 1)
+          'zq'
+          >>> pick(ps, s, 2)
+          'ZR3FZxesMP'
+          >>> pick(ps, s, 3)
+          'H3YQpNd8'
+          >>> pick(ps, s, 4)
+          '6gY'
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          >>> pick(ps, s, 10)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['nOOofieJ9', 'adYNFKzY', 'oq', 'm2bMd96oQk']
+          >>> s = lambda p: p == 'adYNFKzY' or p == 'm2bMd96oQk' or p == 'oq'
+          >>> pick(ps, s, 0)
+          'adYNFKzY'
+          >>> pick(ps, s, 1)
+          'oq'
+          >>> pick(ps, s, 2)
+          'm2bMd96oQk'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['EWv', 'gGgVsIrdaw']
+          >>> s = lambda p: p == 'EWv'
+          >>> pick(ps, s, 0)
+          'EWv'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['Ow3a998p', 'enyrA', 'lRY672', 'wCB', 'vX2kPf', '1chq', 'ixgdI']
+          >>> s = lambda p: p == 'Ow3a998p' or p == 'vX2kPf' or p == 'wCB'
+          >>> pick(ps, s, 0)
+          'Ow3a998p'
+          >>> pick(ps, s, 1)
+          'wCB'
+          >>> pick(ps, s, 2)
+          'vX2kPf'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['Rch', 'CPOMxX', 'UU0LYC1O', 'xv2pCJOXo', 'zcZ280', 'y7WHG4y', 'L']
+          >>> s = lambda p: p == 'Rch' or p == 'zcZ280'
+          >>> pick(ps, s, 0)
+          'Rch'
+          >>> pick(ps, s, 1)
+          'zcZ280'
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['zDmdJf4', 'fUBVpey', 'HqlP2', 'vZN', 'nU51ij', 'v7f', 'YZ7xFI']
+          >>> s = lambda p: p == 'HqlP2' or p == 'fUBVpey' or p == 'nU51ij' or p == 'zDmdJf4'
+          >>> pick(ps, s, 0)
+          'zDmdJf4'
+          >>> pick(ps, s, 1)
+          'fUBVpey'
+          >>> pick(ps, s, 2)
+          'HqlP2'
+          >>> pick(ps, s, 3)
+          'nU51ij'
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['f4A']
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['Xrzwzt', 'v', 'KX', 'H3d2xZ', '4v']
+          >>> s = lambda p: p == '4v' or p == 'H3d2xZ' or p == 'KX' or p == 'Xrzwzt'
+          >>> pick(ps, s, 0)
+          'Xrzwzt'
+          >>> pick(ps, s, 1)
+          'KX'
+          >>> pick(ps, s, 2)
+          'H3d2xZ'
+          >>> pick(ps, s, 3)
+          '4v'
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['dDwAGMgl', 'l4X56Bpz', 'h7pz1nX', 'jRl', 'ND', 'g', 'Q2A', 'vnrI', '2mxw']
+          >>> s = lambda p: p == '2mxw' or p == 'ND' or p == 'g'
+          >>> pick(ps, s, 0)
+          'ND'
+          >>> pick(ps, s, 1)
+          'g'
+          >>> pick(ps, s, 2)
+          '2mxw'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          >>> pick(ps, s, 10)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['TSYkVXX8J', 'frYDl', 'YA46ttJC', 'l', 'FKtASZR', 'BDzdcFxX', 'ogN7N2k15y', 'dYj8sYDhxC', 'VgknQ']
+          >>> s = lambda p: p == 'VgknQ' or p == 'YA46ttJC' or p == 'l'
+          >>> pick(ps, s, 0)
+          'YA46ttJC'
+          >>> pick(ps, s, 1)
+          'l'
+          >>> pick(ps, s, 2)
+          'VgknQ'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          >>> pick(ps, s, 10)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['qN9RUqUGE', 'k46wF6wOD', 'OeXJBkF', 'w', 'Mx']
+          >>> s = lambda p: p == 'OeXJBkF' or p == 'k46wF6wOD' or p == 'w'
+          >>> pick(ps, s, 0)
+          'k46wF6wOD'
+          >>> pick(ps, s, 1)
+          'OeXJBkF'
+          >>> pick(ps, s, 2)
+          'w'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['YzL0HHUD7k']
+          >>> s = lambda p: p == 'YzL0HHUD7k'
+          >>> pick(ps, s, 0)
+          'YzL0HHUD7k'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['bAS4fmgP', 'Nn', 'FJjnXVE9Ul', 'OT5yBSF', 'GO32eXGldm', '8', 'hdQYZK']
+          >>> s = lambda p: p == '8' or p == 'FJjnXVE9Ul' or p == 'GO32eXGldm'
+          >>> pick(ps, s, 0)
+          'FJjnXVE9Ul'
+          >>> pick(ps, s, 1)
+          'GO32eXGldm'
+          >>> pick(ps, s, 2)
+          '8'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['o83']
+          >>> s = lambda p: p == 'o83'
+          >>> pick(ps, s, 0)
+          'o83'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['mJU', 'bs0DSA02C']
+          >>> s = lambda p: p == 'bs0DSA02C'
+          >>> pick(ps, s, 0)
+          'bs0DSA02C'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['8pds2kPGPz', 'sCQRiD', 'yLf6i0B3Q']
+          >>> s = lambda p: p == '8pds2kPGPz'
+          >>> pick(ps, s, 0)
+          '8pds2kPGPz'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['NrH', 'NGabhb', 'w33y19SdHp', 'lB1Lz', 'fK', '0eewNgUHY', 'z7T0j5', '0MlPnj', 'ji5Nw']
+          >>> s = lambda p: p == '0MlPnj' or p == '0eewNgUHY' or p == 'NGabhb' or p == 'NrH' or p == 'fK' or p == 'ji5Nw' or p == 'z7T0j5'
+          >>> pick(ps, s, 0)
+          'NrH'
+          >>> pick(ps, s, 1)
+          'NGabhb'
+          >>> pick(ps, s, 2)
+          'fK'
+          >>> pick(ps, s, 3)
+          '0eewNgUHY'
+          >>> pick(ps, s, 4)
+          'z7T0j5'
+          >>> pick(ps, s, 5)
+          '0MlPnj'
+          >>> pick(ps, s, 6)
+          'ji5Nw'
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          >>> pick(ps, s, 10)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['Ha', 'Xifelge', 'xoI', 'w73OM', 'iYNWXJ59v']
+          >>> s = lambda p: p == 'Xifelge' or p == 'iYNWXJ59v' or p == 'xoI'
+          >>> pick(ps, s, 0)
+          'Xifelge'
+          >>> pick(ps, s, 1)
+          'xoI'
+          >>> pick(ps, s, 2)
+          'iYNWXJ59v'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['kDfhLe4La0']
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['kX1sidw3UT', 'ZMI1uuiAae', 'kk9WcBKN', '3CqQNllBRZ', 'nhx8BfZH3P']
+          >>> s = lambda p: p == 'ZMI1uuiAae' or p == 'kk9WcBKN' or p == 'nhx8BfZH3P'
+          >>> pick(ps, s, 0)
+          'ZMI1uuiAae'
+          >>> pick(ps, s, 1)
+          'kk9WcBKN'
+          >>> pick(ps, s, 2)
+          'nhx8BfZH3P'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['qzxR', 'DhdP0zHm', '2JHw', 'BeDWISwn']
+          >>> s = lambda p: p == 'BeDWISwn'
+          >>> pick(ps, s, 0)
+          'BeDWISwn'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['2ZD2', 'Ujvf7Z']
+          >>> s = lambda p: p == '2ZD2'
+          >>> pick(ps, s, 0)
+          '2ZD2'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['sqRXmfefZu', 'VG', 'Ugij', 'MDXm', '4dJa', 'ppk1Oz', 'Q7fJgP9', 'IYy', 'F8Jyws']
+          >>> s = lambda p: p == '4dJa' or p == 'F8Jyws' or p == 'IYy' or p == 'MDXm' or p == 'VG'
+          >>> pick(ps, s, 0)
+          'VG'
+          >>> pick(ps, s, 1)
+          'MDXm'
+          >>> pick(ps, s, 2)
+          '4dJa'
+          >>> pick(ps, s, 3)
+          'IYy'
+          >>> pick(ps, s, 4)
+          'F8Jyws'
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          >>> pick(ps, s, 10)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['uenSyKB6', 'd5Z7i', 'hDgbK6']
+          >>> s = lambda p: p == 'hDgbK6'
+          >>> pick(ps, s, 0)
+          'hDgbK6'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['YAaF', 'LtejXQR3I', 'S348mz', 'QY']
+          >>> s = lambda p: p == 'QY' or p == 'S348mz'
+          >>> pick(ps, s, 0)
+          'S348mz'
+          >>> pick(ps, s, 1)
+          'QY'
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['AiRBkNK', 'l', '2IK', 'Xk', 'X', 'jckGefD', 'n5nSrsZWH', 'W5TO4oty2']
+          >>> s = lambda p: p == 'AiRBkNK' or p == 'X' or p == 'Xk' or p == 'jckGefD' or p == 'l' or p == 'n5nSrsZWH'
+          >>> pick(ps, s, 0)
+          'AiRBkNK'
+          >>> pick(ps, s, 1)
+          'l'
+          >>> pick(ps, s, 2)
+          'Xk'
+          >>> pick(ps, s, 3)
+          'X'
+          >>> pick(ps, s, 4)
+          'jckGefD'
+          >>> pick(ps, s, 5)
+          'n5nSrsZWH'
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['u2z7Y03iJc', 'RuNhLK']
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['m6uQ24YvD']
+          >>> s = lambda p: p == 'm6uQ24YvD'
+          >>> pick(ps, s, 0)
+          'm6uQ24YvD'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['B7Tx', '0yk1qfrx', '3aGm', 'TGHqcxtoTW', '13O6gwPzxF', 'TJ2VQS']
+          >>> s = lambda p: p == '0yk1qfrx'
+          >>> pick(ps, s, 0)
+          '0yk1qfrx'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['0lkP']
+          >>> s = lambda p: p == '0lkP'
+          >>> pick(ps, s, 0)
+          '0lkP'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['VykeNT', 'dpbP1sL', 'Jn5Ifn', 'yq']
+          >>> s = lambda p: p == 'Jn5Ifn' or p == 'VykeNT' or p == 'yq'
+          >>> pick(ps, s, 0)
+          'VykeNT'
+          >>> pick(ps, s, 1)
+          'Jn5Ifn'
+          >>> pick(ps, s, 2)
+          'yq'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['BdydSkvf', 'uL6Yj', 'PixYkaj', 'tEc', 'DMDnhULpwQ', 'SMG0aYMH9q']
+          >>> s = lambda p: p == 'BdydSkvf' or p == 'DMDnhULpwQ'
+          >>> pick(ps, s, 0)
+          'BdydSkvf'
+          >>> pick(ps, s, 1)
+          'DMDnhULpwQ'
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['NgfFbsH', 'PesgKW6q', 'Iy6d', '6', 'p7lmmO63G', 'jeYUS0wUf', 'I']
+          >>> s = lambda p: p == 'I' or p == 'p7lmmO63G'
+          >>> pick(ps, s, 0)
+          'p7lmmO63G'
+          >>> pick(ps, s, 1)
+          'I'
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
+          >>> s = lambda p: False
+          >>> pick(ps, s, 0)
+          ''
+          >>> pick(ps, s, 1)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['sPTbNQRAhh', 'IVEczM', 'fA9', 'A0AY9T', '7LJbrLU', 'Sjq', 'Z8PpCHs']
+          >>> s = lambda p: p == '7LJbrLU' or p == 'fA9'
+          >>> pick(ps, s, 0)
+          'fA9'
+          >>> pick(ps, s, 1)
+          '7LJbrLU'
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['rUEGEUqg', 'oHHWXQ0', 'x', 'a1', 'qxt', 'PjB7RBX', 't5nL', 'qDpQGg']
+          >>> s = lambda p: p == 'qDpQGg' or p == 'rUEGEUqg' or p == 't5nL' or p == 'x'
+          >>> pick(ps, s, 0)
+          'rUEGEUqg'
+          >>> pick(ps, s, 1)
           'x'
-          >>> choose(ps, s, 1)
+          >>> pick(ps, s, 2)
+          't5nL'
+          >>> pick(ps, s, 3)
+          'qDpQGg'
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 2)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 3)
+          >>> pick(ps, s, 6)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 7)
           ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['Ne6L', 'kGR']
-          >>> s = lambda p: p == 'Ne6L'
-          >>> choose(ps, s, 0)
-          'Ne6L'
-          >>> choose(ps, s, 1)
+          >>> pick(ps, s, 8)
           ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
+          >>> pick(ps, s, 9)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['D0D', 'LcCQ1']
+          >>> ps = ['i0xU89vb', 'fbLYeUU1En', 'sKbLE5N', 'rN', 'MLvZH4fHmU', 'c3BNQKY2', 'ce']
+          >>> s = lambda p: p == 'MLvZH4fHmU' or p == 'ce' or p == 'sKbLE5N'
+          >>> pick(ps, s, 0)
+          'sKbLE5N'
+          >>> pick(ps, s, 1)
+          'MLvZH4fHmU'
+          >>> pick(ps, s, 2)
+          'ce'
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['cIr8', 'skx4gl', '1SpUj', 'MYn09BdVIZ', 'Om7eLp7H']
+          >>> s = lambda p: p == 'MYn09BdVIZ'
+          >>> pick(ps, s, 0)
+          'MYn09BdVIZ'
+          >>> pick(ps, s, 1)
+          ''
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['GP108P', 'Mll7S8u', 'GffkIsAPzQ', 'hDAuAO', '8Kdsy', 'GySxVZen', 'wI5Tkn4bwx', 'WICmWpO']
+          >>> s = lambda p: p == '8Kdsy' or p == 'GffkIsAPzQ' or p == 'Mll7S8u' or p == 'wI5Tkn4bwx'
+          >>> pick(ps, s, 0)
+          'Mll7S8u'
+          >>> pick(ps, s, 1)
+          'GffkIsAPzQ'
+          >>> pick(ps, s, 2)
+          '8Kdsy'
+          >>> pick(ps, s, 3)
+          'wI5Tkn4bwx'
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['wkRz']
           >>> s = lambda p: False
-          >>> choose(ps, s, 0)
+          >>> pick(ps, s, 0)
           ''
-          >>> choose(ps, s, 1)
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
+          >>> pick(ps, s, 2)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['lgp', '6o6Hu5GB', 'I']
-          >>> s = lambda p: p == '6o6Hu5GB'
-          >>> choose(ps, s, 0)
-          '6o6Hu5GB'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['ypHvW', '05ZvX', 'ih', 'y', '3lfSRPXYUp']
-          >>> s = lambda p: p == '05ZvX' or p == 'ih' or p == 'y'
-          >>> choose(ps, s, 0)
-          '05ZvX'
-          >>> choose(ps, s, 1)
-          'ih'
-          >>> choose(ps, s, 2)
+          >>> ps = ['OXAbRon7U9', '4JMu7xz', 'k750O', 'jZrOMXgZt', 'y', '6U5', 'XBIuxFY', 'R3XBpqe']
+          >>> s = lambda p: p == '6U5' or p == 'OXAbRon7U9' or p == 'R3XBpqe' or p == 'jZrOMXgZt' or p == 'k750O' or p == 'y'
+          >>> pick(ps, s, 0)
+          'OXAbRon7U9'
+          >>> pick(ps, s, 1)
+          'k750O'
+          >>> pick(ps, s, 2)
+          'jZrOMXgZt'
+          >>> pick(ps, s, 3)
           'y'
-          >>> choose(ps, s, 3)
+          >>> pick(ps, s, 4)
+          '6U5'
+          >>> pick(ps, s, 5)
+          'R3XBpqe'
+          >>> pick(ps, s, 6)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 7)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 8)
           ''
-          >>> choose(ps, s, 6)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['L', 'YwD5']
-          >>> s = lambda p: p == 'YwD5'
-          >>> choose(ps, s, 0)
-          'YwD5'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
+          >>> pick(ps, s, 9)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['t2fcKxcHGV', 'hcOr0', 'N7VV', 'Ktu9', '10E', 'Fi']
-          >>> s = lambda p: p == 'hcOr0'
-          >>> choose(ps, s, 0)
-          'hcOr0'
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          >>> choose(ps, s, 6)
-          ''
-          >>> choose(ps, s, 7)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['S0HHc29', 'VjcL88A', '9Y', '8THN']
-          >>> s = lambda p: p == '9Y' or p == 'S0HHc29'
-          >>> choose(ps, s, 0)
-          'S0HHc29'
-          >>> choose(ps, s, 1)
-          '9Y'
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
-          ''
-          >>> choose(ps, s, 5)
-          ''
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> ps = ['Z1hCZfe4s9', 'uDSu', 'eJonD']
+          >>> ps = ['faiJn']
           >>> s = lambda p: False
-          >>> choose(ps, s, 0)
+          >>> pick(ps, s, 0)
           ''
-          >>> choose(ps, s, 1)
+          >>> pick(ps, s, 1)
           ''
-          >>> choose(ps, s, 2)
-          ''
-          >>> choose(ps, s, 3)
-          ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 2)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['behMPcxcjj', 'cAPdpB', 'egujs2jv', '2kEi6Y']
-          >>> s = lambda p: p == 'behMPcxcjj' or p == 'cAPdpB' or p == 'egujs2jv'
-          >>> choose(ps, s, 0)
-          'behMPcxcjj'
-          >>> choose(ps, s, 1)
-          'cAPdpB'
-          >>> choose(ps, s, 2)
-          'egujs2jv'
-          >>> choose(ps, s, 3)
+          >>> ps = ['IFHBTB', 'eMXHdke', 'aMaIJ', 'koTYt5O', 'Ab', 'CBJUDV', 'pyN', '6N6SK', '1EWs']
+          >>> s = lambda p: p == '1EWs' or p == 'Ab' or p == 'CBJUDV' or p == 'IFHBTB'
+          >>> pick(ps, s, 0)
+          'IFHBTB'
+          >>> pick(ps, s, 1)
+          'Ab'
+          >>> pick(ps, s, 2)
+          'CBJUDV'
+          >>> pick(ps, s, 3)
+          '1EWs'
+          >>> pick(ps, s, 4)
           ''
-          >>> choose(ps, s, 4)
+          >>> pick(ps, s, 5)
           ''
-          >>> choose(ps, s, 5)
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          >>> pick(ps, s, 10)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> ps = ['5OjO']
+          >>> ps = ['6', 'wbpawG', 'UiKIi', 'OZcIyYtUoi', 'saYIfJm', 'q', 'M1o6Qa2b']
+          >>> s = lambda p: p == '6' or p == 'q'
+          >>> pick(ps, s, 0)
+          '6'
+          >>> pick(ps, s, 1)
+          'q'
+          >>> pick(ps, s, 2)
+          ''
+          >>> pick(ps, s, 3)
+          ''
+          >>> pick(ps, s, 4)
+          ''
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = []
           >>> s = lambda p: False
-          >>> choose(ps, s, 0)
+          >>> pick(ps, s, 0)
           ''
-          >>> choose(ps, s, 1)
-          ''
-          >>> choose(ps, s, 2)
+          >>> pick(ps, s, 1)
           ''
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> ps = ['7el', 'Z', 'XrPiLRvY', 'EPIVxh0', 'o6ExRy8l', 'pD4', 'w7cl', '3TVF7bq']
+          >>> s = lambda p: p == '3TVF7bq' or p == '7el' or p == 'Z' or p == 'pD4' or p == 'w7cl'
+          >>> pick(ps, s, 0)
+          '7el'
+          >>> pick(ps, s, 1)
+          'Z'
+          >>> pick(ps, s, 2)
+          'pD4'
+          >>> pick(ps, s, 3)
+          'w7cl'
+          >>> pick(ps, s, 4)
+          '3TVF7bq'
+          >>> pick(ps, s, 5)
+          ''
+          >>> pick(ps, s, 6)
+          ''
+          >>> pick(ps, s, 7)
+          ''
+          >>> pick(ps, s, 8)
+          ''
+          >>> pick(ps, s, 9)
+          ''
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
         }
       ],
       'scored': True,
       'setup': r"""
-      >>> from cats import choose
+      >>> from cats import pick
       """,
       'teardown': '',
       'type': 'doctest'

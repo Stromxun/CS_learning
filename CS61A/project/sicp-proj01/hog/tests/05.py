@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': 'While score0 and score1 are both less than goal',
+          'answer': 'a4d959d6146005b45f9590c6bc256e37',
           'choices': [
             'While score0 and score1 are both less than goal',
             'While at least one of score0 or score1 is less than goal',
@@ -13,7 +13,7 @@ test = {
             'While score1 is less than goal'
           ],
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'question': r"""
           The variables score0 and score1 are the scores for Player 0
           and Player 1, respectively. Under what conditions should the
@@ -21,18 +21,18 @@ test = {
           """
         },
         {
-          'answer': 'A function that returns the number of dice a player will roll',
+          'answer': 'bcda62bd369acb79a636e354f5ef2f48',
           'choices': [
             'The number of dice a player will roll',
             'A function that returns the number of dice a player will roll',
             "A player's desired turn outcome"
           ],
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'question': 'What is a strategy in the context of this game?'
         },
         {
-          'answer': 'strategy1(score1, score0)',
+          'answer': '6092933b58b128fe246b574b1aa79389',
           'choices': [
             'strategy1(score1, score0)',
             'strategy1(score0, score1)',
@@ -40,7 +40,7 @@ test = {
             'strategy1(score0)'
           ],
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'question': r"""
           If strategy1 is Player 1's strategy function, score0 is
           Player 0's current score, and score1 is Player 1's current
@@ -60,12 +60,14 @@ test = {
           >>> # Play function stops at goal
           >>> s0, s1 = hog.play(always(5), always(3), score0=91, score1=10, dice=always_three)
           >>> s0
-          106
+          17a90ac6d84565b47483000c22f1f6de
+          # locked
           >>> s1
-          10
+          70e71b420a966665c548a3bb2cb30d7d
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
@@ -73,12 +75,14 @@ test = {
           >>> # Goal score is not hardwired
           >>> s0, s1 = hog.play(always(5), always(5), goal=10, dice=always_three)
           >>> s0
-          15
+          af0b3285304485122429774c0ea3182a
+          # locked
           >>> s1
-          0
+          962aea5f59fc55bd65ccacf4603c8f22
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
@@ -127,12 +131,14 @@ test = {
           >>> strat1 = lambda score, opponent: max((score // 10) - 4, 0)
           >>> s0, s1 = hog.play(strat0, strat1, score0=71, score1=80, dice=always_seven)
           >>> s0
-          83
+          03f84ad87569499dc2c6ad5123dd852a
+          # locked
           >>> s1
-          108
+          c8735a01952a81cf365b4c80d8fbb832
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         }
       ],
       'scored': True,

@@ -7,58 +7,65 @@ test = {
         {
           'code': r"""
           >>> pig_pass(5, 4)
-          False
+          d763fd836a7bfb096222e985b161b406
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> pig_pass(13, 10)
-          False
+          d763fd836a7bfb096222e985b161b406
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> pig_pass(7, 10)
-          False
+          d763fd836a7bfb096222e985b161b406
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> pig_pass(28, 30)
-          True
+          bc6c4798917b91886d7fa5f56e42878f
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> pig_pass(23, 23)
-          False
+          d763fd836a7bfb096222e985b161b406
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> pig_pass(22, 23)
-          True
+          bc6c4798917b91886d7fa5f56e42878f
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> pig_pass(3, 92)
-          False
+          d763fd836a7bfb096222e985b161b406
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""

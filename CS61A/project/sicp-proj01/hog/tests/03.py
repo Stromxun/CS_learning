@@ -7,34 +7,38 @@ test = {
         {
           'code': r"""
           >>> take_turn(2, 0, make_test_dice(4, 5, 1))
-          9
+          872dbe4a4fe5d8451aa842c21194c866
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> take_turn(3, 0, make_test_dice(4, 6, 1))
-          1
+          43d176e102c8d95338faf8791aa509b3
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> take_turn(0, 2)
-          7
+          c42887e7b9ffe8fc26bb57b61329f916
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> take_turn(0, 0)
-          6
+          327b19ffebddf93982e1ad2a4a6486f4
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""

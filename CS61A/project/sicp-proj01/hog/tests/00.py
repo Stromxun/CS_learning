@@ -8,16 +8,20 @@ test = {
           'code': r"""
           >>> test_dice = make_test_dice(4, 1, 2)
           >>> test_dice()
-          4
+          edcbd82ba98a8122be244fa325c62071
+          # locked
           >>> test_dice() # Second call
-          1
+          43d176e102c8d95338faf8791aa509b3
+          # locked
           >>> test_dice() # Third call
-          2
+          46caef5ffd6d72c8757279cbcf01b12f
+          # locked
           >>> test_dice() # Fourth call
-          4
+          edcbd82ba98a8122be244fa325c62071
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         }
       ],
       'scored': True,
@@ -30,7 +34,7 @@ test = {
     {
       'cases': [
         {
-          'answer': 'six_sided()',
+          'answer': '5c489e1123a9d0cfdd0c26a27a56d42b',
           'choices': [
             'make_test_dice(6)',
             'make_fair_dice(6)',
@@ -38,7 +42,7 @@ test = {
             'six_sided()'
           ],
           'hidden': False,
-          'locked': False,
+          'locked': True,
           'question': 'Which of the following is the correct way to "roll" a fair, six-sided die?'
         }
       ],

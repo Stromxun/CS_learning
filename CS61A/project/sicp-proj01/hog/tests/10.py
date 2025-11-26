@@ -7,42 +7,47 @@ test = {
         {
           'code': r"""
           >>> bacon_strategy(0, 9, cutoff=8, num_rolls=5)
-          5
+          26f5762c932a578994ea1c8fc7fa6c02
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> bacon_strategy(9, 0, cutoff=6, num_rolls=5)
-          0
+          962aea5f59fc55bd65ccacf4603c8f22
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> bacon_strategy(50, 2, cutoff=7, num_rolls=5)
-          0
+          962aea5f59fc55bd65ccacf4603c8f22
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> bacon_strategy(32, 0, cutoff=8, num_rolls=4)
-          4
+          edcbd82ba98a8122be244fa325c62071
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> bacon_strategy(20, 1, cutoff=1, num_rolls=4)
-          0
+          962aea5f59fc55bd65ccacf4603c8f22
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""

@@ -7,58 +7,65 @@ test = {
         {
           'code': r"""
           >>> swine_align(2, 4)
-          False
+          d763fd836a7bfb096222e985b161b406
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> swine_align(11, 22)
-          True
+          bc6c4798917b91886d7fa5f56e42878f
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> swine_align(36, 24)
-          True
+          bc6c4798917b91886d7fa5f56e42878f
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> swine_align(27, 13)
-          False
+          d763fd836a7bfb096222e985b161b406
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> swine_align(23, 22)
-          False
+          d763fd836a7bfb096222e985b161b406
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> swine_align(15, 45)
-          True
+          bc6c4798917b91886d7fa5f56e42878f
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> swine_align(15, 0)
-          False
+          d763fd836a7bfb096222e985b161b406
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""

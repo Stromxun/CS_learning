@@ -22,24 +22,30 @@ def roll_dice(num_rolls, dice=six_sided):
     assert type(num_rolls) == int, 'num_rolls must be an integer.'
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
-    "*** YOUR CODE HERE ***"
-    ans, k, flag = 0, 1, False
-    while k<=num_rolls:
-    	temp=dice()
-    	if temp == 1:
-    		flag = True
-    	ans = ans + temp
-    	k=k+1
-    if flag == True:
-    	return 1
-    else:
-    	return ans
+    outcome = 0
+    count = 0
+    for i in range(num_rolls):
+        a = dice()
+        if a == 1:
+            count += 1
+        outcome = a + outcome
+        if count != 0:
+            return 1
+    return outcome
+    #print("pigout次数为:")
+    #print(j)
+
+
+
+
+# testp1 = roll_dice(4,dice=six_sided)
+# print("问题一 n=4 时测试")
+# print(testp1)
     # END PROBLEM 1
 
 
 def free_bacon(score):
     """Return the points scored from rolling 0 dice (Free Bacon).
-
     score:  The opponent's current score.
     """
     assert score < 100, 'The game should be over.'
@@ -47,11 +53,17 @@ def free_bacon(score):
 
     # Trim pi to only (score + 1) digit(s)
     # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
+    if score == 0:
+        return 6
+    else:
+        pi = pi // (10**(100 - score))
     # END PROBLEM 2
-    pi =int(pi//pow(10,100-score)) #print(pi)
+
     return pi % 10 + 3
 
+# testp2 = free_bacon(1)
+# print("问题二 n=1 时测试")
+# print(testp2)
 
 def take_turn(num_rolls, opponent_score, dice=six_sided):
     """Simulate a turn rolling NUM_ROLLS dice, which may be 0 (Free Bacon).
@@ -67,11 +79,11 @@ def take_turn(num_rolls, opponent_score, dice=six_sided):
     assert num_rolls <= 10, 'Cannot roll more than 10 dice.'
     assert opponent_score < 100, 'The game should be over.'
     # BEGIN PROBLEM 3
-    "*** YOUR CODE HERE ***"
+
     if num_rolls == 0:
-    	return free_bacon(opponent_score)
+        return free_bacon(opponent_score)
     else:
-    	return roll_dice(num_rolls,dice)
+        return roll_dice(num_rolls,dice=six_sided)
     # END PROBLEM 3
 
 
@@ -93,22 +105,18 @@ def swine_align(player_score, opponent_score):
     False
     """
     # BEGIN PROBLEM 4a
-    "*** YOUR CODE HERE ***"
+    a = GCD(player_score, opponent_score)
     if player_score == 0 or opponent_score == 0:
-    	return False
-    else:
-    	def gcd(player_score, opponent_score):
-    		if opponent_score == 0:
-    			return player_score
-    		else:
-    			return gcd(opponent_score,player_score%opponent_score)
-    			
-    	if gcd(player_score, opponent_score) >= 10:
-    		return True
-    return False
-    	
+        return False
+    elif a >= 10:
+        return True
+    else:return False
     # END PROBLEM 4a
-
+def GCD(player_score,opponent_score):
+    for i in range(100,1,-1):
+       if player_score % i == 0 and opponent_score % i == 0:
+          return i
+    return 1
 
 def pig_pass(player_score, opponent_score):
     """Return whether the player gets an extra turn due to Pig Pass.
@@ -128,10 +136,10 @@ def pig_pass(player_score, opponent_score):
     False
     """
     # BEGIN PROBLEM 4b
-    "*** YOUR CODE HERE ***"
-    if opponent_score - player_score <3 and opponent_score - player_score > 0:
-    	return True
-    return False
+    dif = opponent_score - player_score
+    if dif < 3 and dif > 0:
+        return True
+    else:return False
     # END PROBLEM 4b
 
 
@@ -147,8 +155,12 @@ def other(who):
 
 
 def silence(score0, score1):
+
+    noise = both(both(say_scores,announce_lead_changes()),both(announce_highest(1),announce_highest(2)))
+    noise(score0,score1)
     """Announce nothing (see Phase 2)."""
-    return silence
+
+    return noise
 
 
 def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
@@ -156,8 +168,8 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     """Simulate a game and return the final scores of both players, with Player
     0's score first, and Player 1's score second.
 
-    A strategy is a function that takes two total scores as arguments (the
-    current player's score, and the opponent's score), and returns a number of
+    A strategy is a function that takes two total scores as
+    arguments (the current player's score, and the opponent's score), and returns a number of
     dice that the current player will roll this turn.
 
     strategy0:  The strategy function for Player 0, who plays first.
@@ -168,23 +180,32 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     goal:       The game ends and someone wins when this score is reached.
     say:        The commentary function to call at the end of the first turn.
     """
-    who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
+    who = 1  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
-    "*** YOUR CODE HERE ***"
-    while score0 < goal and score1 < goal:
-    	if who == 0 : 
-    		score0 += take_turn(int(strategy0(score0,score1)),score1,dice)
-    		if not extra_turn(score0,score1):
-    			who=other(who)	
-    	else:
-    		score1 += take_turn(int(strategy1(score1,score0)),score0,dice)
-    		if not extra_turn(score1,score0):
-    			who=other(who)
-    	# END PROBLEM 5
-    	# (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
-    	# BEGIN PROBLEM 6
-    	"*** YOUR CODE HERE ***"
-    	say = say(score0,score1)
+
+    while score1 < goal and score0 < goal:
+        if who == 0:
+            num_rolls0 = strategy0(score1, score0) # strategy(opponent_score,player_score)
+            score0 = score0 + take_turn(num_rolls0,score1,dice=six_sided)
+            say = say(score0, score1)
+            while extra_turn(score0,score1):
+                num_rolls0 = strategy0(score1, score0)
+                score0 = score0 + take_turn(num_rolls0, score1,dice=six_sided)
+                say = say(score0, score1)
+
+        elif who == 1:
+            num_rolls1 = strategy1(score0, score1)
+            score1 = score1 + take_turn(num_rolls1,score0,dice=six_sided)
+            say = say(score0, score1)
+            while extra_turn(score1,score0):
+                num_rolls1 = strategy1(score0, score1)
+                score1 = score1 + take_turn(num_rolls1, score0,dice=six_sided)
+                say = say(score0, score1)
+        who = other(who)
+    # END PROBLEM 5
+    # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
+    # BEGIN PROBLEM 6
+
     # END PROBLEM 6
     return score0, score1
 
@@ -268,17 +289,20 @@ def announce_highest(who, last_score=0, running_high=0):
     """
     assert who == 0 or who == 1, 'The who argument should indicate a player.'
     # BEGIN PROBLEM 7
-    "*** YOUR CODE HERE ***"
-    def announce(score0,score1):
-    	k=0
-    	if who == 1 :
-    		k = score1 - last_score
-    	else :
-    		k = score0 - last_score
-    	if k > running_high :
-    		print(k,'point(s)! The most yet for Player',who)
-    	return announce_highest(who, score1 if who == 1 else score0, max(k, running_high))
-    return announce
+    def say(score0, score1):
+        if who == 0:
+            change = score0 - last_score
+            if change > running_high:
+                print(change, 'point(s)! The most yet for Player', who)
+
+            return announce_highest(0, score0, max(running_high, change))
+        elif who == 1:
+            change = score1 - last_score
+            if change > running_high:
+                print(change, 'point(s)! The most yet for Player', who)
+            return announce_highest(1, score1, max(running_high, change))
+    return say
+
     # END PROBLEM 7
 
 
@@ -318,14 +342,12 @@ def make_averaged(original_function, trials_count=1000):
     3.0
     """
     # BEGIN PROBLEM 8
-    "*** YOUR CODE HERE ***"
-    def do_this(*args):
-    	k, result = 1, 0
-    	while k <= trials_count:
-    		result += original_function(*args)
-    		k += 1
-    	return result/trials_count
-    return do_this
+    def repeat(*args):
+        result = 0
+        for _ in range(trials_count):
+            result += original_function(*args)
+        return result/trials_count
+    return repeat
     # END PROBLEM 8
 
 
@@ -339,15 +361,23 @@ def max_scoring_num_rolls(dice=six_sided, trials_count=1000):
     1
     """
     # BEGIN PROBLEM 9
-    "*** YOUR CODE HERE ***"
-    ans, maxm, k = 0, 0, 1
-    while k <= 10:
-    	temp = make_averaged(roll_dice,trials_count)(k,dice)
-    	if temp > maxm :
-    		maxm = temp
-    		ans = k
-    	k+=1
-    return ans
+    avg_roll_dice = make_averaged(roll_dice, trials_count)
+    highnum = 1
+    highsc = avg_roll_dice(1)
+
+    for i in range(2,11):
+        #result = make_averaged(roll_dice(i),trials_count)
+        """
+        max_scoring_num_rolls ❌ 目前写法错误，因为你把 roll_dice(i) 的结果（整数）传给了 make_averaged，
+        而不是函数。需要改成先 make_averaged(roll_dice, trials_count)，再调用 averaged_roll_dice(i, dice)。
+        高阶函数调用时一般至少需要调用两次，因为含有内部函数
+        """
+        result = avg_roll_dice(i,dice)
+        if result > highsc:
+            highsc = result
+            highnum = i
+        # 如果相等和小都不更新highnum，即可保证规则。无需再次判定相等
+    return highnum
     # END PROBLEM 9
 
 
@@ -398,9 +428,9 @@ def bacon_strategy(score, opponent_score, cutoff=8, num_rolls=6):
     """
     # BEGIN PROBLEM 10
     if free_bacon(opponent_score) >= cutoff:
-    	return 0
+        return 0
     else:
-    	return num_rolls  # Replace this statement
+        return num_rolls  # Replace this statement
     # END PROBLEM 10
 
 
@@ -410,10 +440,13 @@ def extra_turn_strategy(score, opponent_score, cutoff=8, num_rolls=6):
     Otherwise, it rolls NUM_ROLLS.
     """
     # BEGIN PROBLEM 11
-    if extra_turn(score + free_bacon(opponent_score),opponent_score):
-    	return 0
+    plus = free_bacon(opponent_score)
+    if pig_pass(score+plus,opponent_score) or swine_align(score+plus,opponent_score):
+        return 0
+    elif free_bacon(opponent_score) >=cutoff:
+        return 0
     else:
-    	return bacon_strategy(score, opponent_score, cutoff, num_rolls) # Replace this statement
+        return num_rolls  # Replace this statement
     # END PROBLEM 11
 
 
@@ -423,7 +456,7 @@ def final_strategy(score, opponent_score):
     *** YOUR DESCRIPTION HERE ***
     """
     # BEGIN PROBLEM 12
-    return extra_turn_strategy(score,opponent_score) # Replace this statement
+    return 6  # Replace this statement
     # END PROBLEM 12
 
 ##########################

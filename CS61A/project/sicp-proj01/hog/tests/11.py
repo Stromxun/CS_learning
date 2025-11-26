@@ -7,34 +7,38 @@ test = {
         {
           'code': r"""
           >>> extra_turn_strategy(10, 19, cutoff=8, num_rolls=6)
-          0
+          962aea5f59fc55bd65ccacf4603c8f22
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> extra_turn_strategy(30, 54, cutoff=7, num_rolls=6)
-          6
+          327b19ffebddf93982e1ad2a4a6486f4
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> extra_turn_strategy(17, 36, cutoff=100, num_rolls=6)
-          0
+          962aea5f59fc55bd65ccacf4603c8f22
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""
           >>> extra_turn_strategy(24, 5, cutoff=1, num_rolls=6)
-          0
+          962aea5f59fc55bd65ccacf4603c8f22
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True
         },
         {
           'code': r"""

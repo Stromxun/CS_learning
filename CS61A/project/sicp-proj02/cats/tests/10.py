@@ -1,6 +1,6 @@
 test = {
   'name': 'Problem 10',
-  'points': 2,
+  'points': 3,
   'suites': [
     {
       'cases': [
@@ -8,949 +8,1044 @@ test = {
           'code': r"""
           >>> p0 = [2, 2, 3]
           >>> p1 = [6, 1, 2]
-          >>> fastest_words(game(['What', 'great', 'luck'], [p0, p1]))
-          [['What'], ['great', 'luck']]
+          >>> fastest_words({'words': ['What', 'great', 'luck'], 'times': [p0, p1]})
+          4a4e62b364d558f02688a55484282829
+          # locked
           >>> p0 = [2, 2, 3]
           >>> p1 = [6, 1, 3]
-          >>> fastest_words(game(['What', 'great', 'luck'], [p0, p1]))  # with a tie, choose the first player
-          [['What', 'luck'], ['great']]
+          >>> fastest_words({'words': ['What', 'great', 'luck'], 'times': [p0, p1]})  # with a tie, choose the first player
+          21948e3a2e3aabdfabb12961f4ed55b2
+          # locked
           >>> p2 = [4, 3, 1]
-          >>> fastest_words(game(['What', 'great', 'luck'], [p0, p1, p2]))
-          [['What'], ['great'], ['luck']]
+          >>> fastest_words({'words': ['What', 'great', 'luck'], 'times': [p0, p1, p2]})
+          b4e41659727998e91b11c2efc755a649
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[2, 4, 3, 5, 1]]
-          >>> fastest_words(game(['neurine', 'statutably', 'quantivalent', 'intrarachidian', 'itinerantly'], p))
-          [['neurine', 'statutably', 'quantivalent', 'intrarachidian', 'itinerantly']]
+          >>> p0 = [5, 1, 3]
+          >>> p1 = [4, 1, 6]
+          >>> fastest_words({'words': ['Just', 'have', 'fun'], 'times': [p0, p1]})
+          [['have', 'fun'], ['Just']]
+          >>> p0  # input lists should not be mutated
+          [5, 1, 3]
+          >>> p1
+          [4, 1, 6]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[4, 1, 1], [2, 5, 5]]
-          >>> fastest_words(game(['unsimilar', 'conditioning', 'crystallogenical'], p))
-          [['conditioning', 'crystallogenical'], ['unsimilar']]
+          >>> p = [[3], [5]]
+          >>> fastest_words({'words': ['smopple'], 'times': p})
+          [['smopple'], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[1, 3, 2, 4, 3]]
-          >>> fastest_words(game(['intraepiphyseal', 'sporangiform', 'saccharate', 'hermeneutic', 'butanal'], p))
-          [['intraepiphyseal', 'sporangiform', 'saccharate', 'hermeneutic', 'butanal']]
+          >>> p = [[]]
+          >>> fastest_words({'words': [], 'times': p})
+          [[]]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[5], [2], [4]]
+          >>> fastest_words({'words': ['seeingly'], 'times': p})
+          [[], ['seeingly'], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4, 1, 2, 3, 4], [1, 5, 3, 4, 1], [5, 1, 5, 2, 3]]
+          >>> fastest_words({'words': ['reundergo', 'unweld', 'handgun', 'hydrometra', 'recessionary'], 'times': p})
+          [['unweld', 'handgun'], ['reundergo', 'recessionary'], ['hydrometra']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> p = [[], [], []]
-          >>> fastest_words(game([], p))
+          >>> fastest_words({'words': [], 'times': p})
           [[], [], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[2, 3, 5, 2, 1, 5], [3, 5, 3, 5, 4, 1], [2, 1, 3, 1, 2, 3]]
-          >>> fastest_words(game(['multivoltine', 'nonpacifist', 'oviferous', 'postelection', 'multidigitate', 'reallege'], p))
-          [['multivoltine', 'multidigitate'], ['oviferous', 'reallege'], ['nonpacifist', 'postelection']]
+          >>> p = [[2, 1, 2]]
+          >>> fastest_words({'words': ['prebeleve', 'upanishadic', 'ftp'], 'times': p})
+          [['prebeleve', 'upanishadic', 'ftp']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[4, 1, 1, 5, 2], [1, 4, 5, 4, 2], [5, 3, 2, 2, 3]]
-          >>> fastest_words(game(['notchel', 'phengitical', 'dollier', 'bushlet', 'sciographic'], p))
-          [['phengitical', 'dollier', 'sciographic'], ['notchel'], ['bushlet']]
+          >>> p = [[5, 3, 5, 2, 4], [2, 4, 5, 1, 2], [1, 5, 2, 1, 3]]
+          >>> fastest_words({'words': ['supplies', 'underivedly', 'henter', 'undeserving', 'uncope'], 'times': p})
+          [['underivedly'], ['undeserving', 'uncope'], ['supplies', 'henter']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[5], [3], [3]]
-          >>> fastest_words(game(['cisplatine'], p))
-          [[], ['cisplatine'], []]
+          >>> p = [[], [], []]
+          >>> fastest_words({'words': [], 'times': p})
+          [[], [], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[4]]
-          >>> fastest_words(game(['accompaniment'], p))
-          [['accompaniment']]
+          >>> p = [[1, 5, 5, 5, 5]]
+          >>> fastest_words({'words': ['pentarch', 'nihilification', 'krieker', 'laureate', 'antechamber'], 'times': p})
+          [['pentarch', 'nihilification', 'krieker', 'laureate', 'antechamber']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[1]]
-          >>> fastest_words(game(['elasticness'], p))
-          [['elasticness']]
+          >>> p = [[3, 4, 4, 3, 4]]
+          >>> fastest_words({'words': ['urodele', 'sporoid', 'auximone', 'nomenclatural', 'misappreciation'], 'times': p})
+          [['urodele', 'sporoid', 'auximone', 'nomenclatural', 'misappreciation']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[4, 2, 5, 4], [1, 3, 2, 1], [4, 2, 5, 1]]
-          >>> fastest_words(game(['temporomandibular', 'unannexed', 'umbellar', 'rambutan'], p))
-          [['unannexed'], ['temporomandibular', 'umbellar', 'rambutan'], []]
+          >>> p = [[2, 4, 1, 1, 4, 1], [5, 3, 3, 4, 5, 3], [1, 2, 3, 1, 3, 5]]
+          >>> fastest_words({'words': ['isoborneol', 'glabrate', 'excision', 'octobass', 'prevolitional', 'archtreasurership'], 'times': p})
+          [['excision', 'octobass', 'archtreasurership'], [], ['isoborneol', 'glabrate', 'prevolitional']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[2, 1, 2, 3, 1], [2, 1, 3, 1, 5]]
-          >>> fastest_words(game(['intercreate', 'sulpholipin', 'inkhornizer', 'lycanthropic', 'optimize'], p))
-          [['intercreate', 'sulpholipin', 'inkhornizer', 'optimize'], ['lycanthropic']]
+          >>> p = [[5, 2, 4, 3, 1], [3, 1, 2, 1, 3]]
+          >>> fastest_words({'words': ['singletree', 'apocyneous', 'imminution', 'uncensuring', 'fungiform'], 'times': p})
+          [['fungiform'], ['singletree', 'apocyneous', 'imminution', 'uncensuring']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> p = [[], []]
-          >>> fastest_words(game([], p))
+          >>> fastest_words({'words': [], 'times': p})
           [[], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[1, 2, 5, 2, 3], [4, 3, 1, 1, 5], [3, 2, 4, 5, 4]]
-          >>> fastest_words(game(['choultry', 'caryopilite', 'unowed', 'overslaugh', 'unshriveled'], p))
-          [['choultry', 'caryopilite', 'unshriveled'], ['unowed', 'overslaugh'], []]
+          >>> p = [[]]
+          >>> fastest_words({'words': [], 'times': p})
+          [[]]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[], [], []]
-          >>> fastest_words(game([], p))
-          [[], [], []]
+          >>> p = [[1, 2], [3, 2]]
+          >>> fastest_words({'words': ['snideness', 'universalization'], 'times': p})
+          [['snideness', 'universalization'], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[3, 5, 3, 1]]
-          >>> fastest_words(game(['nearby', 'atriopore', 'conchiferous', 'zygostyle'], p))
-          [['nearby', 'atriopore', 'conchiferous', 'zygostyle']]
+          >>> p = [[1], [3]]
+          >>> fastest_words({'words': ['dependably'], 'times': p})
+          [['dependably'], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[4, 4, 2, 1, 3]]
-          >>> fastest_words(game(['infinite', 'uncorked', 'subjacency', 'looplike', 'nasoethmoidal'], p))
-          [['infinite', 'uncorked', 'subjacency', 'looplike', 'nasoethmoidal']]
+          >>> p = [[3, 2, 1]]
+          >>> fastest_words({'words': ['spaceful', 'cautery', 'wiseness'], 'times': p})
+          [['spaceful', 'cautery', 'wiseness']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[5, 2, 1, 1, 1, 3], [3, 5, 1, 2, 3, 3]]
-          >>> fastest_words(game(['pauldron', 'kairine', 'sulpholysis', 'kalo', 'cecidiology', 'progne'], p))
-          [['kairine', 'sulpholysis', 'kalo', 'cecidiology', 'progne'], ['pauldron']]
+          >>> p = [[3, 4, 5, 3, 5, 1], [4, 4, 1, 2, 5, 3]]
+          >>> fastest_words({'words': ['investigatable', 'quadrigenarious', 'protonemal', 'cardiodysneuria', 'provoker', 'associated'], 'times': p})
+          [['investigatable', 'quadrigenarious', 'provoker', 'associated'], ['protonemal', 'cardiodysneuria']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[5, 2, 2, 2, 1, 3], [3, 4, 4, 4, 2, 2]]
-          >>> fastest_words(game(['cnidophore', 'orrery', 'bargham', 'iridentropium', 'nickelous', 'cedarbird'], p))
-          [['orrery', 'bargham', 'iridentropium', 'nickelous'], ['cnidophore', 'cedarbird']]
+          >>> p = [[5, 1]]
+          >>> fastest_words({'words': ['tubuliporoid', 'malleability'], 'times': p})
+          [['tubuliporoid', 'malleability']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[2, 3, 3], [1, 1, 3], [2, 3, 3]]
-          >>> fastest_words(game(['inadequateness', 'capsulate', 'careers'], p))
-          [['careers'], ['inadequateness', 'capsulate'], []]
+          >>> p = [[4, 1, 2, 4, 4], [3, 4, 3, 3, 5], [1, 2, 5, 1, 2]]
+          >>> fastest_words({'words': ['shilling', 'shrubbiness', 'demoded', 'commentary', 'housewright'], 'times': p})
+          [['shrubbiness', 'demoded'], [], ['shilling', 'commentary', 'housewright']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[3, 1, 3, 2, 3, 3], [5, 1, 2, 4, 2, 5]]
-          >>> fastest_words(game(['havent', 'kilneye', 'wistful', 'scorbutic', 'chichipe', 'antemeridian'], p))
-          [['havent', 'kilneye', 'scorbutic', 'antemeridian'], ['wistful', 'chichipe']]
+          >>> p = [[3, 3, 3, 4, 1]]
+          >>> fastest_words({'words': ['ungraspable', 'owrelay', 'tangleproof', 'musterable', 'multivincular'], 'times': p})
+          [['ungraspable', 'owrelay', 'tangleproof', 'musterable', 'multivincular']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[3, 1, 1, 3], [3, 4, 4, 1], [1, 2, 3, 3]]
-          >>> fastest_words(game(['bran', 'stratum', 'onager', 'drinking'], p))
-          [['stratum', 'onager'], ['drinking'], ['bran']]
+          >>> p = [[4, 1, 4, 3, 1], [5, 5, 1, 2, 3]]
+          >>> fastest_words({'words': ['lithosis', 'bogland', 'interclash', 'widespread', 'thumbbird'], 'times': p})
+          [['lithosis', 'bogland', 'thumbbird'], ['interclash', 'widespread']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 2], [3, 3]]
+          >>> fastest_words({'words': ['diplosphenal', 'cholecystogram'], 'times': p})
+          [['diplosphenal', 'cholecystogram'], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 2]]
+          >>> fastest_words({'words': ['eugenist', 'karyopyknosis'], 'times': p})
+          [['eugenist', 'karyopyknosis']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[5, 4, 3]]
+          >>> fastest_words({'words': ['cannily', 'lune', 'heathless'], 'times': p})
+          [['cannily', 'lune', 'heathless']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4, 4, 3, 3], [2, 1, 3, 4], [2, 2, 4, 4]]
+          >>> fastest_words({'words': ['postprandially', 'helicogyrate', 'coccidology', 'circumradius'], 'times': p})
+          [['coccidology', 'circumradius'], ['postprandially', 'helicogyrate'], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[2, 3], [1, 3], [5, 1]]
+          >>> fastest_words({'words': ['electrofused', 'incontinent'], 'times': p})
+          [[], ['electrofused'], ['incontinent']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> p = [[], []]
-          >>> fastest_words(game([], p))
+          >>> fastest_words({'words': [], 'times': p})
           [[], []]
           """,
           'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[4, 5, 1, 5], [3, 5, 1, 3]]
-          >>> fastest_words(game(['saltless', 'bailage', 'nonformation', 'yeven'], p))
-          [['bailage', 'nonformation'], ['saltless', 'yeven']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[], [], []]
-          >>> fastest_words(game([], p))
-          [[], [], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[2, 5, 4], [5, 4, 3], [4, 4, 4]]
-          >>> fastest_words(game(['upbid', 'weave', 'titterer'], p))
-          [['upbid'], ['weave', 'titterer'], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[3, 1, 5, 5, 2, 5]]
-          >>> fastest_words(game(['powell', 'indifferently', 'palatograph', 'capucine', 'scowlful', 'noration'], p))
-          [['powell', 'indifferently', 'palatograph', 'capucine', 'scowlful', 'noration']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1, 5, 3, 2, 4, 2], [5, 1, 3, 4, 1, 3]]
-          >>> fastest_words(game(['tautomeric', 'unprejudicedly', 'disregardance', 'reconveyance', 'rebellow', 'gaiety'], p))
-          [['tautomeric', 'disregardance', 'reconveyance', 'gaiety'], ['unprejudicedly', 'rebellow']]
-          """,
-          'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> p = [[]]
-          >>> fastest_words(game([], p))
+          >>> fastest_words({'words': [], 'times': p})
           [[]]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[5], [1]]
-          >>> fastest_words(game(['incoherentific'], p))
-          [[], ['incoherentific']]
+          >>> p = [[], []]
+          >>> fastest_words({'words': [], 'times': p})
+          [[], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[2, 1, 4], [2, 1, 2]]
-          >>> fastest_words(game(['accompliceship', 'dumpish', 'unqueried'], p))
-          [['accompliceship', 'dumpish'], ['unqueried']]
+          >>> p = [[2, 3, 2, 5, 3], [3, 3, 5, 5, 3]]
+          >>> fastest_words({'words': ['trigon', 'effluviate', 'unhuman', 'energeia', 'slouch'], 'times': p})
+          [['trigon', 'effluviate', 'unhuman', 'energeia', 'slouch'], []]
           """,
           'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[4, 2, 4, 2, 2], [2, 4, 3, 3, 5]]
-          >>> fastest_words(game(['counterflange', 'justly', 'contralto', 'erythematous', 'intromissive'], p))
-          [['justly', 'erythematous', 'intromissive'], ['counterflange', 'contralto']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[], [], []]
-          >>> fastest_words(game([], p))
-          [[], [], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[2, 4, 3, 2, 5, 4], [2, 4, 2, 3, 4, 1]]
-          >>> fastest_words(game(['draughtmanship', 'arboriform', 'oppugner', 'nucleonics', 'reducer', 'watered'], p))
-          [['draughtmanship', 'arboriform', 'nucleonics'], ['oppugner', 'reducer', 'watered']]
-          """,
-          'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> p = [[]]
-          >>> fastest_words(game([], p))
+          >>> fastest_words({'words': [], 'times': p})
           [[]]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[5, 4], [4, 3]]
-          >>> fastest_words(game(['collectorship', 'radome'], p))
-          [[], ['collectorship', 'radome']]
+          >>> p = [[3, 1, 1, 1, 2], [1, 1, 5, 3, 4]]
+          >>> fastest_words({'words': ['boucherism', 'rutabaga', 'fomentation', 'swampside', 'unpopularness'], 'times': p})
+          [['rutabaga', 'fomentation', 'swampside', 'unpopularness'], ['boucherism']]
           """,
           'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1, 2, 1, 4], [4, 1, 1, 2]]
-          >>> fastest_words(game(['clinometrical', 'stuporose', 'didst', 'hexactinellidan'], p))
-          [['clinometrical', 'didst'], ['stuporose', 'hexactinellidan']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[3, 3], [5, 2]]
-          >>> fastest_words(game(['surdation', 'piddler'], p))
-          [['surdation'], ['piddler']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[3, 4, 4]]
-          >>> fastest_words(game(['unbattered', 'ridicule', 'undersweep'], p))
-          [['unbattered', 'ridicule', 'undersweep']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 3, 2], [2, 5, 1]]
-          >>> fastest_words(game(['noggen', 'goofy', 'undimerous'], p))
-          [['goofy'], ['noggen', 'undimerous']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1], [5]]
-          >>> fastest_words(game(['unidigitate'], p))
-          [['unidigitate'], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1, 3, 2], [5, 3, 4], [3, 4, 4]]
-          >>> fastest_words(game(['boga', 'unzephyrlike', 'infragenual'], p))
-          [['boga', 'unzephyrlike', 'infragenual'], [], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[4, 2, 3]]
-          >>> fastest_words(game(['dysanalyte', 'whiffletree', 'mamelonation'], p))
-          [['dysanalyte', 'whiffletree', 'mamelonation']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 5, 2], [3, 3, 3], [5, 4, 3]]
-          >>> fastest_words(game(['parapet', 'linenman', 'noneffervescent'], p))
-          [['noneffervescent'], ['parapet', 'linenman'], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[]]
-          >>> fastest_words(game([], p))
-          [[]]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1, 5, 4]]
-          >>> fastest_words(game(['rejumble', 'crowkeeper', 'symphyllous'], p))
-          [['rejumble', 'crowkeeper', 'symphyllous']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[4, 5, 2], [1, 2, 2], [1, 1, 5]]
-          >>> fastest_words(game(['phonogrammically', 'dumpiness', 'preambition'], p))
-          [['preambition'], ['phonogrammically'], ['dumpiness']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[4, 5, 4, 1, 4], [3, 1, 1, 3, 4]]
-          >>> fastest_words(game(['block', 'diluvialist', 'heriot', 'supersalient', 'hate'], p))
-          [['supersalient', 'hate'], ['block', 'diluvialist', 'heriot']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[], [], []]
-          >>> fastest_words(game([], p))
-          [[], [], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1, 3, 5]]
-          >>> fastest_words(game(['plunderingly', 'colchicine', 'zincographical'], p))
-          [['plunderingly', 'colchicine', 'zincographical']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 2, 3, 5, 5], [1, 3, 4, 3, 4], [2, 5, 5, 1, 4]]
-          >>> fastest_words(game(['gynospore', 'apodictically', 'villages', 'algebra', 'uprid'], p))
-          [['apodictically', 'villages'], ['gynospore', 'uprid'], ['algebra']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[]]
-          >>> fastest_words(game([], p))
-          [[]]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1], [2], [1]]
-          >>> fastest_words(game(['proker'], p))
-          [['proker'], [], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1, 3, 4, 4], [3, 4, 4, 2]]
-          >>> fastest_words(game(['dinothere', 'faradmeter', 'oversubtlety', 'dispensatorily'], p))
-          [['dinothere', 'faradmeter', 'oversubtlety'], ['dispensatorily']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 1, 1, 3, 5], [2, 3, 3, 3, 2]]
-          >>> fastest_words(game(['capuchin', 'diactin', 'stirps', 'waverous', 'qualifying'], p))
-          [['diactin', 'stirps', 'waverous'], ['capuchin', 'qualifying']]
-          """,
-          'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> p = [[2, 1], [1, 2]]
-          >>> fastest_words(game(['dutiability', 'acquired'], p))
-          [['acquired'], ['dutiability']]
+          >>> fastest_words({'words': ['introspectionist', 'teeting'], 'times': p})
+          [['teeting'], ['introspectionist']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[4, 2], [1, 4]]
-          >>> fastest_words(game(['ribaudequin', 'healsome'], p))
-          [['healsome'], ['ribaudequin']]
+          >>> p = [[1, 3, 1, 2, 3, 3]]
+          >>> fastest_words({'words': ['cryptodiran', 'coll', 'staurolatry', 'allthing', 'cheatrie', 'inexpedient'], 'times': p})
+          [['cryptodiran', 'coll', 'staurolatry', 'allthing', 'cheatrie', 'inexpedient']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[2, 4, 5, 2], [3, 2, 1, 5]]
-          >>> fastest_words(game(['schemist', 'pentahedrous', 'relativeness', 'solivagant'], p))
-          [['schemist', 'solivagant'], ['pentahedrous', 'relativeness']]
+          >>> p = [[4, 4, 2, 2, 3], [1, 2, 5, 1, 3]]
+          >>> fastest_words({'words': ['quodlibetic', 'previdence', 'nonviscous', 'reduplicatively', 'arterioverter'], 'times': p})
+          [['nonviscous', 'arterioverter'], ['quodlibetic', 'previdence', 'reduplicatively']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[2, 2, 1, 4, 1], [2, 3, 2, 3, 1], [2, 5, 2, 3, 1]]
-          >>> fastest_words(game(['micropegmatitic', 'waterhorse', 'antisubstance', 'yucker', 'samely'], p))
-          [['micropegmatitic', 'waterhorse', 'antisubstance', 'samely'], ['yucker'], []]
+          >>> p = [[1, 2, 5, 1, 2, 1], [4, 2, 1, 4, 5, 3]]
+          >>> fastest_words({'words': ['cactoid', 'quadrialate', 'preflattery', 'emancipation', 'recedent', 'haustement'], 'times': p})
+          [['cactoid', 'quadrialate', 'emancipation', 'recedent', 'haustement'], ['preflattery']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[4]]
-          >>> fastest_words(game(['nitrophytic'], p))
-          [['nitrophytic']]
+          >>> p = [[4, 1, 5, 4, 4, 4], [5, 2, 1, 1, 2, 3], [4, 5, 4, 2, 3, 2]]
+          >>> fastest_words({'words': ['puboprostatic', 'tumescent', 'keraunograph', 'telecaster', 'selenigenous', 'phycomycete'], 'times': p})
+          [['puboprostatic', 'tumescent'], ['keraunograph', 'telecaster', 'selenigenous'], ['phycomycete']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[2, 1, 4, 1], [4, 2, 1, 2]]
-          >>> fastest_words(game(['predative', 'paragrammatist', 'plurennial', 'rangership'], p))
-          [['predative', 'paragrammatist', 'rangership'], ['plurennial']]
+          >>> p = [[2, 4, 2, 4, 2], [1, 5, 1, 4, 5]]
+          >>> fastest_words({'words': ['indisputableness', 'breastrope', 'hypocist', 'supersemination', 'ethnographically'], 'times': p})
+          [['breastrope', 'supersemination', 'ethnographically'], ['indisputableness', 'hypocist']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[4], [1]]
-          >>> fastest_words(game(['ripe'], p))
-          [[], ['ripe']]
+          >>> p = [[5, 4, 3, 3, 5, 4]]
+          >>> fastest_words({'words': ['repetitiously', 'lecideiform', 'debtless', 'stream', 'loquent', 'leery'], 'times': p})
+          [['repetitiously', 'lecideiform', 'debtless', 'stream', 'loquent', 'leery']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[3, 4], [3, 2], [5, 4]]
-          >>> fastest_words(game(['opodeldoc', 'brainlessly'], p))
-          [['opodeldoc'], ['brainlessly'], []]
+          >>> p = [[4, 3, 3, 3, 1, 4]]
+          >>> fastest_words({'words': ['siscowet', 'nevo', 'driftweed', 'chevronelly', 'victoryless', 'illustrations'], 'times': p})
+          [['siscowet', 'nevo', 'driftweed', 'chevronelly', 'victoryless', 'illustrations']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[], [], []]
-          >>> fastest_words(game([], p))
-          [[], [], []]
+          >>> p = [[2, 2, 5, 4], [5, 4, 2, 2]]
+          >>> fastest_words({'words': ['holland', 'nursedom', 'epidictical', 'defortify'], 'times': p})
+          [['holland', 'nursedom'], ['epidictical', 'defortify']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[2, 1, 4, 3]]
-          >>> fastest_words(game(['broomwood', 'relatability', 'pearlite', 'epithecium'], p))
-          [['broomwood', 'relatability', 'pearlite', 'epithecium']]
+          >>> p = [[3, 1, 3]]
+          >>> fastest_words({'words': ['sunbird', 'renewal', 'predivinable'], 'times': p})
+          [['sunbird', 'renewal', 'predivinable']]
           """,
           'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1, 1, 3, 1, 3, 1]]
-          >>> fastest_words(game(['hymenean', 'crepusculine', 'solecizer', 'overfearful', 'cigar', 'veal'], p))
-          [['hymenean', 'crepusculine', 'solecizer', 'overfearful', 'cigar', 'veal']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[2, 1, 2, 1, 2], [2, 3, 5, 3, 3], [3, 3, 1, 4, 1]]
-          >>> fastest_words(game(['paradisic', 'unaffectionately', 'exordial', 'weaponshowing', 'rhombohedra'], p))
-          [['paradisic', 'unaffectionately', 'weaponshowing'], [], ['exordial', 'rhombohedra']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[3, 4, 3, 1]]
-          >>> fastest_words(game(['platybrachycephalous', 'pitometer', 'electrodepositor', 'superambitious'], p))
-          [['platybrachycephalous', 'pitometer', 'electrodepositor', 'superambitious']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[2, 4], [4, 2]]
-          >>> fastest_words(game(['sparrowcide', 'salubrious'], p))
-          [['sparrowcide'], ['salubrious']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 5, 5, 4], [4, 4, 1, 4], [4, 2, 2, 1]]
-          >>> fastest_words(game(['galvanomagnetic', 'loir', 'dividedness', 'nonlipoidal'], p))
-          [[], ['galvanomagnetic', 'dividedness'], ['loir', 'nonlipoidal']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 2, 2], [1, 2, 1], [1, 5, 3]]
-          >>> fastest_words(game(['undersorcerer', 'pneumoperitonitis', 'balaenoidean'], p))
-          [['pneumoperitonitis'], ['undersorcerer', 'balaenoidean'], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 1, 1, 5, 2, 5], [3, 2, 1, 5, 2, 3], [1, 5, 3, 3, 3, 4]]
-          >>> fastest_words(game(['wold', 'relieved', 'quicksandy', 'guaraguao', 'stalkless', 'unexhilarated'], p))
-          [['relieved', 'quicksandy', 'stalkless'], ['unexhilarated'], ['wold', 'guaraguao']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[3, 2, 1], [3, 2, 4]]
-          >>> fastest_words(game(['tamelessly', 'unpermeated', 'myelocytic'], p))
-          [['tamelessly', 'unpermeated', 'myelocytic'], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[3, 5, 1]]
-          >>> fastest_words(game(['ferryboat', 'picky', 'wheerikins'], p))
-          [['ferryboat', 'picky', 'wheerikins']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1, 1], [4, 2], [3, 2]]
-          >>> fastest_words(game(['undershut', 'unmannerly'], p))
-          [['undershut', 'unmannerly'], [], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 2, 5], [3, 4, 2], [4, 4, 1]]
-          >>> fastest_words(game(['davidson', 'toadpipe', 'achete'], p))
-          [['toadpipe'], ['davidson'], ['achete']]
-          """,
-          'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> p = [[]]
-          >>> fastest_words(game([], p))
+          >>> fastest_words({'words': [], 'times': p})
           [[]]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[]]
+          >>> fastest_words({'words': [], 'times': p})
+          [[]]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 3, 4, 2], [5, 2, 2, 3]]
+          >>> fastest_words({'words': ['tillot', 'douser', 'twankingly', 'eccentrate'], 'times': p})
+          [['tillot', 'eccentrate'], ['douser', 'twankingly']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4, 4, 5, 3]]
+          >>> fastest_words({'words': ['reest', 'predigest', 'adipocellulose', 'warriorwise'], 'times': p})
+          [['reest', 'predigest', 'adipocellulose', 'warriorwise']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[5, 1, 5, 3, 5]]
+          >>> fastest_words({'words': ['standing', 'cameroon', 'unpretendingly', 'puppydom', 'lardworm'], 'times': p})
+          [['standing', 'cameroon', 'unpretendingly', 'puppydom', 'lardworm']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> p = [[], []]
-          >>> fastest_words(game([], p))
+          >>> fastest_words({'words': [], 'times': p})
           [[], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[1, 2, 5, 4]]
-          >>> fastest_words(game(['vortically', 'massicot', 'pinite', 'barbarian'], p))
-          [['vortically', 'massicot', 'pinite', 'barbarian']]
+          >>> p = [[1, 4], [5, 5]]
+          >>> fastest_words({'words': ['cardioarterial', 'statolatry'], 'times': p})
+          [['cardioarterial', 'statolatry'], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[4, 5, 1, 4, 5, 5], [1, 4, 5, 2, 3, 5]]
-          >>> fastest_words(game(['xiphydriid', 'longicorn', 'shadchan', 'mixableness', 'journals', 'voltaic'], p))
-          [['shadchan', 'voltaic'], ['xiphydriid', 'longicorn', 'mixableness', 'journals']]
+          >>> p = [[1, 5, 4, 1]]
+          >>> fastest_words({'words': ['whirley', 'coldly', 'compendiary', 'grovel'], 'times': p})
+          [['whirley', 'coldly', 'compendiary', 'grovel']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[1, 3], [1, 2]]
-          >>> fastest_words(game(['feminility', 'voluminously'], p))
-          [['feminility'], ['voluminously']]
+          >>> p = [[2, 1], [3, 3], [2, 4]]
+          >>> fastest_words({'words': ['caducicorn', 'monociliated'], 'times': p})
+          [['caducicorn', 'monociliated'], [], []]
           """,
           'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[4, 2, 3, 5, 1, 2]]
-          >>> fastest_words(game(['kymbalon', 'plastogamy', 'grumpily', 'tease', 'macrocytosis', 'planterdom'], p))
-          [['kymbalon', 'plastogamy', 'grumpily', 'tease', 'macrocytosis', 'planterdom']]
-          """,
-          'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> p = [[], []]
-          >>> fastest_words(game([], p))
+          >>> fastest_words({'words': [], 'times': p})
           [[], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[1, 3, 2], [5, 2, 4], [4, 4, 2]]
-          >>> fastest_words(game(['apostrophic', 'nap', 'materialistical'], p))
-          [['apostrophic', 'materialistical'], ['nap'], []]
+          >>> p = [[2, 3, 4, 5, 3]]
+          >>> fastest_words({'words': ['audibility', 'deuteride', 'mimiambic', 'isoimmunity', 'rhinopharynx'], 'times': p})
+          [['audibility', 'deuteride', 'mimiambic', 'isoimmunity', 'rhinopharynx']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[], [], []]
-          >>> fastest_words(game([], p))
-          [[], [], []]
+          >>> p = [[5], [4], [4]]
+          >>> fastest_words({'words': ['millage'], 'times': p})
+          [[], ['millage'], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[1], [5], [1]]
-          >>> fastest_words(game(['afterturn'], p))
-          [['afterturn'], [], []]
+          >>> p = [[3, 1], [5, 4]]
+          >>> fastest_words({'words': ['inyoite', 'complications'], 'times': p})
+          [['inyoite', 'complications'], []]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[], [], []]
-          >>> fastest_words(game([], p))
-          [[], [], []]
+          >>> p = [[2, 2], [2, 2], [4, 1]]
+          >>> fastest_words({'words': ['sarcodous', 'microbiological'], 'times': p})
+          [['sarcodous'], [], ['microbiological']]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4, 4, 1], [2, 2, 3]]
+          >>> fastest_words({'words': ['chromophilic', 'brabant', 'detailed'], 'times': p})
+          [['detailed'], ['chromophilic', 'brabant']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[], []]
+          >>> fastest_words({'words': [], 'times': p})
+          [[], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4, 1, 1, 1], [3, 1, 3, 3]]
+          >>> fastest_words({'words': ['allochiral', 'hear', 'snur', 'myosarcomatous'], 'times': p})
+          [['hear', 'snur', 'myosarcomatous'], ['allochiral']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[2], [5]]
+          >>> fastest_words({'words': ['studiedly'], 'times': p})
+          [['studiedly'], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[3, 3, 3, 5, 2, 5]]
+          >>> fastest_words({'words': ['katatonia', 'myoporaceous', 'tribunitive', 'mungofa', 'demodectic', 'kolobion'], 'times': p})
+          [['katatonia', 'myoporaceous', 'tribunitive', 'mungofa', 'demodectic', 'kolobion']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[], []]
+          >>> fastest_words({'words': [], 'times': p})
+          [[], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[5, 2], [2, 2]]
+          >>> fastest_words({'words': ['cheeser', 'cumulation'], 'times': p})
+          [['cumulation'], ['cheeser']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[2, 2], [1, 3]]
+          >>> fastest_words({'words': ['overemphatic', 'telpherway'], 'times': p})
+          [['telpherway'], ['overemphatic']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4, 4], [1, 2], [3, 5]]
+          >>> fastest_words({'words': ['ultradolichocephalic', 'kinetophone'], 'times': p})
+          [[], ['ultradolichocephalic', 'kinetophone'], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4, 5, 3]]
+          >>> fastest_words({'words': ['protosaurian', 'plumbable', 'siroccoishly'], 'times': p})
+          [['protosaurian', 'plumbable', 'siroccoishly']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 5, 4, 5, 1, 1]]
+          >>> fastest_words({'words': ['hydroidean', 'pesterer', 'seedcase', 'rudder', 'muttering', 'individualize'], 'times': p})
+          [['hydroidean', 'pesterer', 'seedcase', 'rudder', 'muttering', 'individualize']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[3, 2, 1, 2], [2, 3, 5, 3]]
+          >>> fastest_words({'words': ['oleostearin', 'stitching', 'theanthropism', 'blate'], 'times': p})
+          [['stitching', 'theanthropism', 'blate'], ['oleostearin']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 1], [2, 2]]
+          >>> fastest_words({'words': ['oscillatory', 'geophyte'], 'times': p})
+          [['oscillatory', 'geophyte'], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1], [2]]
+          >>> fastest_words({'words': ['withsave'], 'times': p})
+          [['withsave'], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[5, 1, 1], [5, 3, 4]]
+          >>> fastest_words({'words': ['battlewise', 'dare', 'halibiu'], 'times': p})
+          [['battlewise', 'dare', 'halibiu'], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[3, 1, 4, 2], [4, 3, 5, 5]]
+          >>> fastest_words({'words': ['muscoid', 'reliquidation', 'broad', 'tugging'], 'times': p})
+          [['muscoid', 'reliquidation', 'broad', 'tugging'], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4, 2, 5]]
+          >>> fastest_words({'words': ['trophobiosis', 'parascenium', 'gibbet'], 'times': p})
+          [['trophobiosis', 'parascenium', 'gibbet']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 1, 4]]
+          >>> fastest_words({'words': ['nonsparking', 'calool', 'dorsopleural'], 'times': p})
+          [['nonsparking', 'calool', 'dorsopleural']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[2, 4], [4, 4], [5, 3]]
+          >>> fastest_words({'words': ['unexcusableness', 'bismuthyl'], 'times': p})
+          [['unexcusableness'], [], ['bismuthyl']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[5, 4, 5, 5, 2], [1, 4, 1, 2, 4]]
+          >>> fastest_words({'words': ['evolution', 'intransigency', 'improperly', 'angiophorous', 'urinogenital'], 'times': p})
+          [['intransigency', 'urinogenital'], ['evolution', 'improperly', 'angiophorous']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[5, 5, 1]]
+          >>> fastest_words({'words': ['penceless', 'bromothymol', 'reticuloramose'], 'times': p})
+          [['penceless', 'bromothymol', 'reticuloramose']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 4, 5, 2, 2, 3]]
+          >>> fastest_words({'words': ['monument', 'appressor', 'tutu', 'gentilize', 'trihemimeral', 'bifid'], 'times': p})
+          [['monument', 'appressor', 'tutu', 'gentilize', 'trihemimeral', 'bifid']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 4, 3, 3, 5, 2]]
+          >>> fastest_words({'words': ['uncivilized', 'pairer', 'keratonyxis', 'chemitypy', 'checkroll', 'hymnographer'], 'times': p})
+          [['uncivilized', 'pairer', 'keratonyxis', 'chemitypy', 'checkroll', 'hymnographer']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[2], [4], [3]]
+          >>> fastest_words({'words': ['inclementness'], 'times': p})
+          [['inclementness'], [], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[], []]
+          >>> fastest_words({'words': [], 'times': p})
+          [[], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[5, 1, 3, 1, 2, 4]]
+          >>> fastest_words({'words': ['bescorch', 'rodding', 'disawa', 'gastradenitis', 'cottabus', 'prescapularis'], 'times': p})
+          [['bescorch', 'rodding', 'disawa', 'gastradenitis', 'cottabus', 'prescapularis']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4], [5], [4]]
+          >>> fastest_words({'words': ['transmundane'], 'times': p})
+          [['transmundane'], [], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 3]]
+          >>> fastest_words({'words': ['becense', 'hyperingenuity'], 'times': p})
+          [['becense', 'hyperingenuity']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[5, 3, 4], [5, 5, 3], [3, 2, 3]]
+          >>> fastest_words({'words': ['interventional', 'demiditone', 'chrysophilite'], 'times': p})
+          [[], ['chrysophilite'], ['interventional', 'demiditone']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[2, 5, 3, 5, 1, 3], [1, 4, 3, 1, 3, 4], [1, 3, 1, 4, 4, 5]]
+          >>> fastest_words({'words': ['pyritology', 'marbleize', 'blooddrop', 'prickingly', 'ecole', 'capitellar'], 'times': p})
+          [['ecole', 'capitellar'], ['pyritology', 'prickingly'], ['marbleize', 'blooddrop']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[3, 5, 4, 5, 4, 3], [1, 3, 1, 1, 3, 5]]
+          >>> fastest_words({'words': ['epicotyledonary', 'hiro', 'tremolo', 'ringgiving', 'pignoratitious', 'untakableness'], 'times': p})
+          [['untakableness'], ['epicotyledonary', 'hiro', 'tremolo', 'ringgiving', 'pignoratitious']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[2, 3], [4, 3], [5, 5]]
+          >>> fastest_words({'words': ['tutoyer', 'fibrilliferous'], 'times': p})
+          [['tutoyer', 'fibrilliferous'], [], []]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 2, 2, 1]]
+          >>> fastest_words({'words': ['aneuploidy', 'unrubified', 'dynamic', 'twistable'], 'times': p})
+          [['aneuploidy', 'unrubified', 'dynamic', 'twistable']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[2, 2, 2, 3]]
+          >>> fastest_words({'words': ['pholadoid', 'toxicodermatitis', 'gallification', 'survival'], 'times': p})
+          [['pholadoid', 'toxicodermatitis', 'gallification', 'survival']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[3, 3, 1, 4, 5], [5, 2, 3, 2, 3]]
+          >>> fastest_words({'words': ['principiate', 'archinfamy', 'cacomixle', 'endonuclear', 'writer'], 'times': p})
+          [['principiate', 'cacomixle'], ['archinfamy', 'endonuclear', 'writer']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[5, 5, 2, 4]]
+          >>> fastest_words({'words': ['mechanicalist', 'losing', 'emancipation', 'counterquarterly'], 'times': p})
+          [['mechanicalist', 'losing', 'emancipation', 'counterquarterly']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4, 5, 1], [2, 1, 3]]
+          >>> fastest_words({'words': ['subframe', 'infinitude', 'astrochemist'], 'times': p})
+          [['astrochemist'], ['subframe', 'infinitude']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[2]]
+          >>> fastest_words({'words': ['isocheimal'], 'times': p})
+          [['isocheimal']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[1, 4, 4, 5], [5, 4, 5, 2]]
+          >>> fastest_words({'words': ['mistresshood', 'lazzarone', 'define', 'unmudded'], 'times': p})
+          [['mistresshood', 'lazzarone', 'define'], ['unmudded']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[4, 5, 2, 2, 4], [3, 5, 4, 5, 1]]
+          >>> fastest_words({'words': ['either', 'ungenuine', 'dealable', 'pejorism', 'cointersecting'], 'times': p})
+          [['ungenuine', 'dealable', 'pejorism'], ['either', 'cointersecting']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> p = [[2, 1]]
+          >>> fastest_words({'words': ['narcoanesthesia', 'tanbur'], 'times': p})
+          [['narcoanesthesia', 'tanbur']]
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
           >>> p = [[]]
-          >>> fastest_words(game([], p))
+          >>> fastest_words({'words': [], 'times': p})
           [[]]
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> p = [[1, 2, 5, 1, 3], [1, 4, 4, 1, 4], [1, 4, 3, 4, 2]]
-          >>> fastest_words(game(['belletrist', 'vegetocarbonaceous', 'woodchuck', 'phacitis', 'warehouseful'], p))
-          [['belletrist', 'vegetocarbonaceous', 'phacitis'], [], ['woodchuck', 'warehouseful']]
+          >>> p = [[1, 4]]
+          >>> fastest_words({'words': ['overappraise', 'disdiapason'], 'times': p})
+          [['overappraise', 'disdiapason']]
           """,
           'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[]]
-          >>> fastest_words(game([], p))
-          [[]]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[1, 3, 5, 2], [3, 4, 1, 1], [5, 2, 1, 2]]
-          >>> fastest_words(game(['suprasphanoidal', 'thickbrained', 'pharyngographic', 'punch'], p))
-          [['suprasphanoidal'], ['pharyngographic', 'punch'], ['thickbrained']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 3], [3, 3]]
-          >>> fastest_words(game(['unharnessed', 'fruitist'], p))
-          [['fruitist'], ['unharnessed']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[3, 5, 3, 5, 2, 2], [1, 3, 2, 3, 5, 1], [2, 3, 5, 2, 4, 4]]
-          >>> fastest_words(game(['spurgall', 'rampagious', 'coralberry', 'crossways', 'coconsecrator', 'afterwork'], p))
-          [['coconsecrator'], ['spurgall', 'rampagious', 'coralberry', 'afterwork'], ['crossways']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[4, 5], [3, 3], [3, 2]]
-          >>> fastest_words(game(['bovicide', 'bronze'], p))
-          [[], ['bovicide'], ['bronze']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[2, 1, 5], [5, 2, 4]]
-          >>> fastest_words(game(['spondylium', 'agrammatism', 'yad'], p))
-          [['spondylium', 'agrammatism'], ['yad']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[], [], []]
-          >>> fastest_words(game([], p))
-          [[], [], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[3], [5], [3]]
-          >>> fastest_words(game(['dumminess'], p))
-          [['dumminess'], [], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 2]]
-          >>> fastest_words(game(['fugle', 'estimated'], p))
-          [['fugle', 'estimated']]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 4, 5], [1, 3, 4], [5, 5, 5]]
-          >>> fastest_words(game(['imbonity', 'axolemma', 'comendite'], p))
-          [[], ['imbonity', 'axolemma', 'comendite'], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[4, 2], [2, 5], [2, 3]]
-          >>> fastest_words(game(['wavement', 'carpeting'], p))
-          [['carpeting'], ['wavement'], []]
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> p = [[5, 5, 2], [4, 2, 2]]
-          >>> fastest_words(game(['stepfatherhood', 'semiprofessional', 'diplomatist'], p))
-          [['diplomatist'], ['stepfatherhood', 'semiprofessional']]
-          """,
-          'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         }
       ],
       'scored': True,
       'setup': r"""
-      >>> from cats import game, fastest_words
+      >>> from cats import fastest_words
       """,
       'teardown': '',
-      'type': 'doctest'
-    },
-    {
-      'cases': [
-        {
-          'code': r"""
-          >>> test.swap_implementations(cats)
-          >>> p0 = [2, 2, 3]
-          >>> p1 = [6, 1, 2]
-          >>> cats.fastest_words(cats.game(['What', 'great', 'luck'], [p0, p1]))
-          [['What'], ['great', 'luck']]
-          """,
-          'hidden': False,
-          'locked': False
-        }
-      ],
-      'scored': True,
-      'setup': r"""
-      >>> import cats
-      >>> import tests.abstraction_check as test #ake sure the abstraction barrier isn't crossed!
-      """,
-      'teardown': r"""
-      >>> test.restore_implementations(cats)
-      """,
       'type': 'doctest'
     }
   ]

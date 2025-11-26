@@ -197,7 +197,8 @@ def cond():
     "*** YOUR CODE HERE ***"
 
 def true_func():
-    "*** YOUR CODE HERE ***"
+    
+        
 
 def false_func():
     "*** YOUR CODE HERE ***"

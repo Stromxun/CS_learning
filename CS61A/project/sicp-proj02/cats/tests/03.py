@@ -1,859 +1,999 @@
 test = {
   'name': 'Problem 3',
-  'points': 1,
+  'points': 2,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          >>> accuracy("12345", "12345") # Returns 100.0
-          100.0
+          >>> accuracy("12345", "12345") # This should return 100.0 (not the integer 100!)
+          3a2c23041705bff52731f6d71741b6a2
+          # locked
           >>> accuracy("a b c", "a b c")
-          100.0
+          3a2c23041705bff52731f6d71741b6a2
+          # locked
           >>> accuracy("a  b  c  d", "b  a  c  d")
-          50.0
+          9bea7599ced675a50bbbcbf6a41ff02c
+          # locked
           >>> accuracy("a b", "c d e")
-          0.0
+          427fe1a667819805b038e0f2bfdfb7af
+          # locked
           >>> accuracy("Cat", "cat") # the function is case-sensitive
-          0.0
-          >>> accuracy("a b c d", " a d ")
-          25.0
+          427fe1a667819805b038e0f2bfdfb7af
+          # locked
+          >>> accuracy("a b c d", "a d")
+          5eadfda7f07bc5c45d272ba0f6b923b2
+          # locked
           >>> accuracy("abc", " ")
-          0.0
-          >>> accuracy(" a b \tc" , "a b c") # Tabs don't count as words
-          100.0
+          427fe1a667819805b038e0f2bfdfb7af
+          # locked
+          >>> accuracy("a b \tc" , "a b c") # Tabs don't count as words
+          3a2c23041705bff52731f6d71741b6a2
+          # locked
           >>> accuracy("abc", "")
-          0.0
+          427fe1a667819805b038e0f2bfdfb7af
+          # locked
           >>> accuracy("", "abc")
-          0.0
+          427fe1a667819805b038e0f2bfdfb7af
+          # locked
+          >>> accuracy("a b c d", "b c d")
+          427fe1a667819805b038e0f2bfdfb7af
+          # locked
           >>> accuracy("cats.", "cats") # punctuation counts
-          0.0
+          427fe1a667819805b038e0f2bfdfb7af
+          # locked
+          >>> accuracy("", "") # Returns 100.0
+          3a2c23041705bff52731f6d71741b6a2
+          # locked
           """,
           'hidden': False,
-          'locked': False
+          'locked': True,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> reference_text = "Abstraction, in general, is a fundamental concept to computer science and software development. The process of abstraction can also be referred to as modeling and is closely related to the concepts of theory and design. Models can also be considered types of abstractions per their generalization of aspects of reality. Abstraction in computer science is also closely related to abstraction in mathematics due to their common focus on building abstractions as objects, but is also related to other notions of abstraction used in other fields such as art."
+          >>> accuracy('Cute Dog!', 'Cute Dog.')
+          50.0
+          >>> accuracy('A Cute Dog!', 'Cute Dog.')
+          0.0
+          >>> accuracy('cute Dog.', 'Cute Dog.')
+          50.0
+          >>> accuracy('Cute Dog. I say!', 'Cute Dog.')
+          50.0
+          >>> accuracy('Cute', 'Cute Dog.')
+          100.0
+          >>> accuracy('', 'Cute Dog.')
+          0.0
+          >>> accuracy('', '')
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> source_text = "Abstraction, in general, is a fundamental concept to computer science and software development. The process of abstraction can also be referred to as modeling and is closely related to the concepts of theory and design. Models can also be considered types of abstractions per their generalization of aspects of reality. Abstraction in computer science is also closely related to abstraction in mathematics due to their common focus on building abstractions as objects, but is also related to other notions of abstraction used in other fields such as art."
           >>> typed_string1 = "Abstraction, in general, is a fundamental concept to computer science and software development. The process of abstraction can also be referred to as modeling and is closely related to the concepts of theory and design. Models can also be considered types of abstractions per their generalization of aspects of reality. Abstraction in computer science is also closely related to abstraction in mathematics due to their common focus on building abstractions as objects, but is also related to other notions of abstraction used in other fields such as art."
           >>> typed_string2 = "Abstraction, in general, is a fundamentl concept to computer science and software development. The process of abstraction can also be referred to as modeling and is closely related to the concepts of theory and design. Models can also be considered types of abstractions per their generalization of aspects of reality. Abstraction in computer science is also closely related to abstraction in mathematics due to their common focus on building abstractions as objects, but is also related to other notions of abstraction usd in other fields such as art."
           >>> typed_string3 = "Abstraction,"
           >>> typed_string4 = "Abstraction, in general, is a fundamental concept to computer science and software development. The process of abstraction can also be referred to as modeling and is closely related to the concepts of theory and design. Models can also be considered types of abstractions per their generalization of aspects of reality. Abstraction in computer science is also closely related to abstraction in mathematics due to their common focus on building abstractions as objects, but is also related to other notions of abstraction used in other fields such as art. extra"
           >>> typed_string5 = "Abstraction, in general, is a fundamental concept to computer science and software development. The process of abstraction can also be referred to as modeling and is closely related to the concepts of theory and design. Models can also be considered types of abstractions per their generalization of aspects of reality. Abstraction in computer science is also closely related to abstraction in mathematics due to their common focus on building abstractions as objects, but is also related to other notions of abstraction used in other fields such as art. Abstraction, in general, is a fundamental concept to computer science and software development. The process of abstraction can also be referred to as modeling and is closely related to the concepts of theory and design. Models can also be considered types of abstractions per their generalization of aspects of reality. Abstraction in computer science is also closely related to abstraction in mathematics due to their common focus on building abstractions as objects, but is also related to other notions of abstraction used in other fields such as art. art"
           >>> typed_string6 = "abstraction"
-          >>> round(accuracy(typed_string2, reference_text), 1)
+          >>> round(accuracy(typed_string2, source_text), 1)
           97.7
-          >>> round(accuracy(typed_string3, reference_text), 1)
+          >>> round(accuracy(typed_string3, source_text), 1)
           100.0
-          >>> round(accuracy(typed_string4, reference_text), 1)
+          >>> round(accuracy(typed_string4, source_text), 1)
           98.9
-          >>> round(accuracy(typed_string5, reference_text), 1)
+          >>> round(accuracy(typed_string5, source_text), 1)
           49.7
-          >>> round(accuracy(typed_string6, reference_text), 1)
+          >>> round(accuracy(typed_string6, source_text), 1)
           0.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('statu>tably tautit up]ti]ll a\\nhydrat(e h)arpula sidecheck }shapeless structuration bra>inlike', 'statu>tably tautit up]ti]ll a\\nhydrat(e h)arpula'), 2)
+          >>> round(accuracy('modern[-izer marque_ .roi$t befr+iz. psychologi"c baptizee_', 'modern[-izer marque_ .roi$t befr+iz. psychologi"c baptizee_ u-nflu"ent f]reckleproof'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('phrymaceous bridgema:ki<ng non*support|er (feasible respectability_ mong{relize ul<la}ge sinistrogyration treasur"es(', 'phrymaceous bridgema:ki<ng non*support|er (feasible respectability_'), 2)
           55.56
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('condi,tioning neomorph pyrazole pinche{m asce=tically turgidness appetent theatro%=phile', 'condi,tioning neomorph pyrazole pinche{m asce=tically turgidness appetent theatro%=phile \\pterygoidal'), 2)
+          >>> round(accuracy('ammonionitr.ate s>ulpholysis a&dmirative cirso]tomy itin+\\eration preoffensively', 'ammonionitr.ate s>ulpholysis a&dmirative cirso]tomy itin+\\eration preoffensively acardiac +psychophysio;logist nicknameable'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('sp)orang,iform bu:dder ungothic wem(less minimus', 'sp)orang,iform bu:dder ungothic wem(less minimus'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('gendarme lol|lipop co*mbat lumpsuc!?ker finder_ i~m{portune erratu)m', 'gendarme lol|lipop co*mbat lumpsuc!?ker finder_'), 2)
+          >>> round(accuracy('handgun hydrometra)^ anticentralization unmicrob/#ic paradisal+ vulval dr.oo[py', 'handgun hydrometra)^ anticentralization unmicrob/#ic paradisal+'), 2)
           71.43
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy("oviferous realleg_e grasswor\\m\\ nutt'ishnes-s foul lemoni@sh rotun]dn#ess", "oviferous realleg_e grasswor\\m\\ nutt'ishnes-s foul lemoni@sh"), 2)
+          >>> round(accuracy('cunge(boi mistressdom sir\\l<oin mol^}eproof ala@creatin$ine', 'cunge(boi mistressdom sir\\l<oin mol^}eproof ala@creatin$ine'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('prebelev`*e astrola<bic}al cheilitis wraw gageable', 'prebelev`*e astrola<bic}al cheilitis wraw gageable v[iolin isocamphori}c gramma@ticaster'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('underivedl[y! s,te&reographical prerich greedygut purpur^*oid nonwinged broo*l', 'underivedl[y! s,te&reographical prerich greedygut purpur^*oid nonwinged'), 2)
           85.71
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('dollier `sciogr;aphic rhopali@um retardive unli:very wenneberg}^ite a}naphroditous corresponsion', 'dollier `sciogr;aphic rhopali@um retardive unli:very'), 2)
+          >>> round(accuracy("unp;r^esented unsti'rra:ble fixatif needlepro_of obtrude madreporitic ne,xus}", "unp;r^esented unsti'rra:ble fixatif needlepro_of obtrude"), 2)
+          71.43
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('nih-ilification crapy ixodian reliner ebull%ioscope', 'nih-ilification crapy ixodian reliner ebull%ioscope booky'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('au+ximone peepey`e~ sanctiona(ry pse\\udotrachea unvendiblene>s&s', 'au+ximone peepey`e~ sanctiona(ry pse\\udotrachea unvendiblene>s&s'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('prevol"ition(al outknave cryptoagnostic volhy:ni=te wh{iptr:ee preaffect +elopement', 'prevol"ition(al outknave cryptoagnostic volhy:ni=te wh{iptr:ee preaffect +elopement'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('apoc>^yneous hol&oplankton dahoon warning graticul&e unc+hri"stianness', 'apoc>^yneous hol&oplankton dahoon warning graticul&e unc+hri"stianness lacker unvolatile'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('nonexp}iry molybdoc>olic s=tratography. ]unquibbled pa=r;asitotropism counterbuff', 'nonexp}iry molybdoc>olic s=tratography. ]unquibbled pa=r;asitotropism'), 2)
+          83.33
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('misinstruction underriding ;unabsor{b a|mphi[genetic unbacked le[arn.t an`thoid episcopacy', 'misinstruction underriding ;unabsor{b a|mphi[genetic unbacked'), 2)
           62.5
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('cisplatine cf: teleobjecti"ve d_ubber in"sectol%ogy pawnage passen|ger&', 'cisplatine cf: teleobjecti"ve d_ubber in"sectol%ogy pawnage'), 2)
+          >>> round(accuracy('accroach s^eag+oer red#isemb)ark mono^dactylate chondroplastic batt/ue sternmost', 'accroach s^eag+oer red#isemb)ark mono^dactylate chondroplastic batt/ue'), 2)
           85.71
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy("accompaniment osteochond)ropa\\thy bellower ;apocryp%hon goall'es>s ;conformal riband str%addl'e barrenness", "accompaniment osteochond)ropa\\thy bellower ;apocryp%hon goall'es>s ;conformal"), 2)
-          66.67
+          >>> round(accuracy('dependa;bly extraessent}ial ~fl$uoborate accomp}lisher zambi^a _ferrado& unprescient strange', 'dependa;bly extraessent}ial ~fl$uoborate accomp}lisher zambi^a _ferrado&'), 2)
+          75.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy("pruriently& polony unshaded p{reimportation ca-thepsin` 'nowel/ of sheephearte(d", "pruriently& polony unshaded p{reimportation ca-thepsin` 'nowel/ of sheephearte(d xy_lotypography"), 2)
+          >>> round(accuracy('irenically caut&ery +y/obi un:shrine%d spe)aker musicpr_oo!f vagotropic dispope', 'irenically caut&ery +y/obi un:shrine%d spe)aker musicpr_oo!f vagotropic dispope doors'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('southeas|ternmost" d`ustbin nontreated halakah redstart cataractal +c{omplin ungarbed pseudoangelic', 'southeas|ternmost" d`ustbin nontreated halakah redstart'), 2)
-          55.56
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('intercreate inkhornizer polea;xe )anaerobio*us %ins>ubordinately s,ubprefect]orial', 'intercreate inkhornizer polea;xe )anaerobio*us %ins>ubordinately s,ubprefect]orial electromagnetism barbit>urate rhi.pidistian'), 2)
+          >>> round(accuracy('investigatable protonemal asso:ciated, uni<radiate; carrag>een archipterygia-l', 'investigatable protonemal asso:ciated, uni<radiate; carrag>een archipterygia-l bar)b^arism kah{ar]'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('uniformitaria\\n di(scrimination {aqueousness cibation septuor trich"ophyl-lous', 'uniformitaria\\n di(scrimination {aqueousness cibation septuor'), 2)
-          83.33
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('pul#icidal overslaugh ectod<actylis?m [arfvedsoni,te portrayer apo=geotropically tutorials undishe}d', 'pul#icidal overslaugh ectod<actylis?m [arfvedsoni,te portrayer apo=geotropically tutorials undishe}d'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('scleromeninx epirogeny se?ric}ipary supermoro+se uneffeminate ozone a@,thletics', 'scleromeninx epirogeny se?ric}ipary supermoro+se uneffeminate'), 2)
-          71.43
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('plumbo(sol^vent temulent;i|ve trid!ent,ate pang!en+etically morbify cystere)thism ambient `ferned', 'plumbo(sol^vent temulent;i|ve trid!ent,ate pang!en+etically morbify'), 2)
-          62.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('uncorked nasoethmoidal[ patrist~ic i:mpa+rl effect>ive', 'uncorked nasoethmoidal[ patrist~ic i:mpa+rl effect>ive triddler "unsighting c,a#nticle magistrat\'ic'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('kair`ine progne quotity dupery =?shisham #biog?raphies', 'kair`ine progne quotity dupery =?shisham #biog?raphies'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('orre[ry nickelous g/randpaternal mesarteritis antony~$m u}nchewed', 'orre[ry nickelous g/randpaternal mesarteritis antony~$m u}nchewed'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('i}nadequateness #f)eudist marc@hland sanidinic kratogeni$c hemimellitene{ mi|l!liner', 'i}nadequateness #f)eudist marc@hland sanidinic kratogeni$c hemimellitene{ mi|l!liner saltativen,ess'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('scorbutic an]te[meridian =dunt[ hold,fast warm(er zenog#raphy preobstruction', 'scorbutic an]te[meridian =dunt[ hold,fast warm(er'), 2)
-          71.43
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy("caulicule bra?n radio[log!ic incorrigible 'spiderle}ss ri~tualless nonresisti,ng rev,accin|ate", "caulicule bra?n radio[log!ic incorrigible 'spiderle}ss ri~tualless nonresisti,ng"), 2)
-          87.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('playwrighting encumberingly <yu~gada pasang cryptogrammatist* wonder', 'playwrighting encumberingly <yu~gada pasang cryptogrammatist*'), 2)
-          83.33
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('saltless nonf?orma,tion {marin/a ca(sh undamming stringmakin:g r=ipa bra>nsolder phlebecto+m\\y', 'saltless nonf?orma,tion {marin/a ca(sh undamming stringmakin:g r=ipa bra>nsolder phlebecto+m\\y'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('gaub unf-oxy anaphr^odis>iac completory @anaph,yte intercrust a^ct}ification cytase', 'gaub unf-oxy anaphr^odis>iac completory @anaph,yte'), 2)
-          62.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('u<pbid dam con`,ductivity b=urion ~bevillain somesthesia muffler{', 'u<pbid dam con`,ductivity b=urion ~bevillain somesthesia muffler{ semisq<uare'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('indiffe[rently nora|tion) highman end(ite amethodically [bolometer ph;otoshop cliqueless heterocentric', 'indiffe[rently nora|tion) highman end(ite amethodically [bolometer ph;otoshop'), 2)
+          >>> round(accuracy('tubuliporoid scus;at)ion splenatr\\ophy` schedular un]leased subconstable vassaldom succin nationaliza\\tion', 'tubuliporoid scus;at)ion splenatr\\ophy` schedular un]leased subconstable vassaldom'), 2)
           77.78
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('_disregardance saw<er unexcuse?dness diacoe+l:e silhouettist', '_disregardance saw<er unexcuse?dness diacoe+l:e silhouettist -tash'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('catabaptist m]oral leiomyomat#ous belive%< sto!@ve deontol[ogist- unfixedness #metamerization', 'catabaptist m]oral leiomyomat#ous belive%< sto!@ve'), 2)
-          62.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('inc?ohe!rentific bicetyl geromorp)hism staphyl{o,ncus .an/thropomorphite furrow', 'inc?ohe!rentific bicetyl geromorp)hism staphyl{o,ncus .an/thropomorphite furrow'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('a!ccomplic)eship s>udiform nonprotection crinoid?al bubalis ~nas(eberry umbriferously scopti-/cal', 'a!ccomplic)eship s>udiform nonprotection crinoid?al bubalis ~nas(eberry umbriferously scopti-/cal grounder'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('e@r`ythematous mel<iorist ?endode?rmis `decentrali/st dallier c\\ondiction journalizer^) ferganite( forescene', 'e@r`ythematous mel<iorist ?endode?rmis `decentrali/st dallier c\\ondiction journalizer^) ferganite( forescene'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('bend\\i_ng bu/lldo+zer fineles<s caesaropapacy superaward<? a(nthropotomical] enkindle', 'bend\\i_ng bu/lldo+zer fineles<s caesaropapacy superaward<?'), 2)
+          >>> round(accuracy("de{moded sinusoid omi`ssivel~y _{largest h'ematocy~stis na<sial buoyantne(ss", "de{moded sinusoid omi`ssivel~y _{largest h'ematocy~stis"), 2)
           71.43
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('arboriform nucleonics wate$r^ed plu#mbism bi+se=xed diaphanometric redkne^es spor]ophyll,', 'arboriform nucleonics wate$r^ed plu#mbism bi+se=xed diaphanometric redkne^es spor]ophyll, yah:oo!'), 2)
+          >>> round(accuracy('owrelay muste:rabl_e i;sopterous mer=it inf\\u^la', 'owrelay muste:rabl_e i;sopterous mer=it inf\\u^la harrier'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('par*ad^octor c+al{ycate sclerodactylia saucerlike gridir;;on demigriffin dhoti tre$ading in$(framandibular', 'par*ad^octor c+al{ycate sclerodactylia saucerlike gridir;;on'), 2)
-          55.56
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy("colle[ctorship ha,ply externall=y lenti'cularis seisma!l telephone", "colle[ctorship ha,ply externall=y lenti'cularis seisma!l telephone accounti@ng"), 2)
+          >>> round(accuracy('bogland widespre,ad} unreason hypogonation pillared bestiali+ze', 'bogland widespre,ad} unreason hypogonation pillared bestiali+ze'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('-clinometrical pulicarious gourdlike unordin}arin-ess unwakened analytically', '-clinometrical pulicarious gourdlike unordin}arin-ess unwakened analytically art@:hritis vou.ge kidnap]'), 2)
+          >>> round(accuracy('cholecystogram ma}ximization ,m:orrow watertig=ht appearance mis">sionize ~tra-nspicuously', 'cholecystogram ma}ximization ,m:orrow watertig=ht appearance mis">sionize ~tra-nspicuously'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy("p_idd-ler stolonate g'emmipar[ity inconglomerate hulk unmin^uted satiny{", "p_idd-ler stolonate g'emmipar[ity inconglomerate hulk"), 2)
-          71.43
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('sabered rid_i$cule thieving conferrable s-ubsero]sa counteraddress anc+onagra officeless', 'sabered rid_i$cule thieving conferrable s-ubsero]sa counteraddress anc+onagra officeless retroce$ssi^on'), 2)
+          >>> round(accuracy('eugenist sho[rt capacitation sonderclass]? discomedusoid', 'eugenist sho[rt capacitation sonderclass]? discomedusoid goo?lah s>alsolaceous'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('noggen engrained"ly\\ mis"m+atchment q|uietso.me neg~ationist brom`/iodide', 'noggen engrained"ly\\ mis"m+atchment q|uietso.me neg~ationist brom`/iodide pos`+tural zei$sm'), 2)
+          >>> round(accuracy('gibbet lu{,ne mo"noxeno^us en)terotomy` un~barrable outs_windle w-hunstane "pag@anry', 'gibbet lu{,ne mo"noxeno^us en)terotomy` un~barrable outs_windle w-hunstane "pag@anry ]kerslosh+'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('unidigitate $noo`logist jesse} invernacular ?apterygot<e outdevil', 'unidigitate $noo`logist jesse} invernacular ?apterygot<e outdevil'), 2)
+          >>> round(accuracy('|postprandiall"y pa>>ssingly nonappr&opriation lat^h dow~nfallen dis|assimilate pa*roecy &d{etachedness', '|postprandiall"y pa>>ssingly nonappr&opriation lat^h dow~nfallen dis|assimilate pa*roecy &d{etachedness slatternly'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('di"-mmed pin>\\ked krausite symbolry* amph/ibiousne:ss per[+fectionizement nigra>niline str:adi_ne', 'di"-mmed pin>\\ked krausite symbolry* amph/ibiousne:ss'), 2)
-          62.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('dys;analy"te overa_rm deprivate phym\'a;toid dentinal>', 'dys;analy"te overa_rm deprivate phym\'a;toid dentinal> podium ny@ctinasti<c vagabondager'), 2)
+          >>> round(accuracy('electrofus*ed {unrel|atedness schem-atize dismoun+table~ quernston]>e cervicorn saltly', 'electrofus*ed {unrel|atedness schem-atize dismoun+table~ quernston]>e cervicorn saltly'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('line(n{man pho+toelect[ricity t@ormen?table t&ripletree antenna vicissitude@ pa}lladous_ ev~angeli>stics', "line(n{man pho+toelect[ricity t@ormen?table t&ripletree antenna vicissitude@ pa}lladous_ ev~angeli>stics extrav?as'ate"), 2)
+          >>> round(accuracy('lampless fi|brocho\\ndroma pal#aeoatavism mi<crocephalia qu.\\adrilled', 'lampless fi|brocho\\ndroma pal#aeoatavism mi<crocephalia qu.\\adrilled horror r)ehan?g'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('_cig discrepantl`y }pr\\oclamation s,`purrer morb@$ific -abysmal acetamidine libelee #bigger', '_cig discrepantl`y }pr\\oclamation s,`purrer morb@$ific'), 2)
-          55.56
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('rejumble peripl\\e]gmatic null.@ipore spatchco/ck oviductal >zygosperm profound |p)ed _ma=mmalogical', 'rejumble peripl\\e]gmatic null.@ipore spatchco/ck oviductal >zygosperm profound |p)ed'), 2)
-          88.89
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy("phonogrammically pre@ambition odalisk] crownl@e^ss subhuman flyway amorphousness dext'raural", "phonogrammically pre@ambition odalisk] crownl@e^ss subhuman flyway amorphousness dext'raural"), 2)
+          >>> round(accuracy('persistentl^y valvi<form unfastidiou]s cu@s"ser p,ossessio.ner', 'persistentl^y valvi<form unfastidiou]s cu@s"ser p,ossessio.ner'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('her|i,ot autodi!d)act fr#act#ional insect ri{ngmaster;', 'her|i,ot autodi!d)act fr#act#ional insect ri{ngmaster; brickcroft ideas l{ymphocystosis unacceptant'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('balzarine lute thirtee<nfold p=aradi,ng permutableness', 'balzarine lute thirtee<nfold p=aradi,ng permutableness'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy("plunderingly colchicine 'misph#rase rela;ta` an=thr#opolater", "plunderingly colchicine 'misph#rase rela;ta` an=thr#opolater ph^otomicrographic dome in~going"), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy("gynos=?pore yourselves %o-verhardy w'orkm`aster dichotomously unsociality naphthalene", "gynos=?pore yourselves %o-verhardy w'orkm`aster dichotomously"), 2)
-          71.43
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy("ramp}acious devalo'ka tect(a:l tournament h'ass_ock", "ramp}acious devalo'ka tect(a:l tournament h'ass_ock"), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('suble;vation postlachrymal auto&/cinesis mu+yu{sa hemo"pexis bang', 'suble;vation postlachrymal auto&/cinesis mu+yu{sa hemo"pexis'), 2)
+          >>> round(accuracy('unwarrant au"t_oinduction mesoder:mic uncranked arter~ialize jo~llo-ped', 'unwarrant au"t_oinduction mesoder:mic uncranked arter~ialize'), 2)
           83.33
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('{dino\\there d$r$ugshop <cicindelid unilluminating d+iy| forese%t chromatophilia toss,y irradicate', '{dino\\there d$r$ugshop <cicindelid unilluminating d+iy| forese%t chromatophilia toss,y'), 2)
-          88.89
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('?waverou~s acrogenous e=x&cuss gaugeable obsequien_c\\e prevari_cation', '?waverou~s acrogenous e=x&cuss gaugeable obsequien_c\\e prevari_cation /preco-nclusion bec;a:use'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('portfire voicele\'t unsumptuous relict} indiscre;\'etly exclam"ative=ly bi<fl]ex', 'portfire voicele\'t unsumptuous relict} indiscre;\'etly exclam"ative=ly'), 2)
-          85.71
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('proce|ed [injure lacun}ae| hypophr@enosis (transcolorati|on li.a,na stophound', 'proce|ed [injure lacun}ae| hypophr@enosis (transcolorati|on'), 2)
-          71.43
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('relativ*enes/s psalmographer m\\yomorp:hic ,zoomechanic}s horse^"herd crassly mi*nimalism thigh;t =denatur-e', 'relativ*enes/s psalmographer m\\yomorp:hic ,zoomechanic}s horse^"herd'), 2)
-          55.56
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('yucker dargsman& albuminoidal #applaudably palaeoal&chemic%al', 'yucker dargsman& albuminoidal #applaudably palaeoal&chemic%al oscurrantist zeolitizatio!<n'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('prese/ntational revivement" runkly {co+emptor autovaccine funambulo \'pardoner lapstreaked', 'prese/ntational revivement" runkly {co+emptor autovaccine'), 2)
-          62.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('^predative ophionine accompani}mental snift?er ur,osom"e ungymnas#tic', '^predative ophionine accompani}mental snift?er ur,osom"e ungymnas#tic +atropic circumhorizontal non^speculation'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('ripe t#ruantship shar|)k fanioned palatize pitchi', 'ripe t#ruantship shar|)k fanioned palatize pitchi re$c:ure'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy("dysepulotic b`rainlessl#y aut.onomasy riftless tetr>a:coralline antic>holagogu+e fa't.uism p*:urism", "dysepulotic b`rainlessl#y aut.onomasy riftless tetr>a:coralline antic>holagogu+e fa't.uism"), 2)
-          87.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('pneumonople>uritis marm<ose v&entpiece pho)tocopier nem!atode quinquev+alvous penury', 'pneumonople>uritis marm<ose v&entpiece pho)tocopier nem!atode'), 2)
-          71.43
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('!b<roomwood myt{hopoem unremova_bly devitrification monarchess calamitous undet*ain(ed denationalize worth', '!b<roomwood myt{hopoem unremova_bly devitrification monarchess calamitous undet*ain(ed denationalize worth'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy("overfear;ful )th|eopneustic swoo#ny% `thearchy morei+sh sh'are-ware exp,iati_on unnumberable postbrachial", "overfear;ful )th|eopneustic swoo#ny% `thearchy morei+sh sh'are-ware"), 2)
+          >>> round(accuracy('resour#ce cample aconi?#te assis[ti+ve p;redefault( dern>ier` b(edrape glo_wering andro$morphous', 'resour#ce cample aconi?#te assis[ti+ve p;redefault( dern>ier`'), 2)
           66.67
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('\'spar"ger developmentalist miscanoniz_e deformal_iz_e unerring', '\'spar"ger developmentalist miscanoniz_e deformal_iz_e unerring'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('platybrach:ycephalou.s token screen|like ga!+slighting unrebutt`able! d-o*pper draw ve}(rsemaking encompa{ss', 'platybrach:ycephalou.s token screen|like ga!+slighting unrebutt`able! d-o*pper draw ve}(rsemaking encompa{ss'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('sparrowcide* jap^ane.se croise$tte es". preconflict gla@ri*ngly justic{ial` male+volent', 'sparrowcide* jap^ane.se croise$tte es". preconflict gla@ri*ngly justic{ial`'), 2)
-          87.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('galvanomagnetic dividedness nonlipoidal attitude vraic unaccusto"m clup"_eine', 'galvanomagnetic dividedness nonlipoidal attitude vraic unaccusto"m clup"_eine luc\\k{ relationist'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('pneumoperitonitis p*ostc]onnubial quippishness nucleolocen+trosome semiseafaring reproachless between chlorobromi_de', 'pneumoperitonitis p*ostc]onnubial quippishness nucleolocen+trosome semiseafaring reproachless'), 2)
-          75.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('relieved stalk@less retroactive conducingly unvirulent filiopietistic hexadiene', 'relieved stalk@less retroactive conducingly unvirulent'), 2)
-          71.43
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('tamelessly ~myelocyti"c muscul}e spastica!lly mucivore; uplad;der jo,unce" indigna[tor`y', 'tamelessly ~myelocyti"c muscul}e spastica!lly mucivore; uplad;der jo,unce" indigna[tor`y'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('ferry&boat} transempirica@l sneaksby week carc_ake', 'ferry&boat} transempirica@l sneaksby week carc_ake acquainted po|pu)lar suprat~emporal'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('sterneb\'er patria meningora\\ch(idian palp=at$e harangu"er cavernulous drip-', 'sterneb\'er patria meningora\\ch(idian palp=at$e harangu"er cavernulous drip-'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('toadp%ipe* private su&bsa~cral c@larif~y ir%redeem?able facetenes*s( anter(ointerio*r fre<eheartedly', 'toadp%ipe* private su&bsa~cral c@larif~y ir%redeem?able facetenes*s('), 2)
-          75.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy(')uncoacted #phacom<eter scolecolo|gy> ?cess+ion assoilzie', ')uncoacted #phacom<eter scolecolo|gy> ?cess+ion assoilzie'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('ra"ph:is overfold parli)amentar{ism maldigesti?on de>ca[pod debo%}sh', 'ra"ph:is overfold parli)amentar{ism maldigesti?on de>ca[pod'), 2)
-          83.33
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy(']vortically met-adiorite pell%[icule col+lage:n cyto^pl<asmic phlebotome o)therworld cro>sstra%ck unpunishedly', ']vortically met-adiorite pell%[icule col+lage:n cyto^pl<asmic phlebotome o)therworld cro>sstra%ck unpunishedly'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy("longicorn shadchan jour-nals$ pla'ck! me\\senchyme", "longicorn shadchan jour-nals$ pla'ck! me\\senchyme uns\\calably"), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('voluminously canthotomy monomerous\\ re:warehouse. mi?am~i sacking grayly|', 'voluminously canthotomy monomerous\\ re:warehouse. mi?am~i sacking grayly| sov;ere:ignly'), 2)
-          100.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('plastog[$amy pa&ntophile cinchotoxine ultraradic{al $p{ayer phantoml!ike >pi(nyl un=congenially p{ausati]on', 'plastog[$amy pa&ntophile cinchotoxine ultraradic{al $p{ayer phantoml!ike >pi(nyl un=congenially'), 2)
-          88.89
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('o,bd,ormition i+nstantly ste%nocrotaphia ?a+xometry v?entrose h}y%lology `erythrogenesis improcurable', 'o,bd,ormition i+nstantly ste%nocrotaphia ?a+xometry v?entrose h}y%lology'), 2)
-          75.0
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('circum|scribable m/aterialis;tical por,tless tice& askance^ gran>dma fetishization noninfantry', 'circum|scribable m/aterialis;tical por,tless tice& askance^ gran>dma fetishization'), 2)
-          87.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('berrier paroarion )hept%aploid shastraik exce:pt=ious /aortoptosis talky*', 'berrier paroarion )hept%aploid shastraik exce:pt=ious'), 2)
-          71.43
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('afterturn celadon t!hin crani"osto%sis cash^ eking archaeologist', 'afterturn celadon t!hin crani"osto%sis cash^ eking'), 2)
-          85.71
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('subjectiveness myr?istic caddl]"e artiod\\actyl` refectorian punner divisibil(ity', 'subjectiveness myr?istic caddl]"e artiod\\actyl` refectorian'), 2)
-          71.43
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('rice vibrissae enwind- influentia<lly calcareocorneous postcommissure crystallographical ?magnil<oquy quillaja', 'rice vibrissae enwind- influentia<lly calcareocorneous'), 2)
+          >>> round(accuracy('tablespoo_n laparogastrot.omy deprive] .structurali,ze _be{reaven seama=nc.raft encloak ;benj! liter', 'tablespoo_n laparogastrot.omy deprive] .structurali,ze _be{reaven'), 2)
           55.56
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('>phaciti!s ludicropathetic zo[odynamic lenticul>othalamic cratches azox|yphenetol^e hydropo?ni^cs revi)ewer', '>phaciti!s ludicropathetic zo[odynamic lenticul>othalamic cratches azox|yphenetol^e hydropo?ni^cs revi)ewer'), 2)
+          >>> round(accuracy('rutab#aga magnif:i|er anisic f}orer;eckon arco]c;entrous ron@tge=n', 'rutab#aga magnif:i|er anisic f}orer;eckon arco]c;entrous ron@tge=n electro;p=olar valv<ulotomy $perc"oid'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('cata+ria tress"ured; ther"ea,fter misexpl(ain tai|pa[n', 'cata+ria tress"ured; ther"ea,fter misexpl(ain tai|pa[n'), 2)
+          >>> round(accuracy('introspection*)ist duck>ing du{cker geocyclic uncar?]ried shriver<', 'introspection*)ist duck>ing du{cker geocyclic uncar?]ried shriver< sulfurate'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('suprasph&an,oidal (tubemaki`ng seriog<rotesqu?e ontoge["ny ent~omologize vertible< jurisprudentialist songwright;', 'suprasph&an,oidal (tubemaki`ng seriog<rotesqu?e ontoge["ny ent~omologize vertible< jurisprudentialist songwright; r|edigest'), 2)
+          >>> round(accuracy("du!gong )#cheatrie c+areer/ unemphatica>]l swe(etf'ish atef ^hastingsite xanthen=e", "du!gong )#cheatrie c+areer/ unemphatica>]l swe(etf'ish"), 2)
+          62.5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('previd:ence* crooktoot~hed sifaka &peter% unwiel#$dily de/r!ic footstool# (asynerg]ia', 'previd:ence* crooktoot~hed sifaka &peter% unwiel#$dily'), 2)
+          62.5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy(',\\emancipation unchristianity mauvine adu!nc mila', ",\\emancipation unchristianity mauvine adu!nc mila 's;uasive"), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('unharnessed !tai+lorize allozooid= malefactory rerummage veep ;dustma*n at/"miatry', 'unharnessed !tai+lorize allozooid= malefactory rerummage veep ;dustma*n'), 2)
-          87.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('ramp/agious a+fter{work vicety evan=escence inco<rruptn|ess temporarily| mu%corrhe|a', 'ramp/agious a+fter{work vicety evan=escence inco<rruptn|ess temporarily| mu%corrhe|a'), 2)
+          >>> round(accuracy('tel`e.caster bar;retter [t?echnicalize lamell_ated h<e$xastylar', 'tel`e.caster bar;retter [t?echnicalize lamell_ated h<e$xastylar bepu?n sla:ught,erhouse'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('b\'ovicid,e tachyglossa!l he{avyheart\\ed p,alatalism. pragmatical wonderin"g enterprisingl?y', 'b\'ovicid,e tachyglossa!l he{avyheart\\ed p,alatalism. pragmatical wonderin"g enterprisingl?y'), 2)
+          >>> round(accuracy('qu-agginess h]ypoc>ist >b*eechy plenilune endermati>c. na$sa u>nbath.ed skogbolite', 'qu-agginess h]ypoc>ist >b*eechy plenilune endermati>c. na$sa'), 2)
+          75.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("s*tre*am mes'othe+sis t;imeworn hydrarthrosis fo+reknowab[le", "s*tre*am mes'othe+sis t;imeworn hydrarthrosis fo+reknowab[le condemnat_o|ry wa-;glike"), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('@agrammatism pach?ydermia unnoticeab<le feretory attributes o&verbrigh,t t:etrahedro!n a-s>sure', '@agrammatism pach?ydermia unnoticeab<le feretory attributes o&verbrigh,t t:etrahedro!n a-s>sure chromatograph,y'), 2)
+          >>> round(accuracy('>dr-iftweed *antialbumid rhyptic/ pivalic strawbreadth antiquitarian celidography de)ludable whinnock', '>dr-iftweed *antialbumid rhyptic/ pivalic strawbreadth'), 2)
+          55.56
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('nursedom taraf{ www p"la^ntsman fosteringl(y chield| biol r_edue c)itharoedic&', 'nursedom taraf{ www p"la^ntsman fosteringl(y chield| biol r_edue'), 2)
+          88.89
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('_sunbird ~n\\isei fallaci<ous saet~^er talofibular', '_sunbird ~n\\isei fallaci<ous saet~^er talofibular landraker }achro^matically occasionalist'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('te$gularly phylogen^y )expansi;ble a_perture unending!\\ly vernaculari_st ca/pping @.monarchian', 'te$gularly phylogen^y )expansi;ble a_perture unending!\\ly vernaculari_st ca/pping'), 2)
-          87.5
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> round(accuracy('tedd&er# nutp!ecker pep<s)inate atl:,antic psalmodize shel#l@', 'tedd&er# nutp!ecker pep<s)inate atl:,antic psalmodize shel#l@ pursley hemang#iosarco-ma'), 2)
+          >>> round(accuracy('boomin/g }playa unjoyou<sness booju"m< suprachoroidal', 'boomin/g }playa unjoyou<sness booju"m< suprachoroidal'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('fugle ra"cinglike pedest`rian h&eteropoly# c$osmog{onist poly?phon:e taeniaci-de foregame ci~st', 'fugle ra"cinglike pedest`rian h&eteropoly# c$osmog{onist poly?phon:e taeniaci-de'), 2)
+          >>> round(accuracy('meta!me?rically nonimpar>)tment joyant kefiric~ &plaid(ed bac>cae mo,lm"an sho!ebl=ack non&farm', 'meta!me?rically nonimpar>)tment joyant kefiric~ &plaid(ed'), 2)
+          55.56
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('do]use"r trollf?lower athalli\'ne uniformi;tarian=ism po#lyg&amic up]t*ill dodecamerous u%n\'holy molossine', 'do]use"r trollf?lower athalli\'ne uniformi;tarian=ism po#lyg&amic up]t*ill dodecamerous u%n\'holy molossine'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('ree&\\st se=xuale d&indle count[e+rtranslation s^l=avepen', 'ree&\\st se=xuale d&indle count[e+rtranslation s^l=avepen thi&eftaker absorb_er neo$classic va$por>escence'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("cam%eroon puppydom semo'l~ella |pomacen,troid fletcher matriculator reluctan|c(e muffineer pericardiac", "cam%eroon puppydom semo'l~ella |pomacen,troid fletcher"), 2)
+          55.56
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy(']de-visable settlor cestoidean aerophotogr+aphy ascendent homo]tr&ansplantation', ']de-visable settlor cestoidean aerophotogr+aphy ascendent'), 2)
+          83.33
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("cardioarter')ial coi'nfini,ty trillion|ai^re storiological outward!most calligraphical", "cardioarter')ial coi'nfini,ty trillion|ai^re storiological outward!most calligraphical ostosis"), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('whirley compendiary gro)v&el anoplocephalic un~pl(ace "somewhiles cet"iosaurian\' +manu+facturess foredispos;e', 'whirley compendiary gro)v&el anoplocephalic un~pl(ace "somewhiles cet"iosaurian\' +manu+facturess foredispos;e'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("caducicorn 'palmately <vas#quine s!exolog=ical unstraying salacious |&uptower", "caducicorn 'palmately <vas#quine s!exolog=ical unstraying salacious |&uptower"), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('interlocutorily{ pronunciabi%li?ty ary,late im`pli[al d@isaffection', 'interlocutorily{ pronunciabi%li?ty ary,late im`pli[al d@isaffection'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('deuterid@e( refractive/ly st?aur/acin bureaucrat)ical physic~al helminthic hairband manne`rle~ss hypostatization{}', 'deuterid@e( refractive/ly st?aur/acin bureaucrat)ical physic~al helminthic hairband'), 2)
           77.78
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('imb(onity riziform sodd>ing kickup wiresmith .differe|nt inflicter', 'imb(onity riziform sodd>ing kickup wiresmith .differe|nt inflicter s}ummon'), 2)
+          >>> round(accuracy('hydros]tatic :fega`ry mana ca[udotibialis centrob>aric g&eet.', 'hydros]tatic :fega`ry mana ca[udotibialis centrob>aric g&eet. suffr=agettism st@artfulness k`a<ns'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('wave"ment co#nfess* wh@eelery pendulumlik$e noctambulous charkhana catst*[one', 'wave"ment co#nfess* wh@eelery pendulumlik$e noctambulous charkhana catst*[one'), 2)
+          >>> round(accuracy('inyoite unprophetical profugate, anurous orthopteran sponsing', 'inyoite unprophetical profugate, anurous orthopteran sponsing bronch^ioli'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
-          >>> round(accuracy('stepfatherhood diplomatist autoreinfusion a\\$poxesis formal`dehyde omophagia', 'stepfatherhood diplomatist autoreinfusion a\\$poxesis formal`dehyde omophagia !rooklet- veuglai`re'), 2)
+          >>> round(accuracy('g[obble o:ssypite h@umanistic i\\soanti>body e+xistentialism isohemopyrr!ole subsa+lt', 'g[obble o:ssypite h@umanistic i\\soanti>body e+xistentialism isohemopyrr!ole'), 2)
+          85.71
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('chromo!_philic tachylytic rabbin:shi`p v@alentine c*irrol~ite tanti', 'chromo!_philic tachylytic rabbin:shi`p v@alentine c*irrol~ite tanti dec[alescen+t wo<rshipfully'), 2)
           100.0
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('le-averwood twix<t c%&ladoptosis archicoele po_]ddy motorphobe thyroidectomize rerope', 'le-averwood twix<t c%&ladoptosis archicoele po_]ddy motorphobe'), 2)
+          75.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('hear ;myosarcomatou/s carbon]ace_ous suprasphanoidal a)d%jectival w;indle~s catering parapsychism\\ bureaux', 'hear ;myosarcomatou/s carbon]ace_ous suprasphanoidal a)d%jectival w;indle~s catering parapsychism\\'), 2)
+          88.89
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('stud&iedly vaulty" bu[tylation !]sewerman aunc)el overlip', 'stud&iedly vaulty" bu[tylation !]sewerman aunc)el overlip'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('tribunitiv=e( sigi?llation end*ocoeliac hydrosta$tician defunctionalize', 'tribunitiv=e( sigi?llation end*ocoeliac hydrosta$tician defunctionalize ?anemoscope asser(toric'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('caph-ar archde#vil restaurant l}ightti~ght pathog<ermic=', 'caph-ar archde#vil restaurant l}ightti~ght pathog<ermic= *_gleg'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('cheeser endorsee tyste" pra~tfall dialecticiz<e enodal', 'cheeser endorsee tyste" pra~tfall dialecticiz<e enodal rec]tor'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('varicos/e{d pogonologist {sn#ack _b\\ushful longevi-ty inp$atient moo=nwards tolyl&en-ediamine', 'varicos/e{d pogonologist {sn#ack _b\\ushful longevi-ty inp$atient'), 2)
+          75.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('k`]inetophone form-ature boccaro br@utelike overt_}imer wenny pharmacology', 'k`]inetophone form-ature boccaro br@utelike overt_}imer wenny pharmacology'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('protosa(urian mortific loxodont tartarize underwarden', 'protosa(urian mortific loxodont tartarize underwarden aquatic alti,loquent feasance'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('pesterer muttering undulous enderoni|,c ly<canthrope', 'pesterer muttering undulous enderoni|,c ly<canthrope sp{lanchnapophysial t/hecal waste'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('+j[aunt ne&uterdom ropis),h &mi]ld geront?.es untenantab!leness tomentous crouching', '+j[aunt ne&uterdom ropis),h &mi]ld geront?.es untenantab!leness'), 2)
+          75.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('oscil"latory aerobatic d(arklings finelea[f ethnic par-abolically', 'oscil"latory aerobatic d(arklings finelea[f ethnic par-abolically rebate'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('subch<oro}id pr%omus{cidate perist/erit%e inductivity nonelemental phytogeography', 'subch<oro}id pr%omus{cidate perist/erit%e inductivity nonelemental phytogeography'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('battl&ew|ise gemm!ate co$unteridea guinea^ bedwell invo&lute;ly', 'battl&ew|ise gemm!ate co$unteridea guinea^ bedwell invo&lute;ly jink.le: su?bdete~rminant'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('re<liqui@dation microblep/hary\\ sple@#nolysis ku%lm! ta;ilorism misintimation *pleapro+of bosch, surpris.er', 're<liqui@dation microblep/hary\\ sple@#nolysis ku%lm! ta;ilorism misintimation *pleapro+of'), 2)
+          77.78
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('tro(phobiosis transcriptionally riotou$"sness bizardite nebulous fulvous ba%n tra;nsverse transgressive', 'tro(phobiosis transcriptionally riotou$"sness bizardite nebulous fulvous ba%n tra;nsverse'), 2)
+          88.89
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('non]spark>ing m\\issuppose erin@^eum ancest`orially i?ndefini?te', 'non]spark>ing m\\issuppose erin@^eum ancest`orially i?ndefini?te prodpr)oof, photogrammeter al|tarist'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("unexc[usableness prank@fulness mammectomy abolishment unwither&ing 'p;rickled p<arade", "unexc[usableness prank@fulness mammectomy abolishment unwither&ing 'p;rickled p<arade sorr.y"), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("evolution improperly ang%&iophorous :subclassify coc)kcrowi'ng dra<whead", "evolution improperly ang%&iophorous :subclassify coc)kcrowi'ng dra<whead"), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("penceless pseudony-muncule tru$ncator?otund malpais u'navenued l#ig{as cau#licl'e magistr'ative hy`oid", "penceless pseudony-muncule tru$ncator?otund malpais u'navenued l#ig{as cau#licl'e magistr'ative"), 2)
+          88.89
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('appre!sso_r propygidium wa,rs\\ bulbose pseudoanaphylactic und]i}scerned geron)tox^on insouciant dim!inishab|leness', 'appre!sso_r propygidium wa,rs\\ bulbose pseudoanaphylactic und]i}scerned geron)tox^on insouciant dim!inishab|leness'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('(pa%irer p%eritheli<um #ha*ire unauspiciou|s s^lumward', '(pa%irer p%eritheli<um #ha*ire unauspiciou|s s^lumward peastaking )myspace'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('in^c`lementness uncostly penum:brous: pi%nnatedly s)wanwort oogamy; ragtimey', 'in^c`lementness uncostly penum:brous: pi%nnatedly s)wanwort oogamy;'), 2)
+          85.71
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('tailings unreg]imented= uns)cared flo!riferousness. peasant trigonomet\\ric', 'tailings unreg]imented= uns)cared flo!riferousness. peasant'), 2)
+          83.33
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('rep{ugnatorial. cottabu\\s a;psis@ unlidded sodless h!ipped \\adoptioni>sm hollowhe\\artedness', 'rep{ugnatorial. cottabu\\s a;psis@ unlidded sodless h!ipped \\adoptioni>sm hollowhe\\artedness c[abine*t'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('transmundane |*peeled coucher flaved)o u*npious sword/ zoril%lo]', 'transmundane |*peeled coucher flaved)o u*npious sword/'), 2)
+          85.71
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("dualisti@c aestheticism cat'holicus sa@rlak sitio$ a&pyrous. une]xtinct hippish", "dualisti@c aestheticism cat'holicus sa@rlak sitio$ a&pyrous. une]xtinct hippish precorrespondence"), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('demiditone teos&inte pr_etransmit rytidos*i[s occipitotha*la!mic wa>kiki# piperi|dge recurs(e', 'demiditone teos&inte pr_etransmit rytidos*i[s occipitotha*la!mic wa>kiki# piperi|dge recurs(e'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("prickingl(y musculocutaneous%' doo]red_ top:)s isopetalous rousting\\! inte/rfilament-ar vikinglike", "prickingl(y musculocutaneous%' doo]red_ top:)s isopetalous rousting\\!"), 2)
+          75.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('ringgiving unta`kab-leness borderlander uncle!ve/rness unknight', 'ringgiving unta`kab-leness borderlander uncle!ve/rness unknight `la.n'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('fibrill"iferous undiscernedl((y fe^tici#de misun@derstand|able de&legation palaestrics; pam[physical', 'fibrill"iferous undiscernedl((y fe^tici#de misun@derstand|able de&legation palaestrics;'), 2)
+          85.71
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("/aneuploidy m'esmer;ically unpilloried `cytodiereti?c diurn!ation", "/aneuploidy m'esmer;ically unpilloried `cytodiereti?c diurn!ation trichoma endoappen~d*icitis pty_alocele radic.ulose"), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('p|hola{doid overg"rossness gander an}acan@thine peacebrea&ker', 'p|hola{doid overg"rossness gander an}acan@thine peacebrea&ker dichloramine calotypis(t pha@nerocryst ampelitic'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('cacom{ixle ensa]ff\\ron anticaste predis_tri*ct cyanoacetat?e orthocep>hal(y tin:sman immobilize', 'cacom{ixle ensa]ff\\ron anticaste predis_tri*ct cyanoacetat?e orthocep>hal(y tin:sman'), 2)
+          87.5
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("mecha~nicalist oppress lia''ng cometlike graphite", "mecha~nicalist oppress lia''ng cometlike graphite uxori!ous desmachym=e# swor(dman unrelentor"), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('subframe astrochemist ha;llelujah replotter %enneasylla*bic w&arden', 'subframe astrochemist ha;llelujah replotter %enneasylla*bic w&arden dharmashastra viato[ria\\l'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('i_socheimal contem.p`tuous mesogna?t`hism gilded nursehou?nd', 'i_socheimal contem.p`tuous mesogna?t`hism gilded nursehou?nd i>gniter'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy("lazzaron!e fendabl[e noetics sartor genisaro brierwood pardonee pubot'ibial disciplina>riani&sm", 'lazzaron!e fendabl[e noetics sartor genisaro brierwood'), 2)
+          66.67
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('ungenu`ine ri"f<ter hagioscopic scr!otecto#my mu+/lattress pokerishly', 'ungenu`ine ri"f<ter hagioscopic scr!otecto#my mu+/lattress pokerishly goa@d"'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('n[arcoanesthesia monopersulfuric talkathon does aeroperitoneum', 'n[arcoanesthesia monopersulfuric talkathon does aeroperitoneum lad)le unc]ontrolledl=y'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('mud nonsi+de|real \\unbetraying non{compea<rance filicol^ogist', 'mud nonsi+de|real \\unbetraying non{compea<rance filicol^ogist'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        },
+        {
+          'code': r"""
+          >>> round(accuracy('overappraise disdiapason c<esser plasm,a vi}ndic*able', 'overappraise disdiapason c<esser plasm,a vi}ndic*able fjerding abacisc_}us'), 2)
+          100.0
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
         }
       ],
       'scored': True,
